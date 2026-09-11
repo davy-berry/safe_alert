@@ -70,5 +70,14 @@ class Report(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                condition = models.Q(risk_score__gte=0) &
+                      models.Q(risk_score__lte=100),
+                name="risk_score_between_0_and_100",
+            ),
+        ]
+
     def __str__(self):
         return self.title
