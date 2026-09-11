@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class category(models.Model):
+class Category(models.Model):
     """Represents a report category used to classify safety issues."""
 
     ROAD_SAFETY = "road_safety"
@@ -57,7 +57,7 @@ class Report(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.ForeignKey(category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
     location = models.CharField(max_length=200)
