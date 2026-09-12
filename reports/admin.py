@@ -4,7 +4,8 @@ from .models import Report, Category
 # Register your models here.
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'created_at')
+    list_display = ('name', 'risk_weight', 'description', 'created_at')
+    list_filter = ('risk_weight',)
     search_fields = ('name',)
 
 @admin.register(Report)

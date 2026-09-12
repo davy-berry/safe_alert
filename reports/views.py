@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import ReportForm
 from .models import Report
+from .risk import calculate_risk_score, calculate_priority
 
 
 # Create your views here.
@@ -14,6 +15,8 @@ def create_report(request):
         if form.is_valid():
             report = form.save(commit=False)
             report.user = request.user
+            report.risk_score = calculate_risk_score(report.category)
+            report.priority = calculate_priority(report.risk_score)
             report.save()
 
             return redirect("my_reports")
