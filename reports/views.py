@@ -84,3 +84,24 @@ def edit_report(request, report_id):
             "report": report,
         }
     )
+
+@login_required
+def delete_report(request, report_id):
+
+    report = Report.objects.get(
+        id=report_id,
+        user=request.user
+    )
+
+    if request.method == "POST":
+        report.delete()
+
+        return redirect("my_reports")
+
+    return render(
+        request,
+        "reports/delete_report.html",
+        {
+            "report": report,
+        }
+    )

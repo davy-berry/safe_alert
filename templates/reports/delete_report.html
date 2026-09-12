@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Report</title>
+</head>
+
+<body>
+
+    <h1>Delete Safety Report</h1>
+
+    <p>
+        Are you sure you want to delete this report?
+    </p>
+
+    <h2>{{ report.title }}</h2>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        <button type="submit">
+            Yes, Delete Report
+        </button>
+
+        <a href="{% url 'my_reports' %}">
+            Cancel
+        </a>
+
+    </form>
+
+</body>
+</html>

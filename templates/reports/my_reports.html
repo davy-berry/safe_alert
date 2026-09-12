@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,46 +13,53 @@
 
     {% if reports %}
 
-        {% for report in reports %}
+    {% for report in reports %}
 
-            <article>
+    <article>
 
-                <h2>{{ report.title }}</h2>
+        <h2>{{ report.title }}</h2>
 
-                <p>
-                    <strong>Category:</strong>
-                    {{ report.category }}
-                </p>
+        <p>
+            <strong>Category:</strong>
+            {{ report.category }}
+        </p>
 
-                <p>
-                    <strong>Location:</strong>
-                    {{ report.location }}
-                </p>
+        <p>
+            <strong>Location:</strong>
+            {{ report.location }}
+        </p>
 
-                <p>
-                    <strong>Status:</strong>
-                    {{ report.get_status_display }}
-                </p>
+        <p>
+            <strong>Status:</strong>
+            {{ report.get_status_display }}
+        </p>
 
-                <p>
-                    <strong>Priority:</strong>
-                    {{ report.get_priority_display }}
-                </p>
+        <p>
+            <strong>Priority:</strong>
+            {{ report.get_priority_display }}
+        </p>
 
-                <p>
-                    <strong>Submitted:</strong>
-                    {{ report.created_at }}
-                </p>
+        <p>
+            <strong>Submitted:</strong>
+            {{ report.created_at }}
+        </p>
+        <a href="{% url 'edit_report' report.id %}">
+            Edit
+        </a>
 
-            </article>
+        <a href="{% url 'delete_report' report.id %}">
+            Delete
+        </a>
 
-            <hr>
+    </article>
 
-        {% endfor %}
+    <hr>
+
+    {% endfor %}
 
     {% else %}
 
-        <p>You have not submitted any reports yet.</p>
+    <p>You have not submitted any reports yet.</p>
 
     {% endif %}
 
@@ -60,4 +68,5 @@
     </a>
 
 </body>
+
 </html>
