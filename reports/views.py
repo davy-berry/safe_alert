@@ -105,3 +105,19 @@ def delete_report(request, report_id):
             "report": report,
         }
     )
+
+@login_required
+def admin_reports(request):
+
+    if request.user.profile.role != "administrator":
+        return redirect("my_reports")
+
+    reports = Report.objects.all().order_by("-created_at")
+
+    return render(
+        request,
+        "reports/admin_reports.html",
+        {
+            "reports": reports,
+        }
+    )
