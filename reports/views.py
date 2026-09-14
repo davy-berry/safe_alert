@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import ReportForm
 from .models import Report
 from .risk import calculate_risk_score, calculate_priority
+from accounts.models import UserProfile
 
 
 # Create your views here.
@@ -109,7 +110,7 @@ def delete_report(request, report_id):
 @login_required
 def admin_reports(request):
 
-    if request.user.profile.role != "administrator":
+    if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
         return redirect("my_reports")
 
     reports = Report.objects.all().order_by("-created_at")

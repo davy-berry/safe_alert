@@ -16,7 +16,7 @@ def register(request):
 
             UserProfile.objects.create(
                 user=user,
-                role="community_member"
+                role= UserProfile.COMMUNITY_USER
             )
 
             login(request, user)
