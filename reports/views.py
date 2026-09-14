@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from .forms import ReportForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import ReportForm, StatusUpdateForm
 from .models import Report
 from .risk import calculate_risk_score, calculate_priority
 from accounts.models import UserProfile
@@ -120,5 +120,34 @@ def admin_reports(request):
         "reports/admin_reports.html",
         {
             "reports": reports,
+        }
+    )
+
+@login_required
+def update_report_status(request, report_id):
+    if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
+        return redirect("my_reports")
+
+    report = get_object_or_404(Report, id=report_id)
+
+    if request.method == "POST":
+        form = StatusUpdateForm(
+            request.POST,
+            instance=report
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect("admin_reports")
+
+    else:
+        form = StatusUpdateForm(instance=report)
+
+    return render(
+        request,
+        "reports/update_report_status.html",
+        {
+            "form": form,
+            "report": report,
         }
     )

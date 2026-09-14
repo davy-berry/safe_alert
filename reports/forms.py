@@ -24,4 +24,8 @@ class ReportForm(forms.ModelForm):
             raise forms.ValidationError("Location must be at least 3 characters long.")
         return location
     
-       
+
+class StatusUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Report
+        fields = ["status"] 
