@@ -4,7 +4,12 @@ from .models import Report
 class ReportForm(forms.ModelForm):
     class Meta:
         model = Report
-        fields = ['category', 'title', 'description', 'location', 'image']
+        fields = ['category', 'title', 'description', 'location', 'latitude', 'longitude', 'image']
+
+        widgets = {
+            "latitude": forms.HiddenInput(),
+            "longitude": forms.HiddenInput(),
+        }
 
     def clean_title(self):
         title = self.cleaned_data.get('title', '').strip()
