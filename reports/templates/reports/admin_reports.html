@@ -89,6 +89,29 @@
         {% empty %}
         <p>No comments yet.</p>
         {% endfor %}
+        <h3>Status History</h3>
+
+        {% for history in report.status_history.all %}
+        <div>
+            <p>
+                <strong>
+                    {{ history.created_at|date:"d M Y H:i" }}
+                </strong>
+            </p>
+
+            <p>
+                {{ history.get_previous_status_display }}
+                →
+                {{ history.get_new_status_display }}
+            </p>
+
+            <p>
+                Changed by: {{ history.changed_by.username }}
+            </p>
+        </div>
+        {% empty %}
+        <p>No status changes recorded yet.</p>
+        {% endfor %}
     </article>
 
     <hr>
