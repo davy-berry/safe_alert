@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ReportForm, StatusUpdateForm
-from .models import Report
+from .forms import ReportForm, StatusUpdateForm, ReportCommentForm
+from .models import Report, ReportComment
 from .risk import calculate_risk_score, calculate_priority
 from accounts.models import UserProfile
 
@@ -148,6 +148,39 @@ def update_report_status(request, report_id):
     return render(
         request,
         "reports/update_report_status.html",
+        {
+            "form": form,
+            "report": report,
+        }
+    )
+
+@login_required
+def add_report_comment(request, report_id):
+    if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
+        return redirect("my_reports")
+
+    report = get_object_or_404(
+        Report,
+        id=report_id
+    )
+
+    if request.method == "POST":
+        form = ReportCommentForm(request.POST)
+
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.report = report
+            comment.user = request.user
+            comment.save()
+
+            return redirect("admin_reports")
+
+    else:
+        form = ReportCommentForm()
+
+    return render(
+        request,
+        "reports/add_report_comment.html",
         {
             "form": form,
             "report": report,
