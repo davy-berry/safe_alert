@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Submit Safety Report</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        #map {
+            height: 400px;
+            width: 70%;
+        }
+    </style>
 </head>
 
 <body>
 
     <h1>Submit a Safety Report</h1>
-    {% if user.is_authenticated %}
-
-    <p>
-        Logged in as: {{ user.username }}
-    </p>
-
-    <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">
-            Logout
-        </button>
-    </form>
-
-    {% endif %}
 
     <form method="post" enctype="multipart/form-data">
 
@@ -30,11 +28,60 @@
 
         {{ form.as_p }}
 
+        <h2>Select Incident Location</h2>
+
+        <p>
+            Click on the map to select the location of the safety issue.
+        </p>
+
+        <div id="map"></div>
+
+        <br>
+
         <button type="submit">
             Submit Report
         </button>
 
     </form>
 
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Create the map and centre it on Birmingham
+        const map = L.map("map").setView([52.4862, -1.8904], 12);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // Store the selected marker
+        let marker;
+
+        // When the user clicks the map
+        map.on("click", function (event) {
+
+            const latitude = event.latlng.lat;
+            const longitude = event.latlng.lng;
+
+            // Remove the previous marker
+            if (marker) {
+                map.removeLayer(marker);
+            }
+
+            // Add a new marker
+            marker = L.marker([latitude, longitude])
+                .addTo(map);
+
+            // Put the coordinates into the hidden form fields
+            document.getElementById("id_latitude").value = latitude;
+            document.getElementById("id_longitude").value = longitude;
+
+        });
+    </script>
+
 </body>
+
 </html>
