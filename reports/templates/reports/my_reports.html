@@ -1,86 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Reports</title>
-</head>
+{% block title %}
+    My Reports | SafeAlert
+{% endblock %}
 
-<body>
+{% block content %}
 
-    <h1>My Safety Reports</h1>
-    {% if user.is_authenticated %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="mb-1">My Reports</h1>
+            <p class="text-muted mb-0">
+                View and manage your community safety reports.
+            </p>
+        </div>
 
-    <p>
-        Logged in as: {{ user.username }}
-    </p>
+        <a
+            href="{% url 'create_report' %}"
+            class="btn btn-primary"
+        >
+            Report an Issue
+        </a>
+    </div>
 
-    <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">
-            Logout
-        </button>
-    </form>
-
-    {% endif %}
 
     {% if reports %}
 
-    {% for report in reports %}
+        <div class="row g-4">
 
-    <article>
+            {% for report in reports %}
 
-        <h2>{{ report.title }}</h2>
+                <div class="col-12 col-md-6 col-lg-4">
 
-        <p>
-            <strong>Category:</strong>
-            {{ report.category }}
-        </p>
+                    <div class="card h-100 shadow-sm">
 
-        <p>
-            <strong>Location:</strong>
-            {{ report.location }}
-        </p>
+                        {% if report.image %}
+                            <img
+                                src="{{ report.image.url }}"
+                                class="card-img-top"
+                                alt="Image for {{ report.title }}"
+                                style="height: 200px; object-fit: cover;"
+                            >
+                        {% endif %}
 
-        <p>
-            <strong>Status:</strong>
-            {{ report.get_status_display }}
-        </p>
+                        <div class="card-body">
 
-        <p>
-            <strong>Priority:</strong>
-            {{ report.get_priority_display }}
-        </p>
+                            <h2 class="h5 card-title">
+                                {{ report.title }}
+                            </h2>
 
-        <p>
-            <strong>Submitted:</strong>
-            {{ report.created_at }}
-        </p>
-        <a href="{% url 'edit_report' report.id %}">
-            Edit
-        </a>
+                            <p class="card-text text-muted">
+                                {{ report.description|truncatewords:20 }}
+                            </p>
 
-        <a href="{% url 'delete_report' report.id %}">
-            Delete
-        </a>
+                            <p class="mb-1">
+                                <strong>Category:</strong>
+                                {{ report.category.name }}
+                            </p>
 
-    </article>
+                            <p class="mb-1">
+                                <strong>Priority:</strong>
+                                {{ report.get_priority_display }}
+                            </p>
 
-    <hr>
+                            <p class="mb-3">
+                                <strong>Status:</strong>
+                                {{ report.get_status_display }}
+                            </p>
 
-    {% endfor %}
+                            <div class="d-flex gap-2">
+
+                                <a
+                                    href="{% url 'edit_report' report.id %}"
+                                    class="btn btn-outline-primary btn-sm"
+                                >
+                                    Edit
+                                </a>
+
+                                <a
+                                    href="{% url 'delete_report' report.id %}"
+                                    class="btn btn-outline-danger btn-sm"
+                                >
+                                    Delete
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
 
     {% else %}
 
-    <p>You have not submitted any reports yet.</p>
+        <div class="text-center py-5">
+
+            <h2>No reports yet</h2>
+
+            <p class="text-muted">
+                You haven't submitted any safety reports.
+            </p>
+
+            <a
+                href="{% url 'create_report' %}"
+                class="btn btn-primary"
+            >
+                Submit Your First Report
+            </a>
+
+        </div>
 
     {% endif %}
 
-    <a href="{% url 'create_report' %}">
-        Submit a new report
-    </a>
-
-</body>
-
-</html>
+{% endblock %}
