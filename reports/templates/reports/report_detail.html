@@ -1,0 +1,431 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ report.title }} | SafeAlert
+{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <a
+        href="{% url 'admin_reports' %}"
+        class="text-decoration-none"
+    >
+        &larr; Back to Community Reports
+    </a>
+
+</div>
+
+
+<!-- Report heading -->
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+
+    <div>
+        <h1 class="mb-1">
+            {{ report.title }}
+        </h1>
+
+        <p class="text-muted mb-0">
+            Submitted {{ report.created_at|date:"d M Y H:i" }}
+        </p>
+    </div>
+
+    <div class="mt-3 mt-md-0 d-flex gap-2">
+
+        <a
+            href="{% url 'update_report_status' report.id %}"
+            class="btn btn-primary"
+        >
+            Update Status
+        </a>
+
+        <a
+            href="{% url 'add_report_comment' report.id %}"
+            class="btn btn-outline-secondary"
+        >
+            Add Comment
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="row g-4">
+
+    <!-- Main report information -->
+
+    <div class="col-12 col-lg-8">
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body p-4">
+
+                <h2 class="h4 mb-3">
+                    Report Information
+                </h2>
+
+                <dl class="row mb-0">
+
+                    <dt class="col-sm-4">
+                        Category
+                    </dt>
+
+                    <dd class="col-sm-8">
+                        {{ report.category.name }}
+                    </dd>
+
+
+                    <dt class="col-sm-4">
+                        Location
+                    </dt>
+
+                    <dd class="col-sm-8">
+                        {{ report.location }}
+                    </dd>
+
+
+                    <dt class="col-sm-4">
+                        Submitted by
+                    </dt>
+
+                    <dd class="col-sm-8">
+                        {{ report.user.username }}
+                    </dd>
+
+
+                    <dt class="col-sm-4">
+                        Created
+                    </dt>
+
+                    <dd class="col-sm-8">
+                        {{ report.created_at|date:"d M Y H:i" }}
+                    </dd>
+
+
+                    <dt class="col-sm-4">
+                        Last updated
+                    </dt>
+
+                    <dd class="col-sm-8 mb-0">
+                        {{ report.updated_at|date:"d M Y H:i" }}
+                    </dd>
+
+                </dl>
+
+            </div>
+
+        </div>
+
+
+        <!-- Description -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body p-4">
+
+                <h2 class="h4">
+                    Description
+                </h2>
+
+                <p class="mb-0">
+                    {{ report.description }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Image -->
+
+        {% if report.image %}
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body p-4">
+
+                    <h2 class="h4 mb-3">
+                        Report Image
+                    </h2>
+
+                    <img
+                        src="{{ report.image.url }}"
+                        alt="Image for {{ report.title }}"
+                        class="img-fluid rounded"
+                    >
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- Comments -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body p-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h2 class="h4 mb-0">
+                        Comments
+                    </h2>
+
+                    <a
+                        href="{% url 'add_report_comment' report.id %}"
+                        class="btn btn-outline-secondary btn-sm"
+                    >
+                        Add Comment
+                    </a>
+
+                </div>
+
+
+                {% for comment in report.comments.all %}
+
+                    <div class="border-bottom pb-3 mb-3">
+
+                        <p class="mb-1">
+
+                            <strong>
+                                {{ comment.user.username }}
+                            </strong>
+
+                            <small class="text-muted">
+                                {{ comment.created_at|date:"d M Y H:i" }}
+                            </small>
+
+                        </p>
+
+                        <p class="mb-0">
+                            {{ comment.comment }}
+                        </p>
+
+                    </div>
+
+                {% empty %}
+
+                    <p class="text-muted mb-0">
+                        No comments have been added yet.
+                    </p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- Status History -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body p-4">
+
+                <h2 class="h4 mb-3">
+                    Status History
+                </h2>
+
+
+                {% for history in report.status_history.all %}
+
+                    <div class="border-bottom pb-3 mb-3">
+
+                        <p class="mb-1">
+
+                            <strong>
+                                {{ history.get_previous_status_display }}
+                            </strong>
+
+                            &rarr;
+
+                            <strong>
+                                {{ history.get_new_status_display }}
+                            </strong>
+
+                        </p>
+
+                        <p class="text-muted small mb-0">
+
+                            {{ history.created_at|date:"d M Y H:i" }}
+
+                            ·
+
+                            Changed by
+                            {{ history.changed_by.username }}
+
+                        </p>
+
+                    </div>
+
+                {% empty %}
+
+                    <p class="text-muted mb-0">
+                        No status changes recorded yet.
+                    </p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Report summary -->
+
+    <div class="col-12 col-lg-4">
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body p-4">
+
+                <h2 class="h4 mb-4">
+                    Report Summary
+                </h2>
+
+
+                <!-- Risk -->
+
+                <div class="mb-4">
+
+                    <p class="text-muted mb-1">
+                        Risk Score
+                    </p>
+
+                    <p class="display-6 mb-0">
+                        {{ report.risk_score }}/100
+                    </p>
+
+                </div>
+
+
+                <!-- Priority -->
+
+                <div class="mb-4">
+
+                    <p class="text-muted mb-1">
+                        Priority
+                    </p>
+
+                    {% if report.priority == "low" %}
+
+                        <span class="badge text-bg-success fs-6">
+                            Low
+                        </span>
+
+                    {% elif report.priority == "medium" %}
+
+                        <span class="badge text-bg-warning fs-6">
+                            Medium
+                        </span>
+
+                    {% elif report.priority == "high" %}
+
+                        <span class="badge text-bg-danger fs-6">
+                            High
+                        </span>
+
+                    {% elif report.priority == "critical" %}
+
+                        <span class="badge text-bg-dark fs-6">
+                            Critical
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Status -->
+
+                <div>
+
+                    <p class="text-muted mb-1">
+                        Current Status
+                    </p>
+
+                    {% if report.status == "reported" %}
+
+                        <span class="badge text-bg-primary fs-6">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "under_review" %}
+
+                        <span class="badge text-bg-info fs-6">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "in_progress" %}
+
+                        <span class="badge text-bg-warning fs-6">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "resolved" %}
+
+                        <span class="badge text-bg-success fs-6">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "confirmed" %}
+
+                        <span class="badge text-bg-success fs-6">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "rejected" %}
+
+                        <span class="badge text-bg-secondary fs-6">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Location coordinates -->
+
+        {% if report.latitude and report.longitude %}
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <h2 class="h5">
+                        Coordinates
+                    </h2>
+
+                    <p class="mb-1">
+                        <strong>Latitude:</strong>
+                        {{ report.latitude }}
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>Longitude:</strong>
+                        {{ report.longitude }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
