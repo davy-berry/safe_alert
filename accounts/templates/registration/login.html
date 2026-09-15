@@ -1,34 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SafeAlert</title>
-</head>
+{% block title %}
+    Login | SafeAlert
+{% endblock %}
 
-<body>
+{% block content %}
 
-    <h1>Login to SafeAlert</h1>
+<div class="row justify-content-center">
 
-    <form method="post">
+    <div class="col-12 col-sm-10 col-md-7 col-lg-5">
 
-        {% csrf_token %}
+        <div class="text-center mb-4">
+            <h1>Welcome to SafeAlert</h1>
 
-        {{ form.as_p }}
+            <p class="text-muted">
+                Sign in to manage your community safety reports.
+            </p>
+        </div>
 
-        <button type="submit">
-            Login
-        </button>
+        <div class="card shadow-sm">
 
-    </form>
-    <p>
-        Don't have an account?
-        <a href="{% url 'register' %}">
-            Register here
-        </a>
-    </p>
+            <div class="card-body p-4">
 
-</body>
+                <form method="post">
 
-</html>
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.username.id_for_label }}"
+                            class="form-label"
+                        >
+                            Username
+                        </label>
+
+                        {{ form.username }}
+
+                        {% if form.username.errors %}
+                            <div class="text-danger small">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.password.id_for_label }}"
+                            class="form-label"
+                        >
+                            Password
+                        </label>
+
+                        {{ form.password }}
+
+                        {% if form.password.errors %}
+                            <div class="text-danger small">
+                                {{ form.password.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100"
+                    >
+                        Login
+                    </button>
+
+                </form>
+
+                <hr class="my-4">
+
+                <p class="text-center mb-0">
+                    Don't have an account?
+
+                    <a href="{% url 'register' %}">
+                        Register here
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
