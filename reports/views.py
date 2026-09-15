@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ReportForm, StatusUpdateForm
@@ -28,7 +29,8 @@ def create_report(request):
     return render(
         request,
         "reports/create_report.html",
-        {"form": form}
+        {"form": form,
+         "stadia_api_key": settings.STADIA_API_KEY,}
     )
 
 @login_required

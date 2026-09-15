@@ -46,14 +46,15 @@
 
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
+
     <script>
         // Create the map and centre it on Birmingham
         const map = L.map("map").setView([52.4862, -1.8904], 12);
 
         // Add OpenStreetMap tiles
+        
         L.tileLayer(
-        "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
+        "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={{ stadia_api_key }}",
         {
         maxZoom: 20,
         attribution:
@@ -69,8 +70,8 @@
         // When the user clicks the map
         map.on("click", function (event) {
 
-            const latitude = event.latlng.lat;
-            const longitude = event.latlng.lng;
+            const latitude = event.latlng.lat.toFixed(6);
+            const longitude = event.latlng.lng.toFixed(6);
 
             // Remove the previous marker
             if (marker) {
@@ -86,6 +87,7 @@
             document.getElementById("id_longitude").value = longitude;
 
         });
+        
     </script>
 
 </body>
