@@ -167,9 +167,6 @@ def update_report_status(request, report_id):
 
             new_status = form.cleaned_data["status"]
 
-            #print("Previous:", previous_status)
-            #print("New:", new_status)
-
             if previous_status != new_status:
 
                 ReportStatusHistory.objects.create(
@@ -178,8 +175,6 @@ def update_report_status(request, report_id):
                     new_status=new_status,
                     changed_by=request.user
                 )
-
-                #print("HISTORY CREATED")
 
             form.save()
 
