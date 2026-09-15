@@ -1,133 +1,235 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
+    Admin Reports | SafeAlert
+{% endblock %}
 
-    <title>Admin - Reports</title>
-</head>
+{% block content %}
 
-<body>
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
 
-    <h1>All Safety Reports</h1>
-    {% if user.is_authenticated %}
+    <div>
+        <h1 class="mb-1">Community Reports</h1>
 
-    <p>
-        Logged in as: {{ user.username }}
-    </p>
-
-    <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">
-            Logout
-        </button>
-    </form>
-
-    {% endif %}
-
-    {% if reports %}
-
-    {% for report in reports %}
-
-    <article>
-
-        <h2>{{ report.title }}</h2>
-
-        <p>
-            <strong>Submitted by:</strong>
-            {{ report.user.username }}
+        <p class="text-muted mb-0">
+            Review and manage safety reports submitted by the community.
         </p>
+    </div>
 
-        <p>
-            <strong>Category:</strong>
-            {{ report.category.name }}
-        </p>
-
-        <p>
-            <strong>Location:</strong>
-            {{ report.location }}
-        </p>
-
-        <p>
-            <strong>Status:</strong>
-            {{ report.get_status_display }}
-        </p>
-
-        <p>
-            <strong>Priority:</strong>
-            {{ report.get_priority_display }}
-        </p>
-
-        <p>
-            <strong>Risk Score:</strong>
-            {{ report.risk_score }}
-        </p>
-
-        <p>
-            <strong>Submitted:</strong>
-            {{ report.created_at }}
-        </p>
-        <p>
-            <a href="{% url 'update_report_status' report.id %}">Update Status</a>
-        </p>
-        <p>
-            <a href="{% url 'add_report_comment' report.id %}">Add Comment</a>
-        </p>
-        <h3>Comments</h3>
-
-        {% for comment in report.comments.all %}
-        <div>
-            <p>
-                <strong>{{ comment.user.username }}</strong>
-                -
-                {{ comment.created_at|date:"d M Y H:i" }}
-            </p>
-
-            <p>{{ comment.comment }}</p>
-        </div>
-        {% empty %}
-        <p>No comments yet.</p>
-        {% endfor %}
-        <h3>Status History</h3>
-
-        {% for history in report.status_history.all %}
-        <div>
-            <p>
-                <strong>
-                    {{ history.created_at|date:"d M Y H:i" }}
-                </strong>
-            </p>
-
-            <p>
-                {{ history.get_previous_status_display }}
-                →
-                {{ history.get_new_status_display }}
-            </p>
-
-            <p>
-                Changed by: {{ history.changed_by.username }}
-            </p>
-        </div>
-        {% empty %}
-        <p>No status changes recorded yet.</p>
-        {% endfor %}
-    </article>
-
-    <hr>
-
-    {% endfor %}
-
-    {% else %}
-
-    <p>No reports have been submitted.</p>
-
-    {% endif %}
-
-    <a href="{% url 'my_reports' %}">
-        Back
+    <a
+        href="{% url 'heatmap' %}"
+        class="btn btn-outline-primary mt-3 mt-md-0"
+    >
+        View Heatmap
     </a>
 
-</body>
+</div>
 
-</html>
+
+{% if reports %}
+
+    <div class="card shadow-sm">
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th scope="col">Report</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Date</th>
+                            <th scope="col" class="text-end">Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for report in reports %}
+
+                            <tr>
+
+                                <!-- Report -->
+
+                                <td>
+
+                                    <strong>
+                                        {{ report.title }}
+                                    </strong>
+
+                                    <br>
+
+                                    <small class="text-muted">
+                                        {{ report.location }}
+                                    </small>
+
+                                </td>
+
+
+                                <!-- Category -->
+
+                                <td>
+                                    {{ report.category.name }}
+                                </td>
+
+
+                                <!-- Priority -->
+
+                                <td>
+
+                                    {% if report.priority == "low" %}
+
+                                        <span class="badge text-bg-success">
+                                            Low
+                                        </span>
+
+                                    {% elif report.priority == "medium" %}
+
+                                        <span class="badge text-bg-warning">
+                                            Medium
+                                        </span>
+
+                                    {% elif report.priority == "high" %}
+
+                                        <span class="badge text-bg-danger">
+                                            High
+                                        </span>
+
+                                    {% elif report.priority == "critical" %}
+
+                                        <span class="badge text-bg-dark">
+                                            Critical
+                                        </span>
+
+                                    {% endif %}
+
+                                    <br>
+
+                                    <small class="text-muted">
+                                        Risk: {{ report.risk_score }}/100
+                                    </small>
+
+                                </td>
+
+
+                                <!-- Status -->
+
+                                <td>
+
+                                    {% if report.status == "reported" %}
+
+                                        <span class="badge text-bg-primary">
+                                            {{ report.get_status_display }}
+                                        </span>
+
+                                    {% elif report.status == "under_review" %}
+
+                                        <span class="badge text-bg-info">
+                                            {{ report.get_status_display }}
+                                        </span>
+
+                                    {% elif report.status == "in_progress" %}
+
+                                        <span class="badge text-bg-warning">
+                                            {{ report.get_status_display }}
+                                        </span>
+
+                                    {% elif report.status == "resolved" %}
+
+                                        <span class="badge text-bg-success">
+                                            {{ report.get_status_display }}
+                                        </span>
+
+                                    {% elif report.status == "confirmed" %}
+
+                                        <span class="badge text-bg-success">
+                                            {{ report.get_status_display }}
+                                        </span>
+
+                                    {% elif report.status == "rejected" %}
+
+                                        <span class="badge text-bg-secondary">
+                                            {{ report.get_status_display }}
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- Date -->
+
+                                <td>
+
+                                    <small>
+                                        {{ report.created_at|date:"d M Y" }}
+                                    </small>
+
+                                </td>
+
+
+                                <!-- Actions -->
+
+                                <td class="text-end">
+
+                                    <div class="d-flex justify-content-end gap-2">
+
+                                        <a
+                                            href="{% url 'update_report_status' report.id %}"
+                                            class="btn btn-outline-primary btn-sm"
+                                        >
+                                            Update Status
+                                        </a>
+
+                                        <a
+                                            href="{% url 'add_report_comment' report.id %}"
+                                            class="btn btn-outline-secondary btn-sm"
+                                        >
+                                            Comment
+                                        </a>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% else %}
+
+    <div class="card shadow-sm">
+
+        <div class="card-body text-center py-5">
+
+            <h2 class="h4">
+                No reports available
+            </h2>
+
+            <p class="text-muted mb-0">
+                There are currently no community safety reports to review.
+            </p>
+
+        </div>
+
+    </div>
+
+{% endif %}
+
+{% endblock %}
