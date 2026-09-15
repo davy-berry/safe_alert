@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Admin Reports | SafeAlert
+Admin Reports | SafeAlert
 {% endblock %}
 
 {% block content %}
@@ -16,10 +16,7 @@
         </p>
     </div>
 
-    <a
-        href="{% url 'heatmap' %}"
-        class="btn btn-outline-primary mt-3 mt-md-0"
-    >
+    <a href="{% url 'heatmap' %}" class="btn btn-outline-primary mt-3 mt-md-0">
         View Heatmap
     </a>
 
@@ -28,207 +25,206 @@
 
 {% if reports %}
 
-    <div class="card shadow-sm">
+<div class="card shadow-sm">
 
-        <div class="card-body p-0">
+    <div class="card-body p-0">
 
-            <div class="table-responsive">
+        <div class="table-responsive">
 
-                <table class="table table-hover align-middle mb-0">
+            <table class="table table-hover align-middle mb-0">
 
-                    <thead class="table-light">
+                <thead class="table-light">
 
-                        <tr>
-                            <th scope="col">Report</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Priority</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Date</th>
-                            <th scope="col" class="text-end">Actions</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">Report</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Date</th>
+                        <th scope="col" class="text-end">Actions</th>
+                    </tr>
 
-                    </thead>
+                </thead>
 
-                    <tbody>
+                <tbody>
 
-                        {% for report in reports %}
+                    {% for report in reports %}
 
-                            <tr>
+                    <tr>
 
-                                <!-- Report -->
+                        <!-- Report -->
 
-                                <td>
+                        <td>
 
-                                    <strong>
-                                        {{ report.title }}
-                                    </strong>
+                            <strong>
+                                {{ report.title }}
+                            </strong>
 
-                                    <br>
+                            <br>
 
-                                    <small class="text-muted">
-                                        {{ report.location }}
-                                    </small>
+                            <small class="text-muted">
+                                {{ report.location }}
+                            </small>
 
-                                </td>
+                        </td>
 
 
-                                <!-- Category -->
+                        <!-- Category -->
 
-                                <td>
-                                    {{ report.category.name }}
-                                </td>
+                        <td>
+                            {{ report.category.name }}
+                        </td>
 
 
-                                <!-- Priority -->
+                        <!-- Priority -->
 
-                                <td>
+                        <td>
 
-                                    {% if report.priority == "low" %}
+                            {% if report.priority == "low" %}
 
-                                        <span class="badge text-bg-success">
-                                            Low
-                                        </span>
+                            <span class="badge text-bg-success">
+                                Low
+                            </span>
 
-                                    {% elif report.priority == "medium" %}
+                            {% elif report.priority == "medium" %}
 
-                                        <span class="badge text-bg-warning">
-                                            Medium
-                                        </span>
+                            <span class="badge text-bg-warning">
+                                Medium
+                            </span>
 
-                                    {% elif report.priority == "high" %}
+                            {% elif report.priority == "high" %}
 
-                                        <span class="badge text-bg-danger">
-                                            High
-                                        </span>
+                            <span class="badge text-bg-danger">
+                                High
+                            </span>
 
-                                    {% elif report.priority == "critical" %}
+                            {% elif report.priority == "critical" %}
 
-                                        <span class="badge text-bg-dark">
-                                            Critical
-                                        </span>
+                            <span class="badge text-bg-dark">
+                                Critical
+                            </span>
 
-                                    {% endif %}
+                            {% endif %}
 
-                                    <br>
+                            <br>
 
-                                    <small class="text-muted">
-                                        Risk: {{ report.risk_score }}/100
-                                    </small>
+                            <small class="text-muted">
+                                Risk: {{ report.risk_score }}/100
+                            </small>
 
-                                </td>
+                        </td>
 
 
-                                <!-- Status -->
+                        <!-- Status -->
 
-                                <td>
+                        <td>
 
-                                    {% if report.status == "reported" %}
+                            {% if report.status == "reported" %}
 
-                                        <span class="badge text-bg-primary">
-                                            {{ report.get_status_display }}
-                                        </span>
+                            <span class="badge text-bg-primary">
+                                {{ report.get_status_display }}
+                            </span>
 
-                                    {% elif report.status == "under_review" %}
+                            {% elif report.status == "under_review" %}
 
-                                        <span class="badge text-bg-info">
-                                            {{ report.get_status_display }}
-                                        </span>
+                            <span class="badge text-bg-info">
+                                {{ report.get_status_display }}
+                            </span>
 
-                                    {% elif report.status == "in_progress" %}
+                            {% elif report.status == "in_progress" %}
 
-                                        <span class="badge text-bg-warning">
-                                            {{ report.get_status_display }}
-                                        </span>
+                            <span class="badge text-bg-warning">
+                                {{ report.get_status_display }}
+                            </span>
 
-                                    {% elif report.status == "resolved" %}
+                            {% elif report.status == "resolved" %}
 
-                                        <span class="badge text-bg-success">
-                                            {{ report.get_status_display }}
-                                        </span>
+                            <span class="badge text-bg-success">
+                                {{ report.get_status_display }}
+                            </span>
 
-                                    {% elif report.status == "confirmed" %}
+                            {% elif report.status == "confirmed" %}
 
-                                        <span class="badge text-bg-success">
-                                            {{ report.get_status_display }}
-                                        </span>
+                            <span class="badge text-bg-success">
+                                {{ report.get_status_display }}
+                            </span>
 
-                                    {% elif report.status == "rejected" %}
+                            {% elif report.status == "rejected" %}
 
-                                        <span class="badge text-bg-secondary">
-                                            {{ report.get_status_display }}
-                                        </span>
+                            <span class="badge text-bg-secondary">
+                                {{ report.get_status_display }}
+                            </span>
 
-                                    {% endif %}
+                            {% endif %}
 
-                                </td>
+                        </td>
 
 
-                                <!-- Date -->
+                        <!-- Date -->
 
-                                <td>
+                        <td>
 
-                                    <small>
-                                        {{ report.created_at|date:"d M Y" }}
-                                    </small>
+                            <small>
+                                {{ report.created_at|date:"d M Y" }}
+                            </small>
 
-                                </td>
+                        </td>
 
 
-                                <!-- Actions -->
+                        <!-- Actions -->
 
-                                <td class="text-end">
+                        <td class="text-end">
 
-                                    <div class="d-flex justify-content-end gap-2">
+                            <div class="d-flex justify-content-end gap-2">
+                                <a href="{% url 'report_detail' report.id %}" class="btn btn-outline-dark btn-sm">
+                                    View Details
+                                </a>
 
-                                        <a
-                                            href="{% url 'update_report_status' report.id %}"
-                                            class="btn btn-outline-primary btn-sm"
-                                        >
-                                            Update Status
-                                        </a>
+                                <a href="{% url 'update_report_status' report.id %}"
+                                    class="btn btn-outline-primary btn-sm">
+                                    Update Status
+                                </a>
 
-                                        <a
-                                            href="{% url 'add_report_comment' report.id %}"
-                                            class="btn btn-outline-secondary btn-sm"
-                                        >
-                                            Comment
-                                        </a>
+                                <a href="{% url 'add_report_comment' report.id %}"
+                                    class="btn btn-outline-secondary btn-sm">
+                                    Comment
+                                </a>
 
-                                    </div>
+                            </div>
 
-                                </td>
+                        </td>
 
-                            </tr>
+                    </tr>
 
-                        {% endfor %}
+                    {% endfor %}
 
-                    </tbody>
+                </tbody>
 
-                </table>
-
-            </div>
+            </table>
 
         </div>
 
     </div>
+
+</div>
 
 {% else %}
 
-    <div class="card shadow-sm">
+<div class="card shadow-sm">
 
-        <div class="card-body text-center py-5">
+    <div class="card-body text-center py-5">
 
-            <h2 class="h4">
-                No reports available
-            </h2>
+        <h2 class="h4">
+            No reports available
+        </h2>
 
-            <p class="text-muted mb-0">
-                There are currently no community safety reports to review.
-            </p>
-
-        </div>
+        <p class="text-muted mb-0">
+            There are currently no community safety reports to review.
+        </p>
 
     </div>
+
+</div>
 
 {% endif %}
 
