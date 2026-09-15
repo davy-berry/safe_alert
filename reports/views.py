@@ -1,10 +1,13 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+
+from status_history.models import ReportStatusHistory
+from accounts.models import UserProfile
+
 from .forms import ReportForm, StatusUpdateForm, ReportCommentForm
 from .models import Report, ReportComment
 from .risk import calculate_risk_score, calculate_priority
-from accounts.models import UserProfile
 
 
 # Create your views here.
@@ -130,7 +133,10 @@ def update_report_status(request, report_id):
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
         return redirect("my_reports")
 
-    report = get_object_or_404(Report, id=report_id)
+    report = get_object_or_404(
+        Report,
+        id=report_id
+    )
 
     if request.method == "POST":
         form = StatusUpdateForm(
@@ -139,11 +145,25 @@ def update_report_status(request, report_id):
         )
 
         if form.is_valid():
-            form.save()
+
+            previous_status = report.status
+
+            report = form.save()
+
+            if previous_status != report.status:
+                ReportStatusHistory.objects.create(
+                    report=report,
+                    previous_status=previous_status,
+                    new_status=report.status,
+                    changed_by=request.user
+                )
+
             return redirect("admin_reports")
 
     else:
-        form = StatusUpdateForm(instance=report)
+        form = StatusUpdateForm(
+            instance=report
+        )
 
     return render(
         request,
