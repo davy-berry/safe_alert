@@ -1,75 +1,274 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-    <title>SafeAlert Heatmap</title>
+{% block title %}
+    Safety Heatmap | SafeAlert
+{% endblock %}
 
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    >
+{% block extra_css %}
 
-    <style>
-        #map {
-            height: 600px;
-            width: 100%;
-        }
-    </style>
-</head>
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
 
-<body>
+<style>
+    #map {
+        height: 600px;
+        width: 100%;
+        border-radius: 0.5rem;
+    }
 
-    <h1>SafeAlert Heatmap</h1>
+    .map-container {
+        position: relative;
+    }
 
-    <div id="map"></div>
+    .heatmap-legend {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        background: white;
+        padding: 15px;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        font-size: 0.875rem;
+    }
 
-    <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-    </script>
-
-    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js">
-    </script>
-
-    <script>
-        const map = L.map("map").setView(
-            [52.4862, -1.8904],
-            12
+    .heatmap-gradient {
+        width: 180px;
+        height: 15px;
+        margin: 8px 0;
+        border-radius: 3px;
+        background: linear-gradient(
+            to right,
+            blue,
+            cyan,
+            lime,
+            yellow,
+            red
         );
+    }
 
-        L.tileLayer(
-            "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={{ stadia_api_key }}",
-            {
-                maxZoom: 20,
-                attribution:
-                    '&copy; <a href="https://stadiamaps.com/attribution/" target="_blank">Stadia Maps</a> ' +
-                    '&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-                    '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
-            }
-        ).addTo(map);
+    @media (max-width: 576px) {
+        #map {
+            height: 500px;
+        }
 
+        .heatmap-legend {
+            bottom: 10px;
+            right: 10px;
+            padding: 10px;
+        }
 
-        const heatData = [
-            {% for report in reports %}
-                [
-                    {{ report.latitude }},
-                    {{ report.longitude }},
-                    {{ report.risk_score|default:1 }}
-                ],
-            {% endfor %}
-        ];
+        .heatmap-gradient {
+            width: 140px;
+        }
+    }
+</style>
+
+{% endblock %}
 
 
-        L.heatLayer(
-            heatData,
-            {
-                radius: 25,
-                blur: 15,
-                maxZoom: 17
-            }
-        ).addTo(map);
-    </script>
+{% block content %}
 
-</body>
-</html>
+<div class="mb-4">
+
+    <a
+        href="{% url 'admin_reports' %}"
+        class="text-decoration-none"
+    >
+        &larr; Back to Community Reports
+    </a>
+
+</div>
+
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+
+    <div>
+
+        <h1 class="mb-1">
+            Community Safety Heatmap
+        </h1>
+
+        <p class="text-muted mb-0">
+            View the geographic distribution of reported safety issues.
+            Higher-risk reports contribute greater intensity to the heatmap.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="card shadow-sm">
+
+    <div class="card-body p-2 p-md-3">
+
+        <div class="map-container">
+
+            <div id="map"></div>
+
+
+            <!-- Heatmap legend -->
+
+            <div class="heatmap-legend">
+
+                <strong>
+                    Risk intensity
+                </strong>
+
+                <div class="heatmap-gradient"></div>
+
+                <div class="d-flex justify-content-between">
+
+                    <span>
+                        Lower
+                    </span>
+
+                    <span>
+                        Higher
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="row g-3 mt-3">
+
+    <div class="col-12 col-md-4">
+
+        <div class="card h-100">
+
+            <div class="card-body">
+
+                <h2 class="h6">
+                    Report locations
+                </h2>
+
+                <p class="text-muted small mb-0">
+                    Reports are displayed using the geographic
+                    coordinates selected when the report was submitted.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-12 col-md-4">
+
+        <div class="card h-100">
+
+            <div class="card-body">
+
+                <h2 class="h6">
+                    Risk score
+                </h2>
+
+                <p class="text-muted small mb-0">
+                    Each report contributes to heat intensity
+                    according to its calculated risk score.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-12 col-md-4">
+
+        <div class="card h-100">
+
+            <div class="card-body">
+
+                <h2 class="h6">
+                    Community intelligence
+                </h2>
+
+                <p class="text-muted small mb-0">
+                    The heatmap helps administrators identify
+                    areas where safety reports are concentrated.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<script
+    src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js">
+</script>
+
+
+<script>
+
+const map = L.map("map").setView(
+    [52.4862, -1.8904],
+    12
+);
+
+
+L.tileLayer(
+    "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={{ stadia_api_key }}",
+    {
+        maxZoom: 20,
+
+        attribution:
+            '&copy; <a href="https://stadiamaps.com/attribution/" target="_blank">Stadia Maps</a> ' +
+            '&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+            '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
+    }
+).addTo(map);
+
+
+const heatData = [
+
+    {% for report in reports %}
+
+        [
+            {{ report.latitude }},
+            {{ report.longitude }},
+            {{ report.risk_score|default:1 }}
+        ],
+
+    {% endfor %}
+
+];
+
+
+L.heatLayer(
+    heatData,
+    {
+        radius: 25,
+        blur: 15,
+        maxZoom: 17
+    }
+).addTo(map);
+
+</script>
+
+{% endblock %}
