@@ -69,3 +69,13 @@ class Report(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ReportComment(models.Model):
+    report = models.ForeignKey(Report, on_delete=models.CASCADE, related_name="comments")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="report_comments")
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment on {self.report.title} by {self.user.username}"

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Report
+from .models import Report, ReportComment
 
 class ReportForm(forms.ModelForm):
     class Meta:
@@ -34,3 +34,22 @@ class StatusUpdateForm(forms.ModelForm):
     class Meta:
         model = Report
         fields = ["status"] 
+
+class ReportCommentForm(forms.ModelForm):
+    class Meta:
+        model = ReportComment
+        fields = ["comment"]
+
+        widgets = {
+            "comment": forms.Textarea(
+                attrs={"rows": 4, "placeholder": "Add an update or comment..."}
+            )
+        }
+
+    def clean_comment(self):
+        comment = self.cleaned_data["comment"].strip()
+
+        if len(comment) < 5:
+            raise forms.ValidationError("Please provide at least 5 characters.")
+
+        return comment
