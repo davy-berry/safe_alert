@@ -153,3 +153,23 @@ def update_report_status(request, report_id):
             "report": report,
         }
     )
+
+@login_required
+def heatmap(request):
+    if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
+        return redirect("my_reports")
+
+    reports = Report.objects.exclude(
+        latitude__isnull=True
+    ).exclude(
+        longitude__isnull=True
+    )
+
+    return render(
+        request,
+        "reports/heatmap.html",
+        {
+            "reports": reports,
+            "stadia_api_key": settings.STADIA_API_KEY,
+        }
+    )
