@@ -9,3 +9,9 @@ main {
 .navbar-brand {
     letter-spacing: 0.5px;
 }
+
+#map {
+        height: 450px;
+        width: 100%;
+        border-radius: 0.5rem;
+    }

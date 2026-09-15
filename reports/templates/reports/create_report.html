@@ -1,95 +1,286 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
+    Report an Issue | SafeAlert
+{% endblock %}
 
-    <title>Submit Safety Report</title>
+{% block extra_css %}
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
-    <style>
-        #map {
-            height: 400px;
-            width: 70%;
-        }
-    </style>
-</head>
+<style>
+    #map {
+        height: 450px;
+        width: 100%;
+        border-radius: 0.5rem;
+    }
+</style>
 
-<body>
+{% endblock %}
 
-    <h1>Submit a Safety Report</h1>
 
-    <form method="post" enctype="multipart/form-data">
+{% block content %}
 
-        {% csrf_token %}
+<div class="row justify-content-center">
 
-        {{ form.as_p }}
+    <div class="col-12 col-lg-9">
 
-        <h2>Select Incident Location</h2>
+        <div class="mb-4">
+            <h1>Report a Safety Issue</h1>
 
-        <p>
-            Click on the map to select the location of the safety issue.
-        </p>
+            <p class="text-muted">
+                Help your community by reporting a safety concern.
+                Provide as much information as possible.
+            </p>
+        </div>
 
-        <div id="map"></div>
 
-        <br>
+        <div class="card shadow-sm">
 
-        <button type="submit">
-            Submit Report
-        </button>
+            <div class="card-body p-4">
 
-    </form>
+                <form
+                    method="post"
+                    enctype="multipart/form-data"
+                >
 
-    <!-- Leaflet JavaScript -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+                    {% csrf_token %}
 
-    <script>
-        // Create the map and centre it on Birmingham
-        const map = L.map("map").setView([52.4862, -1.8904], 12);
 
-        // Add OpenStreetMap tiles
-        
-        L.tileLayer(
-        "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={{ stadia_api_key }}",
-        {
+                    <!-- Form errors -->
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+
+                    <!-- Category -->
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.category.id_for_label }}"
+                            class="form-label"
+                        >
+                            Category
+                        </label>
+
+                        {{ form.category }}
+
+                        {% if form.category.errors %}
+                            <div class="text-danger small">
+                                {{ form.category.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Title -->
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.title.id_for_label }}"
+                            class="form-label"
+                        >
+                            Title
+                        </label>
+
+                        {{ form.title }}
+
+                        {% if form.title.errors %}
+                            <div class="text-danger small">
+                                {{ form.title.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Description -->
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.description.id_for_label }}"
+                            class="form-label"
+                        >
+                            Description
+                        </label>
+
+                        {{ form.description }}
+
+                        {% if form.description.errors %}
+                            <div class="text-danger small">
+                                {{ form.description.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Location -->
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.location.id_for_label }}"
+                            class="form-label"
+                        >
+                            Location
+                        </label>
+
+                        {{ form.location }}
+
+                        <div class="form-text">
+                            Enter a description of the location,
+                            such as a street or landmark.
+                        </div>
+
+                        {% if form.location.errors %}
+                            <div class="text-danger small">
+                                {{ form.location.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Map -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Select the exact location on the map
+                        </label>
+
+                        <p class="text-muted small">
+                            Click on the map to place a marker.
+                        </p>
+
+                        <div id="map"></div>
+
+                    </div>
+
+
+                    <!-- Hidden coordinates -->
+
+                    {{ form.latitude }}
+                    {{ form.longitude }}
+
+
+                    <!-- Image -->
+
+                    <div class="mb-4">
+
+                        <label
+                            for="{{ form.image.id_for_label }}"
+                            class="form-label"
+                        >
+                            Image
+                        </label>
+
+                        {{ form.image }}
+
+                        {% if form.image.errors %}
+                            <div class="text-danger small">
+                                {{ form.image.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <div class="d-flex gap-2">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Submit Report
+                        </button>
+
+                        <a
+                            href="{% url 'my_reports' %}"
+                            class="btn btn-outline-secondary"
+                        >
+                            Cancel
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<script>
+
+const map = L.map("map").setView(
+    [52.4862, -1.8904],
+    12
+);
+
+
+L.tileLayer(
+    "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={{ stadia_api_key }}",
+    {
         maxZoom: 20,
+
         attribution:
-        '&copy; <a href="https://stadiamaps.com/attribution/" target="_blank">Stadia Maps</a> ' +
-        '&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-        '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
-        }
-        ).addTo(map);
+            '&copy; <a href="https://stadiamaps.com/attribution/" target="_blank">Stadia Maps</a> ' +
+            '&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+            '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
+    }
+).addTo(map);
 
-        // Store the selected marker
-        let marker;
 
-        // When the user clicks the map
-        map.on("click", function (event) {
+let marker;
 
-            const latitude = event.latlng.lat.toFixed(6);
-            const longitude = event.latlng.lng.toFixed(6);
 
-            // Remove the previous marker
-            if (marker) {
-                map.removeLayer(marker);
-            }
+map.on("click", function (event) {
 
-            // Add a new marker
-            marker = L.marker([latitude, longitude])
-                .addTo(map);
+    const latitude = event.latlng.lat.toFixed(6);
+    const longitude = event.latlng.lng.toFixed(6);
 
-            // Put the coordinates into the hidden form fields
-            document.getElementById("id_latitude").value = latitude;
-            document.getElementById("id_longitude").value = longitude;
 
-        });
-        
-    </script>
+    if (marker) {
+        map.removeLayer(marker);
+    }
 
-</body>
 
-</html>
+    marker = L.marker([
+        latitude,
+        longitude
+    ]).addTo(map);
+
+
+    document.getElementById("id_latitude").value = latitude;
+
+    document.getElementById("id_longitude").value = longitude;
+
+});
+
+</script>
+
+{% endblock %}
