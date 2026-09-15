@@ -2,8 +2,8 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
-from status_history.models import ReportStatusHistory
 from accounts.models import UserProfile
+from status_history.models import ReportStatusHistory
 
 from .forms import ReportForm, StatusUpdateForm, ReportCommentForm
 from .models import Report, ReportComment
@@ -146,17 +146,27 @@ def update_report_status(request, report_id):
 
         if form.is_valid():
 
-            previous_status = report.status
+            previous_status = Report.objects.get(
+                id=report.id
+            ).status
 
-            report = form.save()
+            new_status = form.cleaned_data["status"]
 
-            if previous_status != report.status:
+            #print("Previous:", previous_status)
+            #print("New:", new_status)
+
+            if previous_status != new_status:
+
                 ReportStatusHistory.objects.create(
                     report=report,
                     previous_status=previous_status,
-                    new_status=report.status,
+                    new_status=new_status,
                     changed_by=request.user
                 )
+
+                #print("HISTORY CREATED")
+
+            form.save()
 
             return redirect("admin_reports")
 
@@ -173,6 +183,7 @@ def update_report_status(request, report_id):
             "report": report,
         }
     )
+
 
 @login_required
 def add_report_comment(request, report_id):
