@@ -72,8 +72,23 @@
             <a href="{% url 'update_report_status' report.id %}">Update Status</a>
         </p>
         <p>
-        <a href="{% url 'add_report_comment' report.id %}">Add Comment</a>
+            <a href="{% url 'add_report_comment' report.id %}">Add Comment</a>
         </p>
+        <h3>Comments</h3>
+
+        {% for comment in report.comments.all %}
+        <div>
+            <p>
+                <strong>{{ comment.user.username }}</strong>
+                -
+                {{ comment.created_at|date:"d M Y H:i" }}
+            </p>
+
+            <p>{{ comment.comment }}</p>
+        </div>
+        {% empty %}
+        <p>No comments yet.</p>
+        {% endfor %}
     </article>
 
     <hr>
