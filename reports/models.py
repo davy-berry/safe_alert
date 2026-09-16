@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Category(models.Model):
@@ -51,7 +52,7 @@ class Report(models.Model):
     location = models.CharField(max_length=200)
     latitude = models.DecimalField(max_digits=10, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(max_digits=10, decimal_places=6, blank=True, null=True)
-    image = models.ImageField(upload_to='reports/', blank=True, null=True)
+    image = CloudinaryField("image", blank=True, null=True)
     risk_score = models.PositiveIntegerField(default=0)
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default='low')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=REPORTED)
