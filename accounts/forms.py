@@ -1,8 +1,4 @@
-from django import forms
-from django.contrib.auth.models import User
-
 from allauth.account.forms import SignupForm
-
 from .models import UserProfile
 
 class SafeAlertSignupForm(SignupForm):

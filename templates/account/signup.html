@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Register | SafeAlert
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-12 col-md-8 col-lg-5">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body p-4">
+
+                <div class="text-center mb-4">
+
+                    <h1 class="h3">
+                        Create your account
+                    </h1>
+
+                    <p class="text-muted mb-0">
+                        Join SafeAlert and help report community safety issues.
+                    </p>
+
+                </div>
+
+
+                <form
+                    method="post"
+                    action="{% url 'account_signup' %}"
+                    class="account-form"
+                >
+
+                    {% csrf_token %}
+
+                    {{ form.non_field_errors }}
+
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.username.id_for_label }}"
+                            class="form-label"
+                        >
+                            Username
+                        </label>
+
+                        {{ form.username }}
+
+                        {{ form.username.errors }}
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.email.id_for_label }}"
+                            class="form-label"
+                        >
+                            Email address
+                        </label>
+
+                        {{ form.email }}
+
+                        {{ form.email.errors }}
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.password1.id_for_label }}"
+                            class="form-label"
+                        >
+                            Password
+                        </label>
+
+                        {{ form.password1 }}
+
+                        {{ form.password1.errors }}
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label
+                            for="{{ form.password2.id_for_label }}"
+                            class="form-label"
+                        >
+                            Confirm password
+                        </label>
+
+                        {{ form.password2 }}
+
+                        {{ form.password2.errors }}
+
+                    </div>
+
+
+                    <div class="d-grid">
+
+                        <button
+                            type="submit"
+                            class="btn btn-dark"
+                        >
+                            Create Account
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <div class="text-center mt-4">
+
+                    <p class="mb-1">
+                        Already have an account?
+                    </p>
+
+                    <a href="{% url 'account_login' %}">
+                        Sign in
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
