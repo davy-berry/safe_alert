@@ -2,10 +2,31 @@ const mapElement = document.getElementById("map");
 
 const stadiaApiKey = mapElement.dataset.stadiaApiKey;
 
+const existingLatitude = parseFloat(
+    mapElement.dataset.existingLatitude
+);
+
+const existingLongitude = parseFloat(
+    mapElement.dataset.existingLongitude
+);
+
+
+const defaultLatitude = 52.4862;
+const defaultLongitude = -1.8904;
+
+
+const latitude = Number.isNaN(existingLatitude)
+    ? defaultLatitude
+    : existingLatitude;
+
+const longitude = Number.isNaN(existingLongitude)
+    ? defaultLongitude
+    : existingLongitude;
+
 
 const map = L.map("map").setView(
-    [52.4862, -1.8904],
-    12
+    [latitude, longitude],
+    14
 );
 
 
@@ -22,7 +43,20 @@ L.tileLayer(
 ).addTo(map);
 
 
-let marker;
+let marker = null;
+
+
+if (
+    !Number.isNaN(existingLatitude) &&
+    !Number.isNaN(existingLongitude)
+) {
+
+    marker = L.marker([
+        existingLatitude,
+        existingLongitude
+    ]).addTo(map);
+
+}
 
 
 map.on("click", function (event) {
@@ -42,8 +76,10 @@ map.on("click", function (event) {
     ]).addTo(map);
 
 
-    document.getElementById("id_latitude").value = latitude;
+    document.getElementById("id_latitude").value =
+        latitude;
 
-    document.getElementById("id_longitude").value = longitude;
+    document.getElementById("id_longitude").value =
+        longitude;
 
 });

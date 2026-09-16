@@ -1,15 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-    Edit Report | SafeAlert
+Edit Report | SafeAlert
 {% endblock %}
 
 {% block extra_css %}
 
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style>
     #map {
@@ -41,18 +39,15 @@
 
             <div class="card-body p-4">
 
-                <form
-                    method="post"
-                    enctype="multipart/form-data"
-                >
+                <form method="post" enctype="multipart/form-data">
 
                     {% csrf_token %}
 
 
                     {% if form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            {{ form.non_field_errors }}
-                        </div>
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
                     {% endif %}
 
 
@@ -60,19 +55,16 @@
 
                     <div class="mb-3">
 
-                        <label
-                            for="{{ form.category.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.category.id_for_label }}" class="form-label">
                             Category
                         </label>
 
                         {{ form.category }}
 
                         {% if form.category.errors %}
-                            <div class="text-danger small">
-                                {{ form.category.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.category.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -82,19 +74,16 @@
 
                     <div class="mb-3">
 
-                        <label
-                            for="{{ form.title.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.title.id_for_label }}" class="form-label">
                             Title
                         </label>
 
                         {{ form.title }}
 
                         {% if form.title.errors %}
-                            <div class="text-danger small">
-                                {{ form.title.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.title.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -104,19 +93,16 @@
 
                     <div class="mb-3">
 
-                        <label
-                            for="{{ form.description.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.description.id_for_label }}" class="form-label">
                             Description
                         </label>
 
                         {{ form.description }}
 
                         {% if form.description.errors %}
-                            <div class="text-danger small">
-                                {{ form.description.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.description.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -126,10 +112,7 @@
 
                     <div class="mb-3">
 
-                        <label
-                            for="{{ form.location.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.location.id_for_label }}" class="form-label">
                             Location
                         </label>
 
@@ -140,9 +123,9 @@
                         </div>
 
                         {% if form.location.errors %}
-                            <div class="text-danger small">
-                                {{ form.location.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.location.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -160,7 +143,10 @@
                             Click on the map to move the marker.
                         </p>
 
-                        <div id="map"></div>
+                        <div id="map" data-stadia-api-key="{{ stadia_api_key }}"
+                            data-existing-latitude="{{ report.latitude|default:'' }}"
+                            data-existing-longitude="{{ report.longitude|default:'' }}">
+                        </div>
 
                     </div>
 
@@ -175,36 +161,29 @@
 
                     <div class="mb-4">
 
-                        <label
-                            for="{{ form.image.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.image.id_for_label }}" class="form-label">
                             Image
                         </label>
 
                         {% if report.image %}
-                            <div class="mb-3">
+                        <div class="mb-3">
 
-                                <p class="small text-muted">
-                                    Current image:
-                                </p>
+                            <p class="small text-muted">
+                                Current image:
+                            </p>
 
-                                <img
-                                    src="{{ report.image.url }}"
-                                    alt="Current image for {{ report.title }}"
-                                    class="img-fluid rounded"
-                                    style="max-height: 250px;"
-                                >
+                            <img src="{{ report.image.url }}" alt="Current image for {{ report.title }}"
+                                class="img-fluid rounded" style="max-height: 250px;">
 
-                            </div>
+                        </div>
                         {% endif %}
 
                         {{ form.image }}
 
                         {% if form.image.errors %}
-                            <div class="text-danger small">
-                                {{ form.image.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.image.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -214,17 +193,11 @@
 
                     <div class="d-flex gap-2">
 
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                        >
+                        <button type="submit" class="btn btn-primary">
                             Save Changes
                         </button>
 
-                        <a
-                            href="{% url 'my_reports' %}"
-                            class="btn btn-outline-secondary"
-                        >
+                        <a href="{% url 'my_reports' %}" class="btn btn-outline-secondary">
                             Cancel
                         </a>
 
@@ -242,96 +215,14 @@
 
 {% endblock %}
 
-
 {% block extra_js %}
 
 <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
 
-
-<script>
-
-const existingLatitude = parseFloat(
-    "{{ report.latitude|default:'' }}"
-);
-
-const existingLongitude = parseFloat(
-    "{{ report.longitude|default:'' }}"
-);
-
-
-const defaultLatitude = 52.4862;
-const defaultLongitude = -1.8904;
-
-
-const latitude = Number.isNaN(existingLatitude)
-    ? defaultLatitude
-    : existingLatitude;
-
-const longitude = Number.isNaN(existingLongitude)
-    ? defaultLongitude
-    : existingLongitude;
-
-
-const map = L.map("map").setView(
-    [latitude, longitude],
-    14
-);
-
-
-L.tileLayer(
-    "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={{ stadia_api_key }}",
-    {
-        maxZoom: 20,
-
-        attribution:
-            '&copy; <a href="https://stadiamaps.com/attribution/" target="_blank">Stadia Maps</a> ' +
-            '&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-            '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
-    }
-).addTo(map);
-
-
-let marker = null;
-
-
-if (!Number.isNaN(existingLatitude) &&
-    !Number.isNaN(existingLongitude)) {
-
-    marker = L.marker([
-        existingLatitude,
-        existingLongitude
-    ]).addTo(map);
-
-}
-
-
-map.on("click", function (event) {
-
-    const latitude = event.latlng.lat.toFixed(6);
-    const longitude = event.latlng.lng.toFixed(6);
-
-
-    if (marker) {
-        map.removeLayer(marker);
-    }
-
-
-    marker = L.marker([
-        latitude,
-        longitude
-    ]).addTo(map);
-
-
-    document.getElementById("id_latitude").value =
-        latitude;
-
-    document.getElementById("id_longitude").value =
-        longitude;
-
-});
-
+<script
+    src="{% static 'js/report_map.js' %}">
 </script>
 
 {% endblock %}
