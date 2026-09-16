@@ -11,61 +11,6 @@
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 />
 
-<style>
-    #map {
-        height: 600px;
-        width: 100%;
-        border-radius: 0.5rem;
-    }
-
-    .map-container {
-        position: relative;
-    }
-
-    .heatmap-legend {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        background: white;
-        padding: 15px;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        font-size: 0.875rem;
-    }
-
-    .heatmap-gradient {
-        width: 180px;
-        height: 15px;
-        margin: 8px 0;
-        border-radius: 3px;
-        background: linear-gradient(
-            to right,
-            blue,
-            cyan,
-            lime,
-            yellow,
-            red
-        );
-    }
-
-    @media (max-width: 576px) {
-        #map {
-            height: 500px;
-        }
-
-        .heatmap-legend {
-            bottom: 10px;
-            right: 10px;
-            padding: 10px;
-        }
-
-        .heatmap-gradient {
-            width: 140px;
-        }
-    }
-</style>
-
 {% endblock %}
 
 
