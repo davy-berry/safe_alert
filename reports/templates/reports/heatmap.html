@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Safety Heatmap | SafeAlert
@@ -52,7 +53,15 @@
 
         <div class="map-container">
 
-            <div id="map"></div>
+            <div id="map" data-stadia-api-key="{{ stadia_api_key }}" 
+                data-reports='[{% for report in reports %}
+                    {"latitude": {{ report.latitude }},
+                    "longitude": {{ report.longitude }},
+                    "risk_score": {{ report.risk_score|default:1 }}
+                    }
+                    {% if not forloop.last %},{% endif %}
+                {% endfor %}]'>
+            </div>
 
 
             <!-- Heatmap legend -->
@@ -160,60 +169,11 @@
 
 {% block extra_js %}
 
-<script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<script
-    src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js">
-</script>
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
 
 
-<script>
-
-const map = L.map("map").setView(
-    [52.4862, -1.8904],
-    12
-);
-
-
-L.tileLayer(
-    "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={{ stadia_api_key }}",
-    {
-        maxZoom: 20,
-
-        attribution:
-            '&copy; <a href="https://stadiamaps.com/attribution/" target="_blank">Stadia Maps</a> ' +
-            '&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-            '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
-    }
-).addTo(map);
-
-
-const heatData = [
-
-    {% for report in reports %}
-
-        [
-            {{ report.latitude }},
-            {{ report.longitude }},
-            {{ report.risk_score|default:1 }}
-        ],
-
-    {% endfor %}
-
-];
-
-
-L.heatLayer(
-    heatData,
-    {
-        radius: 25,
-        blur: 15,
-        maxZoom: 17
-    }
-).addTo(map);
-
-</script>
+<script src="{% static 'js/heatmap.js' %}"></script>
 
 {% endblock %}
