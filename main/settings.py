@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "allauth",
+    "allauth.account",
     'accounts',
     'reports',
     'status_history',
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -102,6 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
@@ -137,5 +145,9 @@ MAILERS = {
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/reports/my_reports/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"
+
+ACCOUNT_LOGIN_METHODS = {"username"}
+ACCOUNT_SIGNUP_FIELDS = ["username*", "email*", "password1*", "password2*"]
+ACCOUNT_FORMS = {"signup": "accounts.forms.SafeAlertSignupForm",}
 
 STADIA_API_KEY = os.environ.get("STADIA_API_KEY")
