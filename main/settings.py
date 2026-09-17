@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'reports',
     'status_history',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
