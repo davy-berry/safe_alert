@@ -157,6 +157,20 @@ def report_detail(request, report_id):
     )
 
 @login_required
+def my_report_detail(request, report_id):
+    report = get_object_or_404(
+        Report,
+        id=report_id,
+        user=request.user
+    )
+
+    return render(
+        request,
+        "reports/report_detail.html",
+        {"report": report}
+    )
+
+@login_required
 def update_report_status(request, report_id):
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
         return redirect("my_reports")

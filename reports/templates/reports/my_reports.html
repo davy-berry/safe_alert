@@ -25,17 +25,17 @@ My Reports | SafeAlert
 
 <div class="row g-4">
 
-
     {% for report in reports %}
 
     <div class="col-12 col-md-6 col-lg-4">
 
         <div class="card h-100 shadow-sm">
 
+            <!-- Report Image -->
             {% if report.image %}
-            <img src="{{ report.image.url }}" alt="placeholder">
+            <img src="{{ report.image.url }}" alt="placeholder" class="img-fluid rounded">
             {% else %}
-            <img src="{% static 'images/incident-report.jpg' %}" alt="Incident report">
+            <img src="{% static 'images/incident-report.jpg' %}" alt="Incident report" class="img-fluid rounded">
             {% endif %}
 
             <div class="card-body">
@@ -63,7 +63,13 @@ My Reports | SafeAlert
                     {{ report.get_status_display }}
                 </p>
 
-                <div class="d-flex gap-2">
+
+                <!-- Report Actions -->
+                <div class="d-flex gap-2 flex-wrap">
+
+                    <a href="{% url 'my_report_detail' report.id %}" class="btn btn-primary btn-sm">
+                        View Report
+                    </a>
 
                     <a href="{% url 'edit_report' report.id %}" class="btn btn-outline-primary btn-sm">
                         Edit

@@ -1,25 +1,33 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-    {{ report.title }} | SafeAlert
+{{ report.title }} | SafeAlert
 {% endblock %}
 
 {% block content %}
 
+<!-- Back link -->
 <div class="mb-4">
 
-    <a
-        href="{% url 'admin_reports' %}"
-        class="text-decoration-none"
-    >
+    {% if user.profile.role == "community_admin" %}
+
+    <a href="{% url 'admin_reports' %}" class="text-decoration-none">
         &larr; Back to Community Reports
     </a>
+
+    {% else %}
+
+    <a href="{% url 'my_reports' %}" class="text-decoration-none">
+        &larr; Back to My Reports
+    </a>
+
+    {% endif %}
 
 </div>
 
 
 <!-- Report heading -->
-
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
 
     <div>
@@ -32,23 +40,38 @@
         </p>
     </div>
 
+
+    <!-- Admin actions -->
+    {% if user.profile.role == "community_admin" %}
+
     <div class="mt-3 mt-md-0 d-flex gap-2">
 
-        <a
-            href="{% url 'update_report_status' report.id %}"
-            class="btn btn-primary"
-        >
+        <a href="{% url 'update_report_status' report.id %}" class="btn btn-primary">
             Update Status
         </a>
 
-        <a
-            href="{% url 'add_report_comment' report.id %}"
-            class="btn btn-outline-secondary"
-        >
+        <a href="{% url 'add_report_comment' report.id %}" class="btn btn-outline-secondary">
             Add Comment
         </a>
 
     </div>
+
+    {% else %}
+
+    <!-- Community user actions -->
+    <div class="mt-3 mt-md-0 d-flex gap-2">
+
+        <a href="{% url 'edit_report' report.id %}" class="btn btn-primary">
+            Edit Report
+        </a>
+
+        <a href="{% url 'delete_report' report.id %}" class="btn btn-outline-danger">
+            Delete Report
+        </a>
+
+    </div>
+
+    {% endif %}
 
 </div>
 
@@ -56,7 +79,6 @@
 <div class="row g-4">
 
     <!-- Main report information -->
-
     <div class="col-12 col-lg-8">
 
         <div class="card shadow-sm mb-4">
@@ -69,6 +91,7 @@
 
                 <dl class="row mb-0">
 
+                    <!-- Category -->
                     <dt class="col-sm-4">
                         Category
                     </dt>
@@ -78,6 +101,7 @@
                     </dd>
 
 
+                    <!-- Location -->
                     <dt class="col-sm-4">
                         Location
                     </dt>
@@ -87,6 +111,9 @@
                     </dd>
 
 
+                    <!-- Submitted by - Admin only -->
+                    {% if user.profile.role == "community_admin" %}
+
                     <dt class="col-sm-4">
                         Submitted by
                     </dt>
@@ -95,7 +122,10 @@
                         {{ report.user.username }}
                     </dd>
 
+                    {% endif %}
 
+
+                    <!-- Created -->
                     <dt class="col-sm-4">
                         Created
                     </dt>
@@ -105,6 +135,7 @@
                     </dd>
 
 
+                    <!-- Last updated -->
                     <dt class="col-sm-4">
                         Last updated
                     </dt>
@@ -121,12 +152,11 @@
 
 
         <!-- Description -->
-
         <div class="card shadow-sm mb-4">
 
             <div class="card-body p-4">
 
-                <h2 class="h4">
+                <h2 class="h4 mb-3">
                     Description
                 </h2>
 
@@ -140,31 +170,27 @@
 
 
         <!-- Image -->
+        <div class="card shadow-sm mb-4">
 
-        {% if report.image %}
+            <div class="card-body p-4">
 
-            <div class="card shadow-sm mb-4">
+                <h2 class="h4 mb-3">
+                    Report Image
+                </h2>
 
-                <div class="card-body p-4">
-
-                    <h2 class="h4 mb-3">
-                        Report Image
-                    </h2>
-
-                    <img
-                        src="{{ report.image.url }}"
-                        alt="Image for {{ report.title }}"
-                        class="img-fluid rounded"
-                    >
-
-                </div>
+                {% if report.image %}
+                <img src="{{ report.image.url }}" alt="placeholder" class="img-fluid rounded">
+                {% else %}
+                <img src="{% static 'images/incident-report.jpg' %}" alt="Incident report" class="img-fluid rounded">
+                {% endif %}
 
             </div>
 
-        {% endif %}
+        </div>
 
 
-        <!-- Comments -->
+        <!-- Comments - Admin only -->
+        {% if user.profile.role == "community_admin" %}
 
         <div class="card shadow-sm mb-4">
 
@@ -176,10 +202,7 @@
                         Comments
                     </h2>
 
-                    <a
-                        href="{% url 'add_report_comment' report.id %}"
-                        class="btn btn-outline-secondary btn-sm"
-                    >
+                    <a href="{% url 'add_report_comment' report.id %}" class="btn btn-outline-secondary btn-sm">
                         Add Comment
                     </a>
 
@@ -188,31 +211,31 @@
 
                 {% for comment in report.comments.all %}
 
-                    <div class="border-bottom pb-3 mb-3">
+                <div class="border-bottom pb-3 mb-3">
 
-                        <p class="mb-1">
+                    <p class="mb-1">
 
-                            <strong>
-                                {{ comment.user.username }}
-                            </strong>
+                        <strong>
+                            {{ comment.user.username }}
+                        </strong>
 
-                            <small class="text-muted">
-                                {{ comment.created_at|date:"d M Y H:i" }}
-                            </small>
+                        <small class="text-muted">
+                            {{ comment.created_at|date:"d M Y H:i" }}
+                        </small>
 
-                        </p>
+                    </p>
 
-                        <p class="mb-0">
-                            {{ comment.comment }}
-                        </p>
+                    <p class="mb-0">
+                        {{ comment.comment }}
+                    </p>
 
-                    </div>
+                </div>
 
                 {% empty %}
 
-                    <p class="text-muted mb-0">
-                        No comments have been added yet.
-                    </p>
+                <p class="text-muted mb-0">
+                    No comments have been added yet.
+                </p>
 
                 {% endfor %}
 
@@ -220,9 +243,10 @@
 
         </div>
 
+        {% endif %}
+
 
         <!-- Status History -->
-
         <div class="card shadow-sm mb-4">
 
             <div class="card-body p-4">
@@ -234,40 +258,44 @@
 
                 {% for history in report.status_history.all %}
 
-                    <div class="border-bottom pb-3 mb-3">
+                <div class="border-bottom pb-3 mb-3">
 
-                        <p class="mb-1">
+                    <p class="mb-1">
 
-                            <strong>
-                                {{ history.get_previous_status_display }}
-                            </strong>
+                        <strong>
+                            {{ history.get_previous_status_display }}
+                        </strong>
 
-                            &rarr;
+                        &rarr;
 
-                            <strong>
-                                {{ history.get_new_status_display }}
-                            </strong>
+                        <strong>
+                            {{ history.get_new_status_display }}
+                        </strong>
 
-                        </p>
+                    </p>
 
-                        <p class="text-muted small mb-0">
+                    <p class="text-muted small mb-0">
 
-                            {{ history.created_at|date:"d M Y H:i" }}
+                        {{ history.created_at|date:"d M Y H:i" }}
 
-                            ·
+                        {% if user.profile.role == "community_admin" %}
 
-                            Changed by
-                            {{ history.changed_by.username }}
+                        ·
 
-                        </p>
+                        Changed by
+                        {{ history.changed_by.username }}
 
-                    </div>
+                        {% endif %}
+
+                    </p>
+
+                </div>
 
                 {% empty %}
 
-                    <p class="text-muted mb-0">
-                        No status changes recorded yet.
-                    </p>
+                <p class="text-muted mb-0">
+                    No status changes recorded yet.
+                </p>
 
                 {% endfor %}
 
@@ -279,7 +307,6 @@
 
 
     <!-- Report summary -->
-
     <div class="col-12 col-lg-4">
 
         <div class="card shadow-sm mb-4">
@@ -292,7 +319,6 @@
 
 
                 <!-- Risk -->
-
                 <div class="mb-4">
 
                     <p class="text-muted mb-1">
@@ -307,7 +333,6 @@
 
 
                 <!-- Priority -->
-
                 <div class="mb-4">
 
                     <p class="text-muted mb-1">
@@ -316,27 +341,27 @@
 
                     {% if report.priority == "low" %}
 
-                        <span class="badge text-bg-success fs-6">
-                            Low
-                        </span>
+                    <span class="badge text-bg-success fs-6">
+                        Low
+                    </span>
 
                     {% elif report.priority == "medium" %}
 
-                        <span class="badge text-bg-warning fs-6">
-                            Medium
-                        </span>
+                    <span class="badge text-bg-warning fs-6">
+                        Medium
+                    </span>
 
                     {% elif report.priority == "high" %}
 
-                        <span class="badge text-bg-danger fs-6">
-                            High
-                        </span>
+                    <span class="badge text-bg-danger fs-6">
+                        High
+                    </span>
 
                     {% elif report.priority == "critical" %}
 
-                        <span class="badge text-bg-dark fs-6">
-                            Critical
-                        </span>
+                    <span class="badge text-bg-dark fs-6">
+                        Critical
+                    </span>
 
                     {% endif %}
 
@@ -344,7 +369,6 @@
 
 
                 <!-- Status -->
-
                 <div>
 
                     <p class="text-muted mb-1">
@@ -353,39 +377,39 @@
 
                     {% if report.status == "reported" %}
 
-                        <span class="badge text-bg-primary fs-6">
-                            {{ report.get_status_display }}
-                        </span>
+                    <span class="badge text-bg-primary fs-6">
+                        {{ report.get_status_display }}
+                    </span>
 
                     {% elif report.status == "under_review" %}
 
-                        <span class="badge text-bg-info fs-6">
-                            {{ report.get_status_display }}
-                        </span>
+                    <span class="badge text-bg-info fs-6">
+                        {{ report.get_status_display }}
+                    </span>
 
                     {% elif report.status == "in_progress" %}
 
-                        <span class="badge text-bg-warning fs-6">
-                            {{ report.get_status_display }}
-                        </span>
+                    <span class="badge text-bg-warning fs-6">
+                        {{ report.get_status_display }}
+                    </span>
 
                     {% elif report.status == "resolved" %}
 
-                        <span class="badge text-bg-success fs-6">
-                            {{ report.get_status_display }}
-                        </span>
+                    <span class="badge text-bg-success fs-6">
+                        {{ report.get_status_display }}
+                    </span>
 
                     {% elif report.status == "confirmed" %}
 
-                        <span class="badge text-bg-success fs-6">
-                            {{ report.get_status_display }}
-                        </span>
+                    <span class="badge text-bg-success fs-6">
+                        {{ report.get_status_display }}
+                    </span>
 
                     {% elif report.status == "rejected" %}
 
-                        <span class="badge text-bg-secondary fs-6">
-                            {{ report.get_status_display }}
-                        </span>
+                    <span class="badge text-bg-secondary fs-6">
+                        {{ report.get_status_display }}
+                    </span>
 
                     {% endif %}
 
@@ -397,30 +421,29 @@
 
 
         <!-- Location coordinates -->
-
         {% if report.latitude and report.longitude %}
 
-            <div class="card shadow-sm">
+        <div class="card shadow-sm">
 
-                <div class="card-body p-4">
+            <div class="card-body p-4">
 
-                    <h2 class="h5">
-                        Coordinates
-                    </h2>
+                <h2 class="h5">
+                    Coordinates
+                </h2>
 
-                    <p class="mb-1">
-                        <strong>Latitude:</strong>
-                        {{ report.latitude }}
-                    </p>
+                <p class="mb-1">
+                    <strong>Latitude:</strong>
+                    {{ report.latitude }}
+                </p>
 
-                    <p class="mb-0">
-                        <strong>Longitude:</strong>
-                        {{ report.longitude }}
-                    </p>
-
-                </div>
+                <p class="mb-0">
+                    <strong>Longitude:</strong>
+                    {{ report.longitude }}
+                </p>
 
             </div>
+
+        </div>
 
         {% endif %}
 
