@@ -123,6 +123,7 @@ def admin_reports(request):
         "reports/admin_reports.html",
         {
             "reports": reports,
+            "categories": Category.objects.all().order_by("name"),
         }
     )
 

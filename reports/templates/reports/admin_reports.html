@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+<link href="https://cdn.datatables.net/v/bs5/dt-3.0.4/datatables.min.css" rel="stylesheet">
 {% block title %}
 Admin Reports | SafeAlert
 {% endblock %}
@@ -31,8 +31,53 @@ Admin Reports | SafeAlert
     <div class="card-body p-0">
 
         <div class="table-responsive">
+            <div class="row g-3 px-3 pt-3">
 
-            <table class="table table-hover align-middle mb-0">
+                <div class="col-12 col-md-4">
+                    <label for="statusFilter" class="form-label small fw-semibold">
+                        Status
+                    </label>
+                    <select id="statusFilter" class="form-select form-select-sm">
+                        <option value="">All statuses</option>
+                        <option value="Reported">Reported</option>
+                        <option value="Under Review">Under Review</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                        <option value="Confirmed">Confirmed</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <label for="priorityFilter" class="form-label small fw-semibold">
+                        Priority
+                    </label>
+                    <select id="priorityFilter" class="form-select form-select-sm">
+                        <option value="">All priorities</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <label for="categoryFilter" class="form-label small fw-semibold">
+                        Category
+                    </label>
+                    <select id="categoryFilter" class="form-select form-select-sm">
+                        <option value="">All categories</option>
+
+                        {% for category in categories %}
+                        <option value="{{ category.name }}">
+                            {{ category.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+            <table id="reportsTable" class="table table-hover align-middle mb-0">
 
                 <thead class="table-light">
 
@@ -228,5 +273,28 @@ Admin Reports | SafeAlert
 </div>
 
 {% endif %}
+<script src="https://cdn.datatables.net/v/bs5/dt-3.0.4/datatables.min.js"></script>
+
+<script>
+    const table = new DataTable("#reportsTable");
+
+    document
+        .getElementById("statusFilter")
+        .addEventListener("change", function () {
+            table.column(3).search(this.value).draw();
+        });
+
+    document
+        .getElementById("priorityFilter")
+        .addEventListener("change", function () {
+            table.column(2).search(this.value).draw();
+        });
+
+    document
+        .getElementById("categoryFilter")
+        .addEventListener("change", function () {
+            table.column(1).search(this.value).draw();
+        });
+</script>
 
 {% endblock %}
