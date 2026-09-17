@@ -1,12 +1,13 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 
 from accounts.models import UserProfile
 from status_history.models import ReportStatusHistory
 
 from .forms import ReportForm, StatusUpdateForm, ReportCommentForm
-from .models import Report, ReportComment
+from .models import Category, Report, ReportComment
 from .risk import calculate_risk_score, calculate_priority
 
 

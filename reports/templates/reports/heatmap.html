@@ -2,15 +2,12 @@
 {% load static %}
 
 {% block title %}
-    Safety Heatmap | SafeAlert
+Safety Heatmap | SafeAlert
 {% endblock %}
 
 {% block extra_css %}
 
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 {% endblock %}
 
@@ -19,10 +16,7 @@
 
 <div class="mb-4">
 
-    <a
-        href="{% url 'admin_reports' %}"
-        class="text-decoration-none"
-    >
+    <a href="{% url 'admin_reports' %}" class="text-decoration-none">
         &larr; Back to Community Reports
     </a>
 
@@ -53,8 +47,7 @@
 
         <div class="map-container">
 
-            <div id="map" data-stadia-api-key="{{ stadia_api_key }}" 
-                data-reports='[{% for report in reports %}
+            <div id="map" data-stadia-api-key="{{ stadia_api_key }}" data-reports='[{% for report in reports %}
                     {"latitude": {{ report.latitude }},
                     "longitude": {{ report.longitude }},
                     "risk_score": {{ report.risk_score|default:1 }}
@@ -175,5 +168,6 @@
 
 
 <script src="{% static 'js/heatmap.js' %}"></script>
+
 
 {% endblock %}
