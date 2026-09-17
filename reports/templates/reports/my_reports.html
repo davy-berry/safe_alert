@@ -1,119 +1,106 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-    My Reports | SafeAlert
+My Reports | SafeAlert
 {% endblock %}
 
 {% block content %}
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1 class="mb-1">My Reports</h1>
-            <p class="text-muted mb-0">
-                View and manage your community safety reports.
-            </p>
-        </div>
-
-        <a
-            href="{% url 'create_report' %}"
-            class="btn btn-primary"
-        >
-            Report an Issue
-        </a>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="mb-1">My Reports</h1>
+        <p class="text-muted mb-0">
+            View and manage your community safety reports.
+        </p>
     </div>
 
+    <a href="{% url 'create_report' %}" class="btn btn-primary">
+        Report an Issue
+    </a>
+</div>
 
-    {% if reports %}
 
-        <div class="row g-4">
+{% if reports %}
 
-            {% for report in reports %}
+<div class="row g-4">
 
-                <div class="col-12 col-md-6 col-lg-4">
 
-                    <div class="card h-100 shadow-sm">
+    {% for report in reports %}
 
-                        {% if report.image %}
-                            <img
-                                src="{{ report.image.url }}"
-                                class="card-img-top"
-                                alt="Image for {{ report.title }}"
-                                style="height: 200px; object-fit: cover;"
-                            >
-                        {% endif %}
+    <div class="col-12 col-md-6 col-lg-4">
 
-                        <div class="card-body">
+        <div class="card h-100 shadow-sm">
 
-                            <h2 class="h5 card-title">
-                                {{ report.title }}
-                            </h2>
+            {% if report.image %}
+            <img src="{{ report.image.url }}" alt="placeholder">
+            {% else %}
+            <img src="{% static 'images/incident-report.jpg' %}" alt="Incident report">
+            {% endif %}
 
-                            <p class="card-text text-muted">
-                                {{ report.description|truncatewords:20 }}
-                            </p>
+            <div class="card-body">
 
-                            <p class="mb-1">
-                                <strong>Category:</strong>
-                                {{ report.category.name }}
-                            </p>
+                <h2 class="h5 card-title">
+                    {{ report.title }}
+                </h2>
 
-                            <p class="mb-1">
-                                <strong>Priority:</strong>
-                                {{ report.get_priority_display }}
-                            </p>
+                <p class="card-text text-muted">
+                    {{ report.description|truncatewords:20 }}
+                </p>
 
-                            <p class="mb-3">
-                                <strong>Status:</strong>
-                                {{ report.get_status_display }}
-                            </p>
+                <p class="mb-1">
+                    <strong>Category:</strong>
+                    {{ report.category.name }}
+                </p>
 
-                            <div class="d-flex gap-2">
+                <p class="mb-1">
+                    <strong>Priority:</strong>
+                    {{ report.get_priority_display }}
+                </p>
 
-                                <a
-                                    href="{% url 'edit_report' report.id %}"
-                                    class="btn btn-outline-primary btn-sm"
-                                >
-                                    Edit
-                                </a>
+                <p class="mb-3">
+                    <strong>Status:</strong>
+                    {{ report.get_status_display }}
+                </p>
 
-                                <a
-                                    href="{% url 'delete_report' report.id %}"
-                                    class="btn btn-outline-danger btn-sm"
-                                >
-                                    Delete
-                                </a>
+                <div class="d-flex gap-2">
 
-                            </div>
+                    <a href="{% url 'edit_report' report.id %}" class="btn btn-outline-primary btn-sm">
+                        Edit
+                    </a>
 
-                        </div>
-
-                    </div>
+                    <a href="{% url 'delete_report' report.id %}" class="btn btn-outline-danger btn-sm">
+                        Delete
+                    </a>
 
                 </div>
 
-            {% endfor %}
+            </div>
 
         </div>
 
-    {% else %}
+    </div>
 
-        <div class="text-center py-5">
+    {% endfor %}
 
-            <h2>No reports yet</h2>
+</div>
 
-            <p class="text-muted">
-                You haven't submitted any safety reports.
-            </p>
+{% else %}
 
-            <a
-                href="{% url 'create_report' %}"
-                class="btn btn-primary"
-            >
-                Submit Your First Report
-            </a>
+<div class="text-center py-5">
 
-        </div>
+    <h2>No reports yet</h2>
 
-    {% endif %}
+    <p class="text-muted">
+        You haven't submitted any safety reports.
+    </p>
+
+    <a href="{% url 'create_report' %}" class="btn btn-primary">
+        Submit Your First Report
+    </a>
+
+</div>
+
+{% endif %}
 
 {% endblock %}
