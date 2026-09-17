@@ -1,35 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-    <title>Add Comment</title>
-</head>
+{% block title %}
+    Add Comment | SafeAlert
+{% endblock %}
 
-<body>
+{% block content %}
 
-    <h1>Add Comment</h1>
+<div class="row justify-content-center">
 
-    <h2>{{ report.title }}</h2>
+    <div class="col-12 col-md-8 col-lg-6">
 
-    <form method="post">
+        <!-- Page Header -->
+        <div class="mb-4">
 
-        {% csrf_token %}
+            <h1 class="mb-1">
+                Add Comment
+            </h1>
 
-        {{ form.as_p }}
+            <p class="text-muted mb-0">
+                Add a comment to this community safety report.
+            </p>
 
-        <button type="submit">
-            Add Comment
-        </button>
+        </div>
 
-    </form>
 
-    <p>
-        <a href="{% url 'admin_reports' %}">
-            Back to reports
-        </a>
-    </p>
+        <!-- Report Information -->
+        <div class="card shadow-sm mb-4">
 
-</body>
-</html>
+            <div class="card-body">
+
+                <h2 class="h4 mb-3">
+                    {{ report.title }}
+                </h2>
+
+                <p class="mb-2">
+                    <strong>Category:</strong>
+                    {{ report.category.name }}
+                </p>
+
+                <p class="mb-2">
+                    <strong>Location:</strong>
+                    {{ report.location }}
+                </p>
+
+                <p class="mb-0">
+                    <strong>Status:</strong>
+
+                    {% if report.status == "reported" %}
+
+                        <span class="badge text-bg-primary">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "under_review" %}
+
+                        <span class="badge text-bg-info">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "in_progress" %}
+
+                        <span class="badge text-bg-warning">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "resolved" %}
+
+                        <span class="badge text-bg-success">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "confirmed" %}
+
+                        <span class="badge text-bg-success">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% elif report.status == "rejected" %}
+
+                        <span class="badge text-bg-secondary">
+                            {{ report.get_status_display }}
+                        </span>
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Comment Form -->
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h2 class="h5 mb-3">
+                    Report Comment
+                </h2>
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+
+                        <label
+                            for="{{ form.comment.id_for_label }}"
+                            class="form-label"
+                        >
+                            Comment
+                        </label>
+
+                        {{ form.comment }}
+
+                        {% if form.comment.errors %}
+
+                            <div class="text-danger small mt-2">
+
+                                {{ form.comment.errors }}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Actions -->
+                    <div class="d-flex flex-column flex-sm-row gap-2">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Add Comment
+                        </button>
+
+                        <a
+                            href="{% url 'admin_reports' %}"
+                            class="btn btn-outline-secondary"
+                        >
+                            Cancel
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
