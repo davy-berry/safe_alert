@@ -16,6 +16,12 @@ def home(request):
         "reports/home.html",
     )
 
+def about(request):
+    return render(
+        request,
+        "reports/about.html",
+    )
+
 # Create your views here.
 @login_required
 def create_report(request):

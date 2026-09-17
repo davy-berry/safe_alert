@@ -28,26 +28,46 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
 
-            <a class="navbar-brand fw-bold" href="{% url 'my_reports' %}">
+            <!-- Brand -->
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">
                 SafeAlert
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Mobile menu button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="mainNav">
-                {% if user.is_authenticated %}
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto">
 
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">
+                            Home
+                        </a>
+                    </li>
+
+                    <!-- About -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">
+                            About
+                        </a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                    <!-- My Reports -->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'my_reports' %}">
                             My Reports
                         </a>
                     </li>
 
+                    <!-- Report an Issue -->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'create_report' %}">
                             Report an Issue
@@ -56,12 +76,14 @@
 
                     {% if user.profile.role == "community_admin" %}
 
+                    <!-- Admin Reports -->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'admin_reports' %}">
                             Admin Reports
                         </a>
                     </li>
 
+                    <!-- Heatmap -->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'heatmap' %}">
                             Heatmap
@@ -70,47 +92,74 @@
 
                     {% endif %}
 
+                    {% endif %}
+
                 </ul>
 
-                <span class="navbar-text me-3">
-                    {{ user.username }}
-                </span>
 
-                <form method="post" action="{% url 'account_logout' %}">
-                    {% csrf_token %}
+                <!-- Right side of navbar -->
+                <ul class="navbar-nav ms-auto">
 
-                    <button type="submit" class="btn btn-outline-light btn-sm">
-                        Logout
-                    </button>
-                </form>
+                    {% if user.is_authenticated %}
 
-                {% else %}
+                    <!-- Username -->
+                    <li class="nav-item">
+                        <span class="nav-link">
+                            <i class="bi bi-person-circle me-1"></i>
+                            {{ user.username }}
+                        </span>
+                    </li>
 
-                <div class="ms-auto">
-                    <a href="{% url 'account_login' %}" class="btn btn-outline-light btn-sm">
-                        Login
-                    </a>
+                    <!-- Logout -->
+                    <li class="nav-item">
 
-                    <a href="{% url 'account_signup' %}" class="btn btn-light btn-sm">
-                        Register
-                    </a>
-                </div>
+                        <form method="post" action="{% url 'account_logout' %}" class="d-inline">
+                            {% csrf_token %}
 
-                {% endif %}
+                            <button type="submit" class="nav-link btn btn-link border-0">
+                                Logout
+                            </button>
+
+                        </form>
+
+                    </li>
+
+                    {% else %}
+
+                    <!-- Login -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">
+                            Login
+                        </a>
+                    </li>
+
+                    <!-- Register -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup' %}">
+                            Register
+                        </a>
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+
             </div>
-
         </div>
     </nav>
-{% if messages %}
+
+    {% if messages %}
     <section id="alerts">
         {% for msg in messages %}
-            <!-- all django message tags mirror bootstrap, except error/danger -->
-            <aside class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} rounded-0 text-center" role="alert">
-                <h3>{{ msg }}</h3>
-            </aside>
+        <!-- all django message tags mirror bootstrap, except error/danger -->
+        <aside
+            class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} rounded-0 text-center"
+            role="alert">
+            <h3>{{ msg }}</h3>
+        </aside>
         {% endfor %}
     </section>
-{% endif %}
+    {% endif %}
 
     <!-- Main content -->
     <main class="container py-4">
