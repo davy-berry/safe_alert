@@ -148,7 +148,7 @@ MAILERS = {
 
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/reports/my_reports/"
-LOGOUT_REDIRECT_URL = "/accounts/login/"
+LOGOUT_REDIRECT_URL = "/"
 
 ACCOUNT_LOGIN_METHODS = {"username"}
 ACCOUNT_SIGNUP_FIELDS = ["username*", "email*", "password1*", "password2*"]
