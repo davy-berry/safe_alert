@@ -10,6 +10,11 @@ from .forms import ReportForm, StatusUpdateForm, ReportCommentForm
 from .models import Category, Report, ReportComment
 from .risk import calculate_risk_score, calculate_priority
 
+def home(request):
+    return render(
+        request,
+        "reports/home.html",
+    )
 
 # Create your views here.
 @login_required
