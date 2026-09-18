@@ -105,10 +105,7 @@ def edit_report(request, report_id):
 @login_required
 def delete_report(request, report_id):
 
-    report = Report.objects.get(
-        id=report_id,
-        user=request.user
-    )
+    report = get_object_or_404(Report, id=report_id, user=request.user)
 
     if request.method == "POST":
         report.delete()
