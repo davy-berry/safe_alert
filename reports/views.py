@@ -65,7 +65,8 @@ def my_reports(request):
 @login_required
 def edit_report(request, report_id):
 
-    report = Report.objects.get(
+    report = get_object_or_404(
+        Report,
         id=report_id,
         user=request.user
     )
