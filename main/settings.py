@@ -153,6 +153,7 @@ LOGOUT_REDIRECT_URL = "/"
 
 ACCOUNT_LOGIN_METHODS = {"username"}
 ACCOUNT_SIGNUP_FIELDS = ["username*", "email*", "password1*", "password2*"]
-ACCOUNT_FORMS = {"signup": "accounts.forms.SafeAlertSignupForm",}
+ACCOUNT_FORMS = {"login": "accounts.forms.SafeAlertLoginForm",
+                "signup": "accounts.forms.SafeAlertSignupForm",}
 
 STADIA_API_KEY = os.environ.get("STADIA_API_KEY")
