@@ -2,6 +2,9 @@ from django import forms
 from .models import Report, ReportComment
 
 class ReportForm(forms.ModelForm):
+
+    description = forms.CharField(max_length=1000, widget=forms.Textarea())
+
     class Meta:
         model = Report
         fields = ['category', 'title', 'description', 'location', 'latitude', 'longitude', 'image']
