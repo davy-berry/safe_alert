@@ -405,7 +405,18 @@
 
 <script>
 
-    const table = new DataTable("#reportsTable");
+    const table = new DataTable("#reportsTable", {
+        columnDefs: [
+            {
+                searchable: true,
+                targets: [0]
+            },
+            {
+                searchable: false,
+                targets: [1, 2, 3, 4, 5]
+            }
+        ]
+    });
 
 
     // Status filter
