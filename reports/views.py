@@ -128,6 +128,7 @@ def delete_report(request, report_id):
 def admin_reports(request):
 
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
+        messages.warning(request, "You do not have permission to access this page.")
         return redirect("my_reports")
 
     reports = Report.objects.all().order_by("-created_at")
@@ -262,6 +263,7 @@ def add_report_comment(request, report_id):
 @login_required
 def heatmap(request):
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
+        messages.warning(request, "You do not have permission to access this page.")
         return redirect("my_reports")
 
     reports = Report.objects.exclude(
