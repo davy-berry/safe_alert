@@ -22,7 +22,7 @@ class ReportForm(forms.ModelForm):
 
     def clean_description(self):
         description = self.cleaned_data.get('description', '').strip()
-        if len(description) < 10:
+        if len(description) < 20:
             raise forms.ValidationError("Description must be at least 10 characters long.")
         return description
 
@@ -31,6 +31,22 @@ class ReportForm(forms.ModelForm):
         if len(location) < 3:
             raise forms.ValidationError("Location must be at least 3 characters long.")
         return location
+
+    def clean_latitude(self):
+        latitude = self.cleaned_data.get("latitude")
+
+        if latitude is not None and not -90 <= latitude <= 90:
+            raise forms.ValidationError("Latitude must be between -90 and 90.")
+
+        return latitude
+
+    def clean_longitude(self):
+        longitude = self.cleaned_data.get("longitude")
+
+        if longitude is not None and not -180 <= longitude <= 180:
+            raise forms.ValidationError("Longitude must be between -180 and 180.")
+
+        return longitude
 
     def clean_image(self):
         image = self.cleaned_data.get("image")

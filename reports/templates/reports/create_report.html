@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block title %}
-    Report an Issue | SafeAlert
+Report an Issue | SafeAlert
 {% endblock %}
 
 {% block extra_css %}
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style>
     #map {
@@ -40,20 +40,16 @@
 
             <div class="card-body p-4">
 
-                <form
-                    method="post"
-                    enctype="multipart/form-data"
-                >
+                <form method="post" enctype="multipart/form-data">
 
                     {% csrf_token %}
-
 
                     <!-- Form errors -->
 
                     {% if form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            {{ form.non_field_errors }}
-                        </div>
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
                     {% endif %}
 
 
@@ -61,19 +57,16 @@
 
                     <div class="mb-3">
 
-                        <label
-                            for="{{ form.category.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.category.id_for_label }}" class="form-label">
                             Category
                         </label>
 
                         {{ form.category }}
 
                         {% if form.category.errors %}
-                            <div class="text-danger small">
-                                {{ form.category.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.category.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -83,19 +76,16 @@
 
                     <div class="mb-3">
 
-                        <label
-                            for="{{ form.title.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.title.id_for_label }}" class="form-label">
                             Title
                         </label>
 
                         {{ form.title }}
 
                         {% if form.title.errors %}
-                            <div class="text-danger small">
-                                {{ form.title.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.title.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -105,19 +95,16 @@
 
                     <div class="mb-3">
 
-                        <label
-                            for="{{ form.description.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.description.id_for_label }}" class="form-label">
                             Description
                         </label>
 
                         {{ form.description }}
 
                         {% if form.description.errors %}
-                            <div class="text-danger small">
-                                {{ form.description.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.description.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -127,10 +114,7 @@
 
                     <div class="mb-3">
 
-                        <label
-                            for="{{ form.location.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.location.id_for_label }}" class="form-label">
                             Location
                         </label>
 
@@ -142,9 +126,9 @@
                         </div>
 
                         {% if form.location.errors %}
-                            <div class="text-danger small">
-                                {{ form.location.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.location.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -177,19 +161,16 @@
 
                     <div class="mb-4">
 
-                        <label
-                            for="{{ form.image.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.image.id_for_label }}" class="form-label">
                             Image
                         </label>
 
                         {{ form.image }}
 
                         {% if form.image.errors %}
-                            <div class="text-danger small">
-                                {{ form.image.errors }}
-                            </div>
+                        <div class="text-danger small">
+                            {{ form.image.errors }}
+                        </div>
                         {% endif %}
 
                     </div>
@@ -199,17 +180,11 @@
 
                     <div class="d-flex gap-2">
 
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                        >
+                        <button type="submit" class="btn btn-primary">
                             Submit Report
                         </button>
 
-                        <a
-                            href="{% url 'my_reports' %}"
-                            class="btn btn-outline-secondary"
-                        >
+                        <a href="{% url 'my_reports' %}" class="btn btn-outline-secondary">
                             Cancel
                         </a>
 
@@ -230,12 +205,10 @@
 
 {% block extra_js %}
 
-<script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
 
-<script
-    src="{% static 'js/report_map.js' %}">
+<script src="{% static 'js/report_map.js' %}">
 </script>
 
 {% endblock %}
