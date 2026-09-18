@@ -35,10 +35,9 @@ class ReportForm(forms.ModelForm):
     def clean_image(self):
         image = self.cleaned_data.get("image")
 
-        if image and image.size > 5 * 1024 * 1024:
-            raise forms.ValidationError(
-            "Image size must not exceed 5 MB."
-        )
+        if image and hasattr(image, "size"):
+            if image.size > 5 * 1024 * 1024:
+                raise forms.ValidationError("Image size must not exceed 5 MB.")
         return image
     
 
