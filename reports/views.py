@@ -35,6 +35,7 @@ def create_report(request):
             report.risk_score = calculate_risk_score(report.category)
             report.priority = calculate_priority(report.risk_score)
             report.save()
+            messages.success(request, "Report created successfully.")
 
             return redirect("my_reports")
 
@@ -88,7 +89,7 @@ def edit_report(request, report_id):
             )
 
             report.save()
-
+            messages.success(request, "Report updated successfully.")
             return redirect("my_reports")
 
     else:
@@ -110,6 +111,8 @@ def delete_report(request, report_id):
 
     if request.method == "POST":
         report.delete()
+
+        messages.success(request, "Report deleted successfully.")
 
         return redirect("my_reports")
 
@@ -204,7 +207,7 @@ def update_report_status(request, report_id):
                 )
 
             form.save()
-
+            messages.success(request, "Report status updated successfully.")
             return redirect("admin_reports")
 
     else:
@@ -240,6 +243,7 @@ def add_report_comment(request, report_id):
             comment.report = report
             comment.user = request.user
             comment.save()
+            messages.success(request, "Comment added successfully.")
 
             return redirect("admin_reports")
 

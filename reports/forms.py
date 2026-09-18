@@ -28,6 +28,15 @@ class ReportForm(forms.ModelForm):
         if len(location) < 3:
             raise forms.ValidationError("Location must be at least 3 characters long.")
         return location
+
+    def clean_image(self):
+        image = self.cleaned_data.get("image")
+
+        if image and image.size > 5 * 1024 * 1024:
+            raise forms.ValidationError(
+            "Image size must not exceed 5 MB."
+        )
+        return image
     
 
 class StatusUpdateForm(forms.ModelForm):
@@ -53,3 +62,5 @@ class ReportCommentForm(forms.ModelForm):
             raise forms.ValidationError("Please provide at least 5 characters.")
 
         return comment
+
+    
