@@ -17,45 +17,63 @@ body {
 /*  SafeAlert Home Page */
 
 .home-hero {
-    background: linear-gradient(
-        135deg,
-        var(--safealert-primary),
-        #1b4965
-    );
-    color: white;
+    background: #EAF3F5;
+    color: var(--safealert-text);
     border-radius: 1rem;
     overflow: hidden;
+    border: 1px solid #D9E7EA;
 }
 
 .home-hero h1 {
+    color: var(--safealert-primary);
     font-weight: 700;
     letter-spacing: -0.5px;
 }
 
 .home-hero p {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--safealert-muted);
 }
 
+/* Highlighted part of the main heading */
+.home-hero .hero-highlight {
+    color: var(--safealert-secondary);
+}
+
+/* Community Safety Platform badge */
+.home-hero .hero-badge {
+    display: inline-block;
+    background-color: var(--safealert-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+}
+
+/* Primary action */
 .home-hero .btn-primary {
     background-color: var(--safealert-secondary);
     border-color: var(--safealert-secondary);
+    color: white;
 }
 
 .home-hero .btn-primary:hover {
-    background-color: #0c7779;
-    border-color: #0c7779;
+    background-color: #0C7779;
+    border-color: #0C7779;
 }
 
-.home-hero .btn-success {
-    background-color: var(--safealert-accent);
-    border-color: var(--safealert-accent);
+/* Secondary action */
+.home-hero .btn-outline-primary {
+    color: var(--safealert-primary);
+    border-color: var(--safealert-primary);
 }
 
-.home-hero .btn-success:hover {
-    background-color: #267449;
-    border-color: #267449;
+.home-hero .btn-outline-primary:hover {
+    background-color: var(--safealert-primary);
+    border-color: var(--safealert-primary);
+    color: white;
 }
 
+/* Main Section*/
 main {
     min-height: 70vh;
 }
