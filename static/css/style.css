@@ -195,6 +195,68 @@ main {
     border-color: #0C7779;
 }
 
+/* SafeAlert Report Form */
+
+.report-form-card {
+    border: 1px solid #D9E7EA;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.report-form-card .form-label {
+    color: var(--safealert-primary);
+    font-weight: 600;
+}
+
+.report-form-card input:not([type="hidden"]),
+.report-form-card textarea,
+.report-form-card select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #D9E7EA;
+    border-radius: 0.5rem;
+    background-color: #FFFFFF;
+}
+
+.report-form-card input:not([type="hidden"]):focus,
+.report-form-card textarea:focus,
+.report-form-card select:focus {
+    outline: none;
+    border-color: var(--safealert-secondary);
+    box-shadow: 0 0 0 0.2rem rgba(15, 139, 141, 0.15);
+}
+
+.report-form-card textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* Form sections */
+
+.form-section {
+    padding: 1.5rem;
+    border: 1px solid #E1EAED;
+    border-radius: 0.75rem;
+    background-color: #FAFCFD;
+}
+
+.form-section + .form-section {
+    margin-top: 1.5rem;
+}
+
+.form-section-title {
+    color: var(--safealert-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.form-section-description {
+    color: var(--safealert-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
 /* Heatmap */
 
 #map {
