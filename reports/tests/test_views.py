@@ -30,3 +30,25 @@ class ReportAccessTests(TestCase):
             priority="high",
         )
 
+    def test_my_reports_requires_login(self):
+        response = self.client.get("/reports/my_reports/")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/accounts/login/", response.url)
+
+    def test_user_cannot_edit_another_users_report(self):
+        another_user = User.objects.create_user(
+        username="anotheruser",
+        password="AnotherPassword123!"
+        )
+
+        self.client.login(
+        username="anotheruser",
+        password="AnotherPassword123!"
+        )
+
+        response = self.client.get(
+        f"/reports/edit/{self.report.id}/"
+        )
+
+        self.assertEqual(response.status_code, 404)
