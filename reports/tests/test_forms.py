@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 
 from reports.models import Category
-from reports.forms import ReportForm
+from reports.forms import ReportForm, ReportCommentForm
 
 
 class ReportFormTests(TestCase):
@@ -72,3 +72,13 @@ class ReportFormTests(TestCase):
 
         self.assertFalse(form.is_valid())
         self.assertIn("longitude", form.errors)
+
+    def test_comment_too_short(self):
+        from reports.forms import ReportCommentForm
+
+        form = ReportCommentForm(
+            data={"comment": "Hi"}
+        )
+
+        self.assertFalse(form.is_valid())
+        self.assertIn("comment", form.errors)
