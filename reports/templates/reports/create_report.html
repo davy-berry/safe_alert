@@ -173,30 +173,46 @@ Report an Issue | SafeAlert
 
                     {{ form.latitude }}
                     {{ form.longitude }}
+
                     <!-- Image -->
+                    <!-- Supporting evidence -->
 
-                    <div class="mb-4">
+                    <div class="form-section">
 
-                        <label for="{{ form.image.id_for_label }}" class="form-label">
-                            Image
-                        </label>
-
-                        {{ form.image }}
-
-                        {% if form.image.errors %}
-                        <div class="text-danger small">
-                            {{ form.image.errors }}
+                        <div class="form-section-title">
+                            Supporting evidence
                         </div>
-                        {% endif %}
+
+                        <p class="form-section-description">
+                            Add a photo if it helps show or explain the safety issue.
+                        </p>
+
+                        <div class="mb-0">
+
+                            <label for="{{ form.image.id_for_label }}" class="form-label">
+                                Photo
+                            </label>
+
+                            {{ form.image }}
+
+                            <div class="form-text">
+                                Optional. Maximum file size: 5 MB.
+                            </div>
+
+                            {% if form.image.errors %}
+                            <div class="text-danger small">
+                                {{ form.image.errors }}
+                            </div>
+                            {% endif %}
+
+                        </div>
 
                     </div>
 
-
                     <!-- Submit -->
+                    <div class="d-flex gap-2 mt-4">
 
-                    <div class="d-flex gap-2">
-
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary report-submit-btn">
                             Submit Report
                         </button>
 
