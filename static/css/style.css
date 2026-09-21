@@ -197,6 +197,38 @@ main {
 
 /* My Reports Pages */
 
+/*  My Reports Header */
+
+.my-reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.my-reports-header h1 {
+    color: var(--safealert-primary);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.my-reports-header p {
+    color: var(--safealert-muted);
+    margin-bottom: 0;
+}
+
+.report-new-btn {
+    background-color: var(--safealert-secondary);
+    border-color: var(--safealert-secondary);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.report-new-btn:hover {
+    background-color: #0C7779;
+    border-color: #0C7779;
+}
+
 .my-report-card {
     border: 1px solid #D9E7EA;
     border-radius: 1rem;
@@ -373,6 +405,36 @@ main {
     border-color: #0C7779;
 }
 
+/* Empty My Reports state */
+
+.my-reports-empty {
+    padding: 4rem 1rem;
+}
+
+.empty-report-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(15, 139, 141, 0.1);
+    color: var(--safealert-secondary);
+    font-size: 1.5rem;
+}
+
+.my-reports-empty h2 {
+    color: var(--safealert-primary);
+    font-weight: 700;
+}
+
+.my-reports-empty p {
+    color: var(--safealert-muted);
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+}
+
 /* Form sections */
 
 .form-section {
@@ -495,5 +557,17 @@ main {
 @media (max-width: 768px) {
     .home-hero h1 {
         font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .my-reports-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .report-new-btn {
+        width: 100%;
     }
 }
