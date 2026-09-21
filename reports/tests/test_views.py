@@ -52,3 +52,21 @@ class ReportAccessTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 404)
+
+
+    def test_user_cannot_delete_another_users_report(self):
+        another_user = User.objects.create_user(
+        username="deleteuser",
+        password="DeletePassword123!"
+        )
+
+        self.client.login(
+        username="deleteuser",
+        password="DeletePassword123!"
+        )
+
+        response = self.client.get(
+        f"/reports/delete/{self.report.id}/"
+        )
+
+        self.assertEqual(response.status_code, 404)
