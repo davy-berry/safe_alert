@@ -195,3 +195,38 @@ class ReportAccessTests(TestCase):
             history.changed_by,
             self.user
         )
+
+    def test_community_admin_can_add_comment(self):
+        self.user.profile.role = UserProfile.COMMUNITY_ADMIN
+        self.user.profile.save()
+
+        self.client.login(
+            username="testuser",
+            password="TestPassword123!"
+        )
+
+        response = self.client.post(
+            f"/reports/admin/comment/{self.report.id}/",
+            {
+                "comment": "This issue has been reviewed."
+            }
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+        comment = self.report.comments.get()
+
+        self.assertEqual(
+            comment.comment,
+            "This issue has been reviewed."
+        )
+
+        self.assertEqual(
+            comment.user,
+            self.user
+        )
+
+        self.assertEqual(
+            comment.report,
+            self.report
+        )
