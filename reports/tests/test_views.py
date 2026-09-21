@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 
 from reports.models import Category, Report
 
+from accounts.models import UserProfile
+
 
 class ReportAccessTests(TestCase):
 
@@ -10,6 +12,11 @@ class ReportAccessTests(TestCase):
         self.user = User.objects.create_user(
             username="testuser",
             password="TestPassword123!"
+        )
+
+        UserProfile.objects.create(
+            user=self.user,
+            role=UserProfile.COMMUNITY_USER
         )
 
         self.category = Category.objects.create(
@@ -99,3 +106,30 @@ class ReportAccessTests(TestCase):
             user=self.user
         ).exists()
         )
+
+    def test_community_user_cannot_access_admin_reports(self):
+        self.user.profile.role = "community_user"
+        self.user.profile.save()
+
+        self.client.login(
+            username="testuser",
+            password="TestPassword123!"
+        )
+
+        response = self.client.get("/reports/admin/")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, "/reports/my_reports/")
+
+    def test_community_admin_can_access_admin_reports(self):
+        self.user.profile.role = UserProfile.COMMUNITY_ADMIN
+        self.user.profile.save()
+
+        self.client.login(
+            username="testuser",
+            password="TestPassword123!"
+        )
+
+        response = self.client.get("/reports/admin/")
+
+        self.assertEqual(response.status_code, 200)
