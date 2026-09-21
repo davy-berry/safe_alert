@@ -1,5 +1,59 @@
+:root {
+    --safealert-primary: #12304A;
+    --safealert-secondary: #0F8B8D;
+    --safealert-accent: #2E8B57;
+    --safealert-background: #F4F8FA;
+    --safealert-card: #FFFFFF;
+    --safealert-text: #263238;
+    --safealert-muted: #607D8B;
+}
+
+
 body {
-    background-color: #f8f9fa;
+    background-color: var(--safealert-background);
+    color: var(--safealert-text);
+}
+
+/*  SafeAlert Home Page */
+
+.home-hero {
+    background: linear-gradient(
+        135deg,
+        var(--safealert-primary),
+        #1b4965
+    );
+    color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.home-hero h1 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.home-hero p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.home-hero .btn-primary {
+    background-color: var(--safealert-secondary);
+    border-color: var(--safealert-secondary);
+}
+
+.home-hero .btn-primary:hover {
+    background-color: #0c7779;
+    border-color: #0c7779;
+}
+
+.home-hero .btn-success {
+    background-color: var(--safealert-accent);
+    border-color: var(--safealert-accent);
+}
+
+.home-hero .btn-success:hover {
+    background-color: #267449;
+    border-color: #267449;
 }
 
 main {
