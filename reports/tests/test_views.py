@@ -5,6 +5,8 @@ from reports.models import Category, Report
 
 from accounts.models import UserProfile
 
+from status_history.models import ReportStatusHistory
+
 
 class ReportAccessTests(TestCase):
 
@@ -157,4 +159,39 @@ class ReportAccessTests(TestCase):
         self.assertEqual(
             self.report.status,
             "in_progress"
+        )
+
+    def test_status_update_creates_status_history(self):
+        self.user.profile.role = UserProfile.COMMUNITY_ADMIN
+        self.user.profile.save()
+
+        self.client.login(
+            username="testuser",
+            password="TestPassword123!"
+        )
+
+        self.client.post(
+            f"/reports/admin/update/{self.report.id}/",
+            {
+                "status": "in_progress"
+            }
+        )
+
+        history = ReportStatusHistory.objects.get(
+            report=self.report
+        )
+
+        self.assertEqual(
+            history.previous_status,
+            "reported"
+        )
+
+        self.assertEqual(
+            history.new_status,
+            "in_progress"
+        )
+
+        self.assertEqual(
+            history.changed_by,
+            self.user
         )
