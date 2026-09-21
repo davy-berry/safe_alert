@@ -70,3 +70,32 @@ class ReportAccessTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 404)
+
+    def test_logged_in_user_can_create_report(self):
+        self.client.login(
+        username="testuser",
+        password="TestPassword123!"
+        )
+
+        data = {
+        "category": self.category.id,
+        "title": "Broken street lighting",
+        "description": "Several street lights are not working in this area.",
+        "location": "Birmingham",
+        "latitude": 52.4862,
+        "longitude": -1.8904,
+        }
+
+        response = self.client.post(
+        "/reports/create/",
+        data
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+        Report.objects.filter(
+            title="Broken street lighting",
+            user=self.user
+        ).exists()
+        )
