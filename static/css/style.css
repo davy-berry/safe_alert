@@ -64,6 +64,83 @@ main {
     letter-spacing: 0.5px;
 }
 
+/* How SafeAlert Works */
+
+.process-card {
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--safealert-card);
+    box-shadow: 0 4px 15px rgba(18, 48, 74, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.process-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(18, 48, 74, 0.12);
+}
+
+.process-icon {
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--safealert-secondary);
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.process-card h3 {
+    color: var(--safealert-primary);
+    font-weight: 600;
+}
+
+.process-card p {
+    color: var(--safealert-muted);
+}
+
+/* Report Categories */
+
+.category-card {
+    background-color: var(--safealert-card);
+    border: 1px solid #e3eaee;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(18, 48, 74, 0.1);
+    border-color: var(--safealert-secondary);
+}
+
+.category-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background-color: rgba(15, 139, 141, 0.1);
+    color: var(--safealert-secondary);
+    font-size: 1.25rem;
+}
+
+.category-card h3,
+.category-card h5 {
+    color: var(--safealert-primary);
+    font-weight: 600;
+}
+
+.category-card p {
+    color: var(--safealert-muted);
+}
+
 /* Heatmap */
 
 #map {
