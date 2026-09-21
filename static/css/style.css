@@ -168,16 +168,13 @@ main {
 /* Final Call To Action */
 
 .home-cta {
-    background: linear-gradient(
-        135deg,
-        var(--safealert-primary),
-        #1b4965
-    );
+    background-color: var(--safealert-primary);
     color: white;
     border-radius: 1rem;
 }
 
 .home-cta h2 {
+    color: white;
     font-weight: 700;
 }
 
@@ -188,21 +185,12 @@ main {
 .home-cta .btn-primary {
     background-color: var(--safealert-secondary);
     border-color: var(--safealert-secondary);
+    color: white;
 }
 
 .home-cta .btn-primary:hover {
-    background-color: #0c7779;
-    border-color: #0c7779;
-}
-
-.home-cta .btn-success {
-    background-color: var(--safealert-accent);
-    border-color: var(--safealert-accent);
-}
-
-.home-cta .btn-success:hover {
-    background-color: #267449;
-    border-color: #267449;
+    background-color: #0C7779;
+    border-color: #0C7779;
 }
 
 /* Heatmap */
