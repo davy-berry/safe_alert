@@ -309,6 +309,19 @@ main {
     color: #842029;
 }
 
+/* Report actions */
+
+.report-view-btn {
+    background-color: var(--safealert-secondary);
+    border-color: var(--safealert-secondary);
+    font-weight: 600;
+}
+
+.report-view-btn:hover {
+    background-color: #0C7779;
+    border-color: #0C7779;
+}
+
 /* SafeAlert Report Form */
 
 .report-form-card {

@@ -56,26 +56,32 @@ My Reports | SafeAlert
                         {{ report.category.name }}
                     </p>
 
-                    <p class="mb-1">
+                    <p class="mb-2">
                         <strong>Priority:</strong>
-                        {{ report.get_priority_display }}
+
+                        <span class="report-badge priority-{{ report.priority }}">
+                            {{ report.get_priority_display }}
+                        </span>
                     </p>
 
                     <p class="mb-0">
                         <strong>Status:</strong>
-                        {{ report.get_status_display }}
+
+                        <span class="report-badge status-{{ report.status }}">
+                            {{ report.get_status_display }}
+                        </span>
                     </p>
 
                 </div>
 
                 <!-- Report Actions -->
-                <div class="d-flex gap-2 flex-wrap">
+                <div class="d-flex gap-2 flex-wrap mt-3">
 
-                    <a href="{% url 'my_report_detail' report.id %}" class="btn btn-primary btn-sm">
+                    <a href="{% url 'my_report_detail' report.id %}" class="btn btn-primary btn-sm report-view-btn">
                         View Report
                     </a>
 
-                    <a href="{% url 'edit_report' report.id %}" class="btn btn-outline-primary btn-sm">
+                    <a href="{% url 'edit_report' report.id %}" class="btn btn-outline-secondary btn-sm">
                         Edit
                     </a>
 
