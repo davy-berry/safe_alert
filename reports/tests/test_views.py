@@ -133,3 +133,28 @@ class ReportAccessTests(TestCase):
         response = self.client.get("/reports/admin/")
 
         self.assertEqual(response.status_code, 200)
+
+    def test_community_admin_can_update_report_status(self):
+        self.user.profile.role = UserProfile.COMMUNITY_ADMIN
+        self.user.profile.save()
+
+        self.client.login(
+            username="testuser",
+            password="TestPassword123!"
+        )
+
+        response = self.client.post(
+            f"/reports/admin/update/{self.report.id}/",
+            {
+                "status": "in_progress"
+            }
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+        self.report.refresh_from_db()
+
+        self.assertEqual(
+            self.report.status,
+            "in_progress"
+        )
