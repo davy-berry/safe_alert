@@ -195,6 +195,42 @@ main {
     border-color: #0C7779;
 }
 
+/* My Reports Pages */
+
+.my-report-card {
+    border: 1px solid #D9E7EA;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: var(--safealert-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.my-report-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(18, 48, 74, 0.1);
+}
+
+.my-report-card .card-body {
+    padding: 1.25rem;
+}
+
+.my-report-card .card-title {
+    color: var(--safealert-primary);
+    font-weight: 700;
+}
+
+.my-report-card .report-description {
+    color: var(--safealert-muted);
+}
+
+.my-report-card .report-meta {
+    font-size: 0.9rem;
+}
+
+.my-report-card .report-meta strong {
+    color: var(--safealert-primary);
+}
+
 /* Report Page Header */
 
 .report-page-header {
