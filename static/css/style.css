@@ -186,6 +186,8 @@ main {
     background-color: var(--safealert-secondary);
     border-color: var(--safealert-secondary);
     color: white;
+    padding: 0.6rem 1.25rem;
+    font-weight: 600;
 }
 
 .home-cta .btn-primary:hover {
