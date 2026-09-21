@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-    SafeAlert | Community Safety
+SafeAlert | Community Safety
 {% endblock %}
 
 {% block content %}
@@ -42,35 +42,23 @@
 
                     {% if user.is_authenticated %}
 
-                        <a
-                            href="{% url 'create_report' %}"
-                            class="btn btn-primary btn-lg"
-                        >
-                            Report an Issue
-                        </a>
+                    <a href="{% url 'create_report' %}" class="btn btn-primary btn-lg">
+                        Report an Issue
+                    </a>
 
-                        <a
-                            href="{% url 'my_reports' %}"
-                            class="btn btn-outline-primary btn-lg"
-                        >
-                            My Reports
-                        </a>
+                    <a href="{% url 'my_reports' %}" class="btn btn-outline-primary btn-lg">
+                        My Reports
+                    </a>
 
                     {% else %}
 
-                        <a
-                            href="{% url 'account_login' %}"
-                            class="btn btn-primary btn-lg"
-                        >
-                            Report an Issue
-                        </a>
+                    <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg">
+                        Report an Issue
+                    </a>
 
-                        <a
-                            href="{% url 'account_signup' %}"
-                            class="btn btn-outline-primary btn-lg"
-                        >
-                            Create an Account
-                        </a>
+                    <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-lg">
+                        Create an Account
+                    </a>
 
                     {% endif %}
 
@@ -96,9 +84,7 @@
 
                             <div class="process-icon me-3">
 
-                                <span
-                                    class="badge rounded-circle text-bg-primary p-2"
-                                >
+                                <span class="badge rounded-circle text-bg-primary p-2">
                                     1
                                 </span>
 
@@ -124,9 +110,7 @@
 
                             <div class="process-icon me-3">
 
-                                <span
-                                    class="badge rounded-circle text-bg-primary p-2"
-                                >
+                                <span class="badge rounded-circle text-bg-primary p-2">
                                     2
                                 </span>
 
@@ -152,9 +136,7 @@
 
                             <div class="process-icon me-3">
 
-                                <span
-                                    class="badge rounded-circle text-bg-primary p-2"
-                                >
+                                <span class="badge rounded-circle text-bg-primary p-2">
                                     3
                                 </span>
 
@@ -214,18 +196,18 @@
 
             <div class="col-12 col-sm-6 col-lg-3">
 
-<div class="category-card">
-    <div class="category-icon mb-3">
-        <i class="bi bi-car-front"></i>
-    </div>
+                <div class="category-card">
+                    <div class="category-icon mb-3">
+                        <i class="bi bi-car-front"></i>
+                    </div>
 
-    <h5>Road Safety</h5>
+                    <h5>Road Safety</h5>
 
-    <p>
-        Report potholes, dangerous junctions,
-        damaged road signs and other road hazards.
-    </p>
-</div>
+                    <p>
+                        Report potholes, dangerous junctions,
+                        damaged road signs and other road hazards.
+                    </p>
+                </div>
 
             </div>
 
@@ -234,18 +216,18 @@
 
             <div class="col-12 col-sm-6 col-lg-3">
 
-<div class="category-card">
-    <div class="category-icon mb-3">
-        <i class="bi bi-lightbulb"></i>
-    </div>
+                <div class="category-card">
+                    <div class="category-icon mb-3">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
 
-    <h5>Street Lighting</h5>
+                    <h5>Street Lighting</h5>
 
-    <p>
-        Report broken, damaged or inadequate
-        street lighting.
-    </p>
-</div>
+                    <p>
+                        Report broken, damaged or inadequate
+                        street lighting.
+                    </p>
+                </div>
 
             </div>
 
@@ -255,20 +237,15 @@
             <div class="col-12 col-sm-6 col-lg-3">
 
                 <div class="category-card">
-
-                    <div class="card-body">
-
-                        <h3 class="h5">
-                            Crime & Security
-                        </h3>
-
-                        <p class="text-muted mb-0">
-                            Report community concerns relating to
-                            security and public safety.
-                        </p>
-
+                    <div class="category-icon mb-3">
+                        <i class="bi bi-shield-exclamation"></i>
                     </div>
 
+                    <h5>Crime & Security</h5>
+
+                    <p>
+                        Report community concerns relating to security and public safety.
+                    </p>
                 </div>
 
             </div>
@@ -279,20 +256,15 @@
             <div class="col-12 col-sm-6 col-lg-3">
 
                 <div class="category-card">
-
-                    <div class="card-body">
-
-                        <h3 class="h5">
-                            Environmental
-                        </h3>
-
-                        <p class="text-muted mb-0">
-                            Report environmental hazards affecting
-                            the local community.
-                        </p>
-
+                    <div class="category-icon mb-3">
+                        <i class="bi bi-tree"></i>
                     </div>
 
+                    <h5>Environmental</h5>
+
+                    <p>
+                        Report environmental hazards affecting the local community.
+                    </p>
                 </div>
 
             </div>
@@ -303,20 +275,15 @@
             <div class="col-12 col-sm-6 col-lg-3">
 
                 <div class="category-card">
-
-                    <div class="card-body">
-
-                        <h3 class="h5">
-                            Pedestrian Safety
-                        </h3>
-
-                        <p class="text-muted mb-0">
-                            Report hazards affecting pedestrians and
-                            public spaces.
-                        </p>
-
+                    <div class="category-icon mb-3">
+                        <i class="bi bi-person-walking"></i>
                     </div>
 
+                    <h5>Pedestrian Safety</h5>
+
+                    <p>
+                        Report hazards affecting pedestrians and public spaces.
+                    </p>
                 </div>
 
             </div>
@@ -327,20 +294,15 @@
             <div class="col-12 col-sm-6 col-lg-3">
 
                 <div class="category-card">
-
-                    <div class="card-body">
-
-                        <h3 class="h5">
-                            School Safety
-                        </h3>
-
-                        <p class="text-muted mb-0">
-                            Report safety concerns around schools and
-                            educational areas.
-                        </p>
-
+                    <div class="category-icon mb-3">
+                        <i class="bi bi-mortarboard"></i>
                     </div>
 
+                    <h5>School Safety</h5>
+
+                    <p>
+                        Report safety concerns around schools and educational areas.
+                    </p>
                 </div>
 
             </div>
@@ -351,20 +313,15 @@
             <div class="col-12 col-sm-6 col-lg-3">
 
                 <div class="category-card">
-
-                    <div class="card-body">
-
-                        <h3 class="h5">
-                            Property Hazards
-                        </h3>
-
-                        <p class="text-muted mb-0">
-                            Report hazards involving buildings,
-                            structures or property.
-                        </p>
-
+                    <div class="category-icon mb-3">
+                        <i class="bi bi-house-exclamation"></i>
                     </div>
 
+                    <h5>Property Hazard</h5>
+
+                    <p>
+                        Report hazards involving buildings, structures or property.
+                    </p>
                 </div>
 
             </div>
@@ -375,20 +332,15 @@
             <div class="col-12 col-sm-6 col-lg-3">
 
                 <div class="category-card">
-
-                    <div class="card-body">
-
-                        <h3 class="h5">
-                            Other
-                        </h3>
-
-                        <p class="text-muted mb-0">
-                            Report other community safety concerns
-                            that do not fit another category.
-                        </p>
-
+                    <div class="category-icon mb-3">
+                        <i class="bi bi-three-dots"></i>
                     </div>
 
+                    <h5>Other</h5>
+
+                    <p>
+                        Report other community safety concerns that do not fit another category.
+                    </p>
                 </div>
 
             </div>
@@ -422,21 +374,15 @@
 
                 {% if user.is_authenticated %}
 
-                    <a
-                        href="{% url 'create_report' %}"
-                        class="btn btn-primary"
-                    >
-                        Report an Issue
-                    </a>
+                <a href="{% url 'create_report' %}" class="btn btn-primary">
+                    Report an Issue
+                </a>
 
                 {% else %}
 
-                    <a
-                        href="{% url 'account_signup' %}"
-                        class="btn btn-primary"
-                    >
-                        Get Started
-                    </a>
+                <a href="{% url 'account_signup' %}" class="btn btn-primary">
+                    Get Started
+                </a>
 
                 {% endif %}
 

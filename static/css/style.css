@@ -141,6 +141,46 @@ main {
     color: var(--safealert-muted);
 }
 
+/* Final Call To Action */
+
+.home-cta {
+    background: linear-gradient(
+        135deg,
+        var(--safealert-primary),
+        #1b4965
+    );
+    color: white;
+    border-radius: 1rem;
+}
+
+.home-cta h2 {
+    font-weight: 700;
+}
+
+.home-cta p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.home-cta .btn-primary {
+    background-color: var(--safealert-secondary);
+    border-color: var(--safealert-secondary);
+}
+
+.home-cta .btn-primary:hover {
+    background-color: #0c7779;
+    border-color: #0c7779;
+}
+
+.home-cta .btn-success {
+    background-color: var(--safealert-accent);
+    border-color: var(--safealert-accent);
+}
+
+.home-cta .btn-success:hover {
+    background-color: #267449;
+    border-color: #267449;
+}
+
 /* Heatmap */
 
 #map {
