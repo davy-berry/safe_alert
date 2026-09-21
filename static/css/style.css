@@ -195,6 +195,24 @@ main {
     border-color: #0C7779;
 }
 
+/* Report Page Header */
+
+.report-page-header {
+    padding: 0.5rem 0;
+}
+
+.report-page-header h1 {
+    color: var(--safealert-primary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.report-page-header p {
+    color: var(--safealert-muted);
+    margin-bottom: 0;
+    max-width: 700px;
+}
+
 /* SafeAlert Report Form */
 
 .report-form-card {
