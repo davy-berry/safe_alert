@@ -249,6 +249,66 @@ main {
     max-width: 700px;
 }
 
+/* Report status and priority badges */
+
+.report-badge {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.priority-low {
+    background-color: #E8F5EE;
+    color: #2E8B57;
+}
+
+.priority-medium {
+    background-color: #FFF4D6;
+    color: #856404;
+}
+
+.priority-high {
+    background-color: #FCE8D8;
+    color: #9A4D00;
+}
+
+.priority-critical {
+    background-color: #F8D7DA;
+    color: #842029;
+}
+
+.status-reported {
+    background-color: #EAF3F5;
+    color: var(--safealert-primary);
+}
+
+.status-under-review {
+    background-color: #E8F1FA;
+    color: #315A7D;
+}
+
+.status-in-progress {
+    background-color: #E0F2F1;
+    color: #00695C;
+}
+
+.status-resolved {
+    background-color: #E8F5EE;
+    color: #2E8B57;
+}
+
+.status-confirmed {
+    background-color: #E8F5EE;
+    color: #267449;
+}
+
+.status-rejected {
+    background-color: #F8D7DA;
+    color: #842029;
+}
+
 /* SafeAlert Report Form */
 
 .report-form-card {
