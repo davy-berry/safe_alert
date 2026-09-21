@@ -66,22 +66,22 @@ My Reports | SafeAlert
                         {{ report.get_status_display }}
                     </p>
 
-                    <!-- Report Actions -->
-                    <div class="d-flex gap-2 flex-wrap">
+                </div>
 
-                        <a href="{% url 'my_report_detail' report.id %}" class="btn btn-primary btn-sm">
-                            View Report
-                        </a>
+                <!-- Report Actions -->
+                <div class="d-flex gap-2 flex-wrap">
 
-                        <a href="{% url 'edit_report' report.id %}" class="btn btn-outline-primary btn-sm">
-                            Edit
-                        </a>
+                    <a href="{% url 'my_report_detail' report.id %}" class="btn btn-primary btn-sm">
+                        View Report
+                    </a>
 
-                        <a href="{% url 'delete_report' report.id %}" class="btn btn-outline-danger btn-sm">
-                            Delete
-                        </a>
+                    <a href="{% url 'edit_report' report.id %}" class="btn btn-outline-primary btn-sm">
+                        Edit
+                    </a>
 
-                    </div>
+                    <a href="{% url 'delete_report' report.id %}" class="btn btn-outline-danger btn-sm">
+                        Delete
+                    </a>
 
                 </div>
 
@@ -89,26 +89,28 @@ My Reports | SafeAlert
 
         </div>
 
-        {% endfor %}
-
     </div>
 
-    {% else %}
+    {% endfor %}
 
-    <div class="text-center py-5">
+</div>
 
-        <h2>No reports yet</h2>
+{% else %}
 
-        <p class="text-muted">
-            You haven't submitted any safety reports.
-        </p>
+<div class="text-center py-5">
 
-        <a href="{% url 'create_report' %}" class="btn btn-primary">
-            Submit Your First Report
-        </a>
+    <h2>No reports yet</h2>
 
-    </div>
+    <p class="text-muted">
+        You haven't submitted any safety reports.
+    </p>
 
-    {% endif %}
+    <a href="{% url 'create_report' %}" class="btn btn-primary">
+        Submit Your First Report
+    </a>
 
-    {% endblock %}
+</div>
+
+{% endif %}
+
+{% endblock %}
