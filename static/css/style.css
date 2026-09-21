@@ -31,7 +31,6 @@ body {
 }
 
 .home-hero h1 {
-    color: var(--safealert-primary);
     font-size: 3.5rem;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -278,6 +277,8 @@ main {
     object-fit: cover;
 }
 
+/* Media Query */
+
 @media (max-width: 576px) {
     #map {
         height: 500px;
@@ -291,5 +292,11 @@ main {
 
     .heatmap-gradient {
         width: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-hero h1 {
+        font-size: 2.5rem;
     }
 }
