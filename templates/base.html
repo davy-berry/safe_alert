@@ -38,10 +38,7 @@
 
             <!-- Brand -->
             <a class="navbar-brand fw-bold" href="{% url 'home' %}">
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="{% static 'images/safealert-navbar-logo.png' %}" alt="SafeAlert 2.0"
-                        class="safealert-logo">
-                </a>
+                SafeAlert
             </a>
 
             <!-- Mobile menu button -->
@@ -113,12 +110,19 @@
 
                     {% if user.is_authenticated %}
 
-                    <!-- Username -->
+                    <!-- Username / Django Admin -->
                     <li class="nav-item">
+                        {% if user.is_superuser %}
+                        <a class="nav-link" href="{% url 'admin:index' %}" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-person-circle me-1"></i>
+                            {{ user.username }}
+                        </a>
+                        {% else %}
                         <span class="nav-link">
                             <i class="bi bi-person-circle me-1"></i>
                             {{ user.username }}
                         </span>
+                        {% endif %}
                     </li>
 
                     <!-- Logout -->
