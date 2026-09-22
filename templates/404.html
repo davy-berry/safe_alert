@@ -12,16 +12,8 @@ Page Not Found | SafeAlert
     <div class="text-center py-5">
 
         <div class="mb-4">
-            <img src="{% static 'images/safealert-404.png' %}" alt="SafeAlert" style="max-width: 600px;">
+            <img src="{% static 'images/safealert-404.png' %}" alt="Page not found" class="img-fluid" style="max-width: 600px;">
         </div>
-
-        <!-- This Temporary text for 404 page -->
-
-        <!--  
-        <h1 class="display-1 fw-bold">404</h1>
-
-        <h2 class="mb-3">Page Not Found</h2>
-        -->
 
         <p class="text-muted mb-4">
             Sorry, the page or report you are looking for could not be found.
@@ -29,12 +21,12 @@ Page Not Found | SafeAlert
 
         <div class="d-flex justify-content-center gap-2 flex-wrap">
 
-            <a href="{% url 'home' %}" class="btn btn-primary">
+            <a href="{% url 'home' %}" class="btn btn-safealert">
                 Back to Home
             </a>
 
             {% if user.is_authenticated %}
-            <a href="{% url 'my_reports' %}" class="btn btn-outline-primary">
+            <a href="{% url 'my_reports' %}" class="btn btn-outline-secondary">
                 My Reports
             </a>
             {% endif %}
