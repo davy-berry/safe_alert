@@ -42,21 +42,21 @@ SafeAlert | Community Safety
 
                     {% if user.is_authenticated %}
 
-                    <a href="{% url 'create_report' %}" class="btn btn-primary btn-lg">
+                    <a href="{% url 'create_report' %}" class="btn btn-safealert btn-lg">
                         Report an Issue
                     </a>
 
-                    <a href="{% url 'my_reports' %}" class="btn btn-outline-primary btn-lg">
+                    <a href="{% url 'my_reports' %}" class="btn btn-outline-secondary btn-lg">
                         My Reports
                     </a>
 
                     {% else %}
 
-                    <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg">
+                    <a href="{% url 'account_login' %}" class="btn btn-safealert btn-lg">
                         Report an Issue
                     </a>
 
-                    <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-lg">
+                    <a href="{% url 'account_signup' %}" class="btn btn-outline-secondary btn-lg">
                         Create an Account
                     </a>
 
@@ -371,13 +371,13 @@ SafeAlert | Community Safety
 
             {% if user.is_authenticated %}
 
-            <a href="{% url 'create_report' %}" class="btn btn-primary">
+            <a href="{% url 'create_report' %}" class="btn btn-safealert">
                 Report an Issue
             </a>
 
             {% else %}
 
-            <a href="{% url 'account_signup' %}" class="btn btn-primary">
+            <a href="{% url 'account_signup' %}" class="btn btn-safealert">
                 Get Started
             </a>
 

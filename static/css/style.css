@@ -235,18 +235,6 @@ main {
     margin-bottom: 0;
 }
 
-.report-new-btn {
-    background-color: var(--safealert-secondary);
-    border-color: var(--safealert-secondary);
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.report-new-btn:hover {
-    background-color: #0C7779;
-    border-color: #0C7779;
-}
-
 .my-report-card {
     border: 1px solid #D9E7EA;
     border-radius: 1rem;
@@ -359,18 +347,6 @@ main {
     color: #842029;
 }
 
-/* Report actions */
-
-.report-view-btn {
-    background-color: var(--safealert-secondary);
-    border-color: var(--safealert-secondary);
-    font-weight: 600;
-}
-
-.report-view-btn:hover {
-    background-color: #0C7779;
-    border-color: #0C7779;
-}
 
 /* SafeAlert Report Form */
 
@@ -408,20 +384,6 @@ main {
     resize: vertical;
 }
 
-/* Report form actions */
-
-.report-submit-btn {
-    background-color: var(--safealert-secondary);
-    border-color: var(--safealert-secondary);
-    color: white;
-    font-weight: 600;
-    padding: 0.6rem 1.25rem;
-}
-
-.report-submit-btn:hover {
-    background-color: #0C7779;
-    border-color: #0C7779;
-}
 
 /* Empty My Reports state */
 
