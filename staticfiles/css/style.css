@@ -1,7 +1,80 @@
-body {
-    background-color: #f8f9fa;
+:root {
+    --safealert-primary: #12304A;
+    --safealert-secondary: #0F8B8D;
+    --safealert-accent: #2E8B57;
+    --safealert-background: #F4F8FA;
+    --safealert-card: #FFFFFF;
+    --safealert-text: #263238;
+    --safealert-muted: #607D8B;
+    --safealert-border: #D9E7EA;
 }
 
+
+body {
+    background-color: var(--safealert-background);
+    color: var(--safealert-text);
+}
+
+/* SafeAlert Navbar */
+
+.navbar {
+    background-color: var(--safealert-primary) !important;
+}
+
+/* Button Safealert */
+.btn-safealert {
+    background-color: var(--safealert-secondary);
+    border-color: var(--safealert-secondary);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-safealert:hover {
+    background-color: #0C7779;
+    border-color: #0C7779;
+    color: white;
+}
+
+.safealert-icon {
+    color: var(--safealert-secondary);
+}
+
+/*  SafeAlert Home Page */
+
+.home-hero {
+    background: #EAF3F5;
+    color: var(--safealert-text);
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--safealert-border);
+}
+
+.home-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.home-hero p {
+    color: var(--safealert-muted);
+}
+
+/* Highlighted part of the main heading */
+.home-hero .hero-highlight {
+    color: var(--safealert-secondary);
+}
+
+/* Community Safety Platform badge */
+.home-hero .hero-badge {
+    display: inline-block;
+    background-color: var(--safealert-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+}
+
+/* Main Section*/
 main {
     min-height: 70vh;
 }
@@ -10,11 +83,333 @@ main {
     letter-spacing: 0.5px;
 }
 
+/* How SafeAlert Works */
+
+.process-card {
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--safealert-card);
+    box-shadow: 0 4px 15px rgba(18, 48, 74, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.process-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(18, 48, 74, 0.12);
+}
+
+.process-icon {
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--safealert-secondary);
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.process-card h3 {
+    color: var(--safealert-primary);
+    font-weight: 600;
+}
+
+.process-card p {
+    color: var(--safealert-muted);
+}
+
+/* Report Categories */
+
+.category-card {
+    background-color: var(--safealert-card);
+    border: 1px solid #e3eaee;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(18, 48, 74, 0.1);
+    border-color: var(--safealert-secondary);
+}
+
+.category-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background-color: rgba(15, 139, 141, 0.1);
+    color: var(--safealert-secondary);
+    font-size: 1.25rem;
+}
+
+.category-card h3,
+.category-card h5 {
+    color: var(--safealert-primary);
+    font-weight: 600;
+}
+
+.category-card p {
+    color: var(--safealert-muted);
+}
+
+/* Final Call To Action */
+
+.home-cta {
+    background-color: var(--safealert-primary);
+    color: white;
+    border-radius: 1rem;
+}
+
+.home-cta h2 {
+    color: white;
+    font-weight: 700;
+}
+
+.home-cta p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* My Reports Pages */
+
+/*  My Reports Header */
+
+.my-reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.my-reports-header h1 {
+    margin-bottom: 0.25rem;
+}
+
+.my-reports-header p {
+    margin-bottom: 0;
+}
+
+.my-report-card {
+    border: 1px solid var(--safealert-border);
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: var(--safealert-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.my-report-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(18, 48, 74, 0.1);
+}
+
+.my-report-card .card-body {
+    padding: 1.25rem;
+}
+
+.my-report-card .card-title {
+    color: var(--safealert-primary);
+    font-weight: 700;
+}
+
+.my-report-card .report-description {
+    color: var(--safealert-muted);
+}
+
+.my-report-card .report-meta {
+    font-size: 0.9rem;
+}
+
+.my-report-card .report-meta strong {
+    color: var(--safealert-primary);
+}
+
+/* Report Page Header */
+
+.report-page-header {
+    padding: 0.5rem 0;
+}
+
+.report-page-header h1 {
+    color: var(--safealert-primary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.report-page-header p {
+    color: var(--safealert-muted);
+    margin-bottom: 0;
+    max-width: 700px;
+}
+
+/* Report status and priority badges */
+
+.report-badge {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.priority-low {
+    background-color: #E8F5EE;
+    color: #2E8B57;
+}
+
+.priority-medium {
+    background-color: #FFF4D6;
+    color: #856404;
+}
+
+.priority-high {
+    background-color: #FCE8D8;
+    color: #9A4D00;
+}
+
+.priority-critical {
+    background-color: #F8D7DA;
+    color: #842029;
+}
+
+.status-reported {
+    background-color: #EAF3F5;
+    color: var(--safealert-primary);
+}
+
+.status-under_review {
+    background-color: #E8F1FA;
+    color: #315A7D;
+}
+
+.status-in_progress {
+    background-color: #E0F2F1;
+    color: #00695C;
+}
+
+.status-resolved {
+    background-color: #E8F5EE;
+    color: #2E8B57;
+}
+
+.status-confirmed {
+    background-color: #E0F2F1;
+    color: #267449;
+}
+
+.status-rejected {
+    background-color: #F8D7DA;
+    color: #842029;
+}
+
+
+/* SafeAlert Report Form */
+
+.report-form-card {
+    border: 1px solid var(--safealert-border);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.report-form-card .form-label {
+    color: var(--safealert-primary);
+    font-weight: 600;
+}
+
+.report-form-card input:not([type="hidden"]),
+.report-form-card textarea,
+.report-form-card select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--safealert-border);
+    border-radius: 0.5rem;
+    background-color: var(--safealert-card);
+}
+
+.report-form-card input:not([type="hidden"]):focus,
+.report-form-card textarea:focus,
+.report-form-card select:focus {
+    outline: none;
+    border-color: var(--safealert-secondary);
+    box-shadow: 0 0 0 0.2rem rgba(15, 139, 141, 0.15);
+}
+
+.report-form-card textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+
+/* Empty My Reports state */
+
+.my-reports-empty {
+    padding: 4rem 1rem;
+}
+
+.empty-report-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(15, 139, 141, 0.1);
+    color: var(--safealert-secondary);
+    font-size: 1.5rem;
+}
+
+.my-reports-empty h2 {
+    color: var(--safealert-primary);
+    font-weight: 700;
+}
+
+.my-reports-empty p {
+    color: var(--safealert-muted);
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+}
+
+/* Form sections */
+
+.form-section {
+    padding: 1.5rem;
+    border: 1px solid #E1EAED;
+    border-radius: 0.75rem;
+    background-color: #FAFCFD;
+}
+
+.form-section + .form-section {
+    margin-top: 1.5rem;
+}
+
+.form-section-title {
+    color: var(--safealert-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.form-section-description {
+    color: var(--safealert-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
 /* Heatmap */
 
 #map {
-    height: 600px;
+    height: 450px;
     width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid var(--safealert-border);
+    overflow: hidden;
 }
 
 .map-container {
@@ -26,7 +421,7 @@ main {
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-    background: white;
+    background: var(--safealert-card);
     padding: 15px;
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -61,8 +456,8 @@ main {
 
 .account-form input:focus {
     outline: none;
-    border-color: #86b7fe;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: var(--safealert-secondary);
+    box-shadow: 0 0 0 0.2rem rgba(15, 139, 141, 0.15);
 }
 
 /* Admin reports DataTable */
@@ -82,7 +477,16 @@ main {
     object-fit: cover;
 }
 
+/* Media Query */
+
+@media (max-width: 768px) {
+    .home-hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
 @media (max-width: 576px) {
+
     #map {
         height: 500px;
     }
@@ -95,5 +499,10 @@ main {
 
     .heatmap-gradient {
         width: 140px;
+    }
+
+    .my-reports-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
