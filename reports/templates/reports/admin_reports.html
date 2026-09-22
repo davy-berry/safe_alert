@@ -241,19 +241,17 @@ Admin Reports | SafeAlert
 
                         </td>
 
-
                         <!-- Actions -->
 
                         <td class="text-end">
-
                             <div class="d-flex justify-content-end gap-2">
 
-                                <a href="{% url 'report_detail' report.id %}" class="btn btn-outline-dark btn-sm">
+                                <a href="{% url 'report_detail' report.id %}" class="btn btn-safealert btn-sm">
                                     View Details
                                 </a>
 
                                 <a href="{% url 'update_report_status' report.id %}"
-                                    class="btn btn-outline-primary btn-sm">
+                                    class="btn btn-outline-secondary btn-sm">
                                     Update Status
                                 </a>
 
@@ -263,7 +261,6 @@ Admin Reports | SafeAlert
                                 </a>
 
                             </div>
-
                         </td>
 
                     </tr>
@@ -285,19 +282,17 @@ Admin Reports | SafeAlert
 
 <!-- No Reports -->
 
-<div class="card shadow-sm">
+<div class="my-reports-empty text-center">
 
-    <div class="card-body text-center py-5">
-
-        <h2 class="h4">
-            No reports available
-        </h2>
-
-        <p class="text-muted mb-0">
-            There are currently no community safety reports to review.
-        </p>
-
+    <div class="empty-report-icon">
+        <i class="bi bi-clipboard-check"></i>
     </div>
+
+    <h2>No reports available</h2>
+
+    <p>
+        There are currently no community safety reports to review.
+    </p>
 
 </div>
 
