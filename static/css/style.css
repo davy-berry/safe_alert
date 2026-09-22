@@ -330,12 +330,12 @@ main {
     color: var(--safealert-primary);
 }
 
-.status-under-review {
+.status-under_review {
     background-color: #E8F1FA;
     color: #315A7D;
 }
 
-.status-in-progress {
+.status-in_progress {
     background-color: #E0F2F1;
     color: #00695C;
 }

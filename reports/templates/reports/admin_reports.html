@@ -224,43 +224,9 @@ Admin Reports | SafeAlert
 
                         <td>
 
-                            {% if report.status == "reported" %}
-
-                            <span class="badge text-bg-primary">
+                            <span class="report-badge status-{{ report.status }}">
                                 {{ report.get_status_display }}
                             </span>
-
-                            {% elif report.status == "under_review" %}
-
-                            <span class="badge text-bg-info">
-                                {{ report.get_status_display }}
-                            </span>
-
-                            {% elif report.status == "in_progress" %}
-
-                            <span class="badge text-bg-warning">
-                                {{ report.get_status_display }}
-                            </span>
-
-                            {% elif report.status == "resolved" %}
-
-                            <span class="badge text-bg-success">
-                                {{ report.get_status_display }}
-                            </span>
-
-                            {% elif report.status == "confirmed" %}
-
-                            <span class="badge text-bg-success">
-                                {{ report.get_status_display }}
-                            </span>
-
-                            {% elif report.status == "rejected" %}
-
-                            <span class="badge text-bg-secondary">
-                                {{ report.get_status_display }}
-                            </span>
-
-                            {% endif %}
 
                         </td>
 
