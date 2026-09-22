@@ -9,6 +9,13 @@
 
     <meta name="description" content="SafeAlert is a community safety reporting and intelligence platform.">
 
+    <!-- SafeAlert favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/safealert-favicon-32.png' %}">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/safealert-favicon-16.png' %}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/safealert-favicon-180.png' %}">
+
     <title>
         {% block title %}SafeAlert{% endblock %}
     </title>
@@ -31,7 +38,10 @@
 
             <!-- Brand -->
             <a class="navbar-brand fw-bold" href="{% url 'home' %}">
-                SafeAlert
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'images/safealert-navbar-logo.png' %}" alt="SafeAlert 2.0"
+                        class="safealert-logo">
+                </a>
             </a>
 
             <!-- Mobile menu button -->
