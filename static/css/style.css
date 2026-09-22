@@ -34,6 +34,10 @@ body {
     color: white;
 }
 
+.safealert-icon {
+    color: var(--safealert-secondary);
+}
+
 /*  SafeAlert Home Page */
 
 .home-hero {
