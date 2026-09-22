@@ -6,6 +6,7 @@
     --safealert-card: #FFFFFF;
     --safealert-text: #263238;
     --safealert-muted: #607D8B;
+    --safealert-border: #D9E7EA;
 }
 
 
@@ -45,7 +46,7 @@ body {
     color: var(--safealert-text);
     border-radius: 1rem;
     overflow: hidden;
-    border: 1px solid #D9E7EA;
+    border: 1px solid var(--safealert-border)
 }
 
 .home-hero h1 {
@@ -71,18 +72,6 @@ body {
     font-weight: 600;
     padding: 0.4rem 0.75rem;
     border-radius: 0.5rem;
-}
-
-/* Secondary action */
-.home-hero .btn-outline-primary {
-    color: var(--safealert-primary);
-    border-color: var(--safealert-primary);
-}
-
-.home-hero .btn-outline-primary:hover {
-    background-color: var(--safealert-primary);
-    border-color: var(--safealert-primary);
-    color: white;
 }
 
 /* Main Section*/
@@ -200,18 +189,15 @@ main {
 }
 
 .my-reports-header h1 {
-    color: var(--safealert-primary);
-    font-weight: 700;
     margin-bottom: 0.25rem;
 }
 
 .my-reports-header p {
-    color: var(--safealert-muted);
     margin-bottom: 0;
 }
 
 .my-report-card {
-    border: 1px solid #D9E7EA;
+    border: 1px solid var(--safealert-border);
     border-radius: 1rem;
     overflow: hidden;
     background-color: var(--safealert-card);
@@ -269,7 +255,6 @@ main {
     padding: 0.3rem 0.6rem;
     border-radius: 0.4rem;
     font-size: 0.8rem;
-    font-weight: 600;
 }
 
 .priority-low {
@@ -326,7 +311,7 @@ main {
 /* SafeAlert Report Form */
 
 .report-form-card {
-    border: 1px solid #D9E7EA;
+    border: 1px solid var(--safealert-border);
     border-radius: 1rem;
     overflow: hidden;
 }
@@ -341,7 +326,7 @@ main {
 .report-form-card select {
     width: 100%;
     padding: 0.6rem 0.75rem;
-    border: 1px solid #D9E7EA;
+    border: 1px solid var(--safealert-border);
     border-radius: 0.5rem;
     background-color: var(--safealert-card);
 }
@@ -422,7 +407,7 @@ main {
     height: 450px;
     width: 100%;
     border-radius: 0.75rem;
-    border: 1px solid #D9E7EA;
+    border: 1px solid var(--safealert-border);
     overflow: hidden;
 }
 
@@ -493,7 +478,14 @@ main {
 
 /* Media Query */
 
+@media (max-width: 768px) {
+    .home-hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
 @media (max-width: 576px) {
+
     #map {
         height: 500px;
     }
@@ -507,19 +499,9 @@ main {
     .heatmap-gradient {
         width: 140px;
     }
-}
-
-@media (max-width: 768px) {
-    .home-hero h1 {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 576px) {
 
     .my-reports-header {
         flex-direction: column;
         align-items: flex-start;
     }
-
 }
