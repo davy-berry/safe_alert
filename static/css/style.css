@@ -20,6 +20,20 @@ body {
     background-color: var(--safealert-primary) !important;
 }
 
+/* Button Safealert */
+.btn-safealert {
+    background-color: var(--safealert-secondary);
+    border-color: var(--safealert-secondary);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-safealert:hover {
+    background-color: #0C7779;
+    border-color: #0C7779;
+    color: white;
+}
+
 /*  SafeAlert Home Page */
 
 .home-hero {
