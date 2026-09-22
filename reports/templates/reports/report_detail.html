@@ -244,7 +244,7 @@
 
             <div class="card-body p-4">
 
-                <h2 class="h4 mb-3">
+                <h2 class="h4 fw-bold mb-3">
                     Status History
                 </h2>
 
@@ -254,16 +254,15 @@
                 <div class="border-bottom pb-3 mb-3">
 
                     <p class="mb-1">
-
-                        <strong>
+                        <span class="report-badge status-{{ history.previous_status }}">
                             {{ history.get_previous_status_display }}
-                        </strong>
+                        </span>
 
-                        &rarr;
+                        <span class="mx-1">&rarr;</span>
 
-                        <strong>
+                        <span class="report-badge status-{{ history.new_status }}">
                             {{ history.get_new_status_display }}
-                        </strong>
+                        </span>
 
                     </p>
 
@@ -309,11 +308,8 @@
                 <h2 class="h4 mb-4">
                     Report Summary
                 </h2>
-
-
                 <!-- Risk -->
                 <div class="mb-4">
-
                     <p class="text-muted mb-1">
                         Risk Score
                     </p>
@@ -321,91 +317,28 @@
                     <p class="display-6 mb-0">
                         {{ report.risk_score }}/100
                     </p>
-
                 </div>
-
 
                 <!-- Priority -->
                 <div class="mb-4">
-
                     <p class="text-muted mb-1">
                         Priority
                     </p>
 
-                    {% if report.priority == "low" %}
-
-                    <span class="badge text-bg-success fs-6">
-                        Low
+                    <span class="report-badge priority-{{ report.priority }}">
+                        {{ report.get_priority_display }}
                     </span>
-
-                    {% elif report.priority == "medium" %}
-
-                    <span class="badge text-bg-warning fs-6">
-                        Medium
-                    </span>
-
-                    {% elif report.priority == "high" %}
-
-                    <span class="badge text-bg-danger fs-6">
-                        High
-                    </span>
-
-                    {% elif report.priority == "critical" %}
-
-                    <span class="badge text-bg-dark fs-6">
-                        Critical
-                    </span>
-
-                    {% endif %}
-
                 </div>
-
 
                 <!-- Status -->
                 <div>
-
                     <p class="text-muted mb-1">
                         Current Status
                     </p>
 
-                    {% if report.status == "reported" %}
-
-                    <span class="badge text-bg-primary fs-6">
+                    <span class="report-badge status-{{ report.status }}">
                         {{ report.get_status_display }}
                     </span>
-
-                    {% elif report.status == "under_review" %}
-
-                    <span class="badge text-bg-info fs-6">
-                        {{ report.get_status_display }}
-                    </span>
-
-                    {% elif report.status == "in_progress" %}
-
-                    <span class="badge text-bg-warning fs-6">
-                        {{ report.get_status_display }}
-                    </span>
-
-                    {% elif report.status == "resolved" %}
-
-                    <span class="badge text-bg-success fs-6">
-                        {{ report.get_status_display }}
-                    </span>
-
-                    {% elif report.status == "confirmed" %}
-
-                    <span class="badge text-bg-success fs-6">
-                        {{ report.get_status_display }}
-                    </span>
-
-                    {% elif report.status == "rejected" %}
-
-                    <span class="badge text-bg-secondary fs-6">
-                        {{ report.get_status_display }}
-                    </span>
-
-                    {% endif %}
-
                 </div>
 
             </div>
