@@ -73,18 +73,6 @@ body {
     border-radius: 0.5rem;
 }
 
-/* Primary action */
-.home-hero .btn-primary {
-    background-color: var(--safealert-secondary);
-    border-color: var(--safealert-secondary);
-    color: white;
-}
-
-.home-hero .btn-primary:hover {
-    background-color: #0C7779;
-    border-color: #0C7779;
-}
-
 /* Secondary action */
 .home-hero .btn-outline-primary {
     color: var(--safealert-primary);
@@ -198,19 +186,6 @@ main {
 
 .home-cta p {
     color: rgba(255, 255, 255, 0.85);
-}
-
-.home-cta .btn-primary {
-    background-color: var(--safealert-secondary);
-    border-color: var(--safealert-secondary);
-    color: white;
-    padding: 0.6rem 1.25rem;
-    font-weight: 600;
-}
-
-.home-cta .btn-primary:hover {
-    background-color: #0C7779;
-    border-color: #0C7779;
 }
 
 /* My Reports Pages */
@@ -368,7 +343,7 @@ main {
     padding: 0.6rem 0.75rem;
     border: 1px solid #D9E7EA;
     border-radius: 0.5rem;
-    background-color: #FFFFFF;
+    background-color: var(--safealert-card);
 }
 
 .report-form-card input:not([type="hidden"]):focus,
@@ -547,7 +522,4 @@ main {
         align-items: flex-start;
     }
 
-    .report-new-btn {
-        width: 100%;
-    }
 }

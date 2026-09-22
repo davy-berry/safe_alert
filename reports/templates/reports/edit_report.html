@@ -9,13 +9,6 @@ Edit Report | SafeAlert
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-<style>
-    #map {
-        height: 450px;
-        width: 100%;
-        border-radius: 0.5rem;
-    }
-</style>
 
 {% endblock %}
 
@@ -25,17 +18,15 @@ Edit Report | SafeAlert
 <div class="row justify-content-center">
 
     <div class="col-12 col-lg-9">
-
-        <div class="mb-4">
+        <div class="report-page-header mb-4">
             <h1>Edit Safety Report</h1>
 
-            <p class="text-muted">
+            <p>
                 Update the information about your safety report.
             </p>
         </div>
 
-
-        <div class="card shadow-sm">
+        <div class="card report-form-card shadow-sm">
 
             <div class="card-body p-4">
 
@@ -50,150 +41,174 @@ Edit Report | SafeAlert
                     </div>
                     {% endif %}
 
+                    <div class="form-section">
 
-                    <!-- Category -->
+                        <h2 class="form-section-title">
+                            Report information
+                        </h2>
 
-                    <div class="mb-3">
-
-                        <label for="{{ form.category.id_for_label }}" class="form-label">
-                            Category
-                        </label>
-
-                        {{ form.category }}
-
-                        {% if form.category.errors %}
-                        <div class="text-danger small">
-                            {{ form.category.errors }}
-                        </div>
-                        {% endif %}
-
-                    </div>
-
-
-                    <!-- Title -->
-
-                    <div class="mb-3">
-
-                        <label for="{{ form.title.id_for_label }}" class="form-label">
-                            Title
-                        </label>
-
-                        {{ form.title }}
-
-                        {% if form.title.errors %}
-                        <div class="text-danger small">
-                            {{ form.title.errors }}
-                        </div>
-                        {% endif %}
-
-                    </div>
-
-
-                    <!-- Description -->
-
-                    <div class="mb-3">
-
-                        <label for="{{ form.description.id_for_label }}" class="form-label">
-                            Description
-                        </label>
-
-                        {{ form.description }}
-
-                        {% if form.description.errors %}
-                        <div class="text-danger small">
-                            {{ form.description.errors }}
-                        </div>
-                        {% endif %}
-
-                    </div>
-
-
-                    <!-- Location -->
-
-                    <div class="mb-3">
-
-                        <label for="{{ form.location.id_for_label }}" class="form-label">
-                            Location
-                        </label>
-
-                        {{ form.location }}
-
-                        <div class="form-text">
-                            Update the location description if necessary.
-                        </div>
-
-                        {% if form.location.errors %}
-                        <div class="text-danger small">
-                            {{ form.location.errors }}
-                        </div>
-                        {% endif %}
-
-                    </div>
-
-
-                    <!-- Map -->
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Update map location
-                        </label>
-
-                        <p class="text-muted small">
-                            Click on the map to move the marker.
+                        <p class="form-section-description">
+                            Update the details of your safety report.
                         </p>
+                        <!-- Category -->
 
-                        <div id="map" data-stadia-api-key="{{ stadia_api_key }}"
-                            data-existing-latitude="{{ report.latitude|default:'' }}"
-                            data-existing-longitude="{{ report.longitude|default:'' }}">
-                        </div>
-
-                    </div>
-
-
-                    <!-- Hidden coordinates -->
-
-                    {{ form.latitude }}
-                    {{ form.longitude }}
-
-
-                    <!-- Image -->
-
-                    <div class="mb-4">
-
-                        <label for="{{ form.image.id_for_label }}" class="form-label">
-                            Image
-                        </label>
-
-                        {% if report.image %}
                         <div class="mb-3">
 
-                            <p class="small text-muted">
-                                Current image:
-                            </p>
+                            <label for="{{ form.category.id_for_label }}" class="form-label">
+                                Category
+                            </label>
 
-                            <img src="{{ report.image.url }}" alt="Current image for {{ report.title }}"
-                                class="img-fluid rounded" style="max-height: 250px;">
+                            {{ form.category }}
+
+                            {% if form.category.errors %}
+                            <div class="text-danger small">
+                                {{ form.category.errors }}
+                            </div>
+                            {% endif %}
 
                         </div>
-                        {% endif %}
 
-                        {{ form.image }}
 
-                        {% if form.image.errors %}
-                        <div class="text-danger small">
-                            {{ form.image.errors }}
+                        <!-- Title -->
+
+                        <div class="mb-3">
+
+                            <label for="{{ form.title.id_for_label }}" class="form-label">
+                                Title
+                            </label>
+
+                            {{ form.title }}
+
+                            {% if form.title.errors %}
+                            <div class="text-danger small">
+                                {{ form.title.errors }}
+                            </div>
+                            {% endif %}
+
                         </div>
-                        {% endif %}
+
+
+                        <!-- Description -->
+
+                        <div class="mb-3">
+
+                            <label for="{{ form.description.id_for_label }}" class="form-label">
+                                Description
+                            </label>
+
+                            {{ form.description }}
+
+                            {% if form.description.errors %}
+                            <div class="text-danger small">
+                                {{ form.description.errors }}
+                            </div>
+                            {% endif %}
+
+                        </div>
 
                     </div>
+                    <div class="form-section">
 
+                        <h2 class="form-section-title">
+                            Location
+                        </h2>
+
+                        <p class="form-section-description">
+                            Update the location of the safety issue.
+                        </p>
+                        <!-- Location -->
+                        <div class="mb-3">
+
+                            <label for="{{ form.location.id_for_label }}" class="form-label">
+                                Location
+                            </label>
+
+                            {{ form.location }}
+
+                            <div class="form-text">
+                                Update the location description if necessary.
+                            </div>
+
+                            {% if form.location.errors %}
+                            <div class="text-danger small">
+                                {{ form.location.errors }}
+                            </div>
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- Map -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Update map location
+                            </label>
+
+                            <p class="text-muted small">
+                                Click on the map to move the marker.
+                            </p>
+
+                            <div id="map" data-stadia-api-key="{{ stadia_api_key }}"
+                                data-existing-latitude="{{ report.latitude|default:'' }}"
+                                data-existing-longitude="{{ report.longitude|default:'' }}">
+                            </div>
+
+                        </div>
+
+
+                        <!-- Hidden coordinates -->
+
+                        {{ form.latitude }}
+                        {{ form.longitude }}
+                    </div>
+                    <div class="form-section">
+
+                        <h2 class="form-section-title">
+                            Supporting evidence
+                        </h2>
+
+                        <p class="form-section-description">
+                            Update the image associated with this report if necessary.
+                        </p>
+                        <!-- Image -->
+
+                        <div class="mb-4">
+
+                            <label for="{{ form.image.id_for_label }}" class="form-label">
+                                Image
+                            </label>
+
+                            {% if report.image %}
+                            <div class="mb-3">
+
+                                <p class="small text-muted">
+                                    Current image:
+                                </p>
+
+                                <img src="{{ report.image.url }}" alt="Current image for {{ report.title }}"
+                                    class="img-fluid rounded" style="max-height: 250px;">
+
+                            </div>
+                            {% endif %}
+
+                            {{ form.image }}
+
+                            {% if form.image.errors %}
+                            <div class="text-danger small">
+                                {{ form.image.errors }}
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
 
                     <!-- Buttons -->
 
-                    <div class="d-flex gap-2">
+                    <div class="d-flex gap-2 mt-4">
 
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-safealert">
                             Save Changes
                         </button>
 
@@ -217,12 +232,10 @@ Edit Report | SafeAlert
 
 {% block extra_js %}
 
-<script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
 
-<script
-    src="{% static 'js/report_map.js' %}">
+<script src="{% static 'js/report_map.js' %}">
 </script>
 
 {% endblock %}
