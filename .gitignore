@@ -1,8 +1,8 @@
-# Virtual Environments
+# Virtual environments
 venv/
-.venv
+.venv/
 
-#Environment Variables
+# Environment variables and secrets
 .env
 env.py
 env.*
@@ -11,12 +11,15 @@ env.*
 __pycache__/
 *.py[cod]
 
-#VS Code
+# Django collected static files
+staticfiles/
+
+# VS Code
 .vscode/
 
 # OS files
 .DS_Store
 Thumbs.db
 
-#Database
+# Local database
 db.sqlite3
