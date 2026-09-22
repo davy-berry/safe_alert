@@ -143,11 +143,11 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+#MAILERS = {
+#    'default': {
+#        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+#    },
+#}
 
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/reports/my_reports/"
@@ -159,3 +159,16 @@ ACCOUNT_FORMS = {"login": "accounts.forms.SafeAlertLoginForm",
                 "signup": "accounts.forms.SafeAlertSignupForm",}
 
 STADIA_API_KEY = os.environ.get("STADIA_API_KEY")
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com"
+]
+
+# Security settings for HTTPS deployment
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
