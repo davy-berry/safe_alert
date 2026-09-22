@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Add Comment | SafeAlert
+Add Comment | SafeAlert
 {% endblock %}
 
 {% block content %}
@@ -11,18 +11,17 @@
     <div class="col-12 col-md-8 col-lg-6">
 
         <!-- Page Header -->
-        <div class="mb-4">
+        <div class="report-page-header mb-4">
 
-            <h1 class="mb-1">
+            <h1>
                 Add Comment
             </h1>
 
-            <p class="text-muted mb-0">
+            <p>
                 Add a comment to this community safety report.
             </p>
 
         </div>
-
 
         <!-- Report Information -->
         <div class="card shadow-sm mb-4">
@@ -42,48 +41,12 @@
                     <strong>Location:</strong>
                     {{ report.location }}
                 </p>
-
                 <p class="mb-0">
                     <strong>Status:</strong>
 
-                    {% if report.status == "reported" %}
-
-                        <span class="badge text-bg-primary">
-                            {{ report.get_status_display }}
-                        </span>
-
-                    {% elif report.status == "under_review" %}
-
-                        <span class="badge text-bg-info">
-                            {{ report.get_status_display }}
-                        </span>
-
-                    {% elif report.status == "in_progress" %}
-
-                        <span class="badge text-bg-warning">
-                            {{ report.get_status_display }}
-                        </span>
-
-                    {% elif report.status == "resolved" %}
-
-                        <span class="badge text-bg-success">
-                            {{ report.get_status_display }}
-                        </span>
-
-                    {% elif report.status == "confirmed" %}
-
-                        <span class="badge text-bg-success">
-                            {{ report.get_status_display }}
-                        </span>
-
-                    {% elif report.status == "rejected" %}
-
-                        <span class="badge text-bg-secondary">
-                            {{ report.get_status_display }}
-                        </span>
-
-                    {% endif %}
-
+                    <span class="report-badge status-{{ report.status }}">
+                        {{ report.get_status_display }}
+                    </span>
                 </p>
 
             </div>
@@ -106,10 +69,7 @@
 
                     <div class="mb-4">
 
-                        <label
-                            for="{{ form.comment.id_for_label }}"
-                            class="form-label"
-                        >
+                        <label for="{{ form.comment.id_for_label }}" class="form-label">
                             Comment
                         </label>
 
@@ -117,11 +77,11 @@
 
                         {% if form.comment.errors %}
 
-                            <div class="text-danger small mt-2">
+                        <div class="text-danger small mt-2">
 
-                                {{ form.comment.errors }}
+                            {{ form.comment.errors }}
 
-                            </div>
+                        </div>
 
                         {% endif %}
 
@@ -131,17 +91,11 @@
                     <!-- Actions -->
                     <div class="d-flex flex-column flex-sm-row gap-2">
 
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                        >
+                        <button type="submit" class="btn btn-primary">
                             Add Comment
                         </button>
 
-                        <a
-                            href="{% url 'admin_reports' %}"
-                            class="btn btn-outline-secondary"
-                        >
+                        <a href="{% url 'admin_reports' %}" class="btn btn-outline-secondary">
                             Cancel
                         </a>
 
