@@ -143,11 +143,10 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-#MAILERS = {
-#    'default': {
-#        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-#    },
-#}
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/reports/my_reports/"
