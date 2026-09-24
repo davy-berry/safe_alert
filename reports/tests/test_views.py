@@ -29,14 +29,14 @@ class ReportAccessTests(TestCase):
         # Assign a profile so the app can evaluate community permissions.
         UserProfile.objects.create(
             user=self.user,
-            role=UserProfile.COMMUNITY_USER
+            role=UserProfile.COMMUNITY_USER,
         )
 
         # Create a report category for the sample safety report.
         self.category = Category.objects.create(
             name="Road Safety",
             description="Road-related safety issues",
-            risk_weight=70
+            risk_weight=70,
         )
 
         # Create the report used by permission and admin workflow tests.
@@ -64,16 +64,16 @@ class ReportAccessTests(TestCase):
         # Create a second user to act as the unauthorized editor.
         another_user = User.objects.create_user(
             username="anotheruser",
-            password="AnotherPassword123!"
+            password="AnotherPassword123!",
         )
 
         self.client.login(
             username="anotheruser",
-            password="AnotherPassword123!"
+            password="AnotherPassword123!",
         )
 
         response = self.client.get(
-            f"/reports/edit/{self.report.id}/"
+            f"/reports/edit/{self.report.id}/",
         )
 
         self.assertEqual(response.status_code, 404)
@@ -83,16 +83,16 @@ class ReportAccessTests(TestCase):
         # Create a second user to act as the unauthorized deleter.
         another_user = User.objects.create_user(
             username="deleteuser",
-            password="DeletePassword123!"
+            password="DeletePassword123!",
         )
 
         self.client.login(
             username="deleteuser",
-            password="DeletePassword123!"
+            password="DeletePassword123!",
         )
 
         response = self.client.get(
-            f"/reports/delete/{self.report.id}/"
+            f"/reports/delete/{self.report.id}/",
         )
 
         self.assertEqual(response.status_code, 404)
@@ -101,7 +101,7 @@ class ReportAccessTests(TestCase):
         """Allow an authenticated user to submit a new report."""
         self.client.login(
             username="testuser",
-            password="TestPassword123!"
+            password="TestPassword123!",
         )
 
         data = {
@@ -116,7 +116,7 @@ class ReportAccessTests(TestCase):
 
         response = self.client.post(
             "/reports/create/",
-            data
+            data,
         )
 
         self.assertEqual(response.status_code, 302)
@@ -124,7 +124,7 @@ class ReportAccessTests(TestCase):
         self.assertTrue(
             Report.objects.filter(
                 title="Broken street lighting",
-                user=self.user
+                user=self.user,
             ).exists()
         )
 
@@ -135,7 +135,7 @@ class ReportAccessTests(TestCase):
 
         self.client.login(
             username="testuser",
-            password="TestPassword123!"
+            password="TestPassword123!",
         )
 
         response = self.client.get("/reports/admin/")
@@ -150,7 +150,7 @@ class ReportAccessTests(TestCase):
 
         self.client.login(
             username="testuser",
-            password="TestPassword123!"
+            password="TestPassword123!",
         )
 
         response = self.client.get("/reports/admin/")
@@ -164,14 +164,12 @@ class ReportAccessTests(TestCase):
 
         self.client.login(
             username="testuser",
-            password="TestPassword123!"
+            password="TestPassword123!",
         )
 
         response = self.client.post(
             f"/reports/admin/update/{self.report.id}/",
-            {
-                "status": "in_progress"
-            }
+            {"status": "in_progress"},
         )
 
         self.assertEqual(response.status_code, 302)
@@ -180,7 +178,7 @@ class ReportAccessTests(TestCase):
 
         self.assertEqual(
             self.report.status,
-            "in_progress"
+            "in_progress",
         )
 
     def test_status_update_creates_status_history(self):
@@ -190,33 +188,31 @@ class ReportAccessTests(TestCase):
 
         self.client.login(
             username="testuser",
-            password="TestPassword123!"
+            password="TestPassword123!",
         )
 
         self.client.post(
             f"/reports/admin/update/{self.report.id}/",
-            {
-                "status": "in_progress"
-            }
+            {"status": "in_progress"},
         )
 
         history = ReportStatusHistory.objects.get(
-            report=self.report
+            report=self.report,
         )
 
         self.assertEqual(
             history.previous_status,
-            "reported"
+            "reported",
         )
 
         self.assertEqual(
             history.new_status,
-            "in_progress"
+            "in_progress",
         )
 
         self.assertEqual(
             history.changed_by,
-            self.user
+            self.user,
         )
 
     def test_community_admin_can_add_comment(self):
@@ -226,14 +222,12 @@ class ReportAccessTests(TestCase):
 
         self.client.login(
             username="testuser",
-            password="TestPassword123!"
+            password="TestPassword123!",
         )
 
         response = self.client.post(
             f"/reports/admin/comment/{self.report.id}/",
-            {
-                "comment": "This issue has been reviewed."
-            }
+            {"comment": "This issue has been reviewed."},
         )
 
         self.assertEqual(response.status_code, 302)
@@ -242,15 +236,15 @@ class ReportAccessTests(TestCase):
 
         self.assertEqual(
             comment.comment,
-            "This issue has been reviewed."
+            "This issue has been reviewed.",
         )
 
         self.assertEqual(
             comment.user,
-            self.user
+            self.user,
         )
 
         self.assertEqual(
             comment.report,
-            self.report
+            self.report,
         )
