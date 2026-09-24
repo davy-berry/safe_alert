@@ -2,6 +2,7 @@ from allauth.account.forms import SignupForm, LoginForm
 from django.contrib import messages
 from .models import UserProfile
 
+
 class SafeAlertSignupForm(SignupForm):
 
     def save(self, request):
@@ -13,6 +14,7 @@ class SafeAlertSignupForm(SignupForm):
             role=UserProfile.COMMUNITY_USER
         )
         return user
+
 
 class SafeAlertLoginForm(LoginForm):
 

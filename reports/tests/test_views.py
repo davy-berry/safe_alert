@@ -47,66 +47,65 @@ class ReportAccessTests(TestCase):
 
     def test_user_cannot_edit_another_users_report(self):
         another_user = User.objects.create_user(
-        username="anotheruser",
-        password="AnotherPassword123!"
+            username="anotheruser",
+            password="AnotherPassword123!"
         )
 
         self.client.login(
-        username="anotheruser",
-        password="AnotherPassword123!"
+            username="anotheruser",
+            password="AnotherPassword123!"
         )
 
         response = self.client.get(
-        f"/reports/edit/{self.report.id}/"
+            f"/reports/edit/{self.report.id}/"
         )
 
         self.assertEqual(response.status_code, 404)
 
-
     def test_user_cannot_delete_another_users_report(self):
         another_user = User.objects.create_user(
-        username="deleteuser",
-        password="DeletePassword123!"
+            username="deleteuser",
+            password="DeletePassword123!"
         )
 
         self.client.login(
-        username="deleteuser",
-        password="DeletePassword123!"
+            username="deleteuser",
+            password="DeletePassword123!"
         )
 
         response = self.client.get(
-        f"/reports/delete/{self.report.id}/"
+            f"/reports/delete/{self.report.id}/"
         )
 
         self.assertEqual(response.status_code, 404)
 
     def test_logged_in_user_can_create_report(self):
         self.client.login(
-        username="testuser",
-        password="TestPassword123!"
+            username="testuser",
+            password="TestPassword123!"
         )
 
         data = {
-        "category": self.category.id,
-        "title": "Broken street lighting",
-        "description": "Several street lights are not working in this area.",
-        "location": "Birmingham",
-        "latitude": 52.4862,
-        "longitude": -1.8904,
+            "category": self.category.id,
+            "title": "Broken street lighting",
+            "description": "Several street lights are not working in this area.",
+            "location": "Birmingham",
+            "latitude": 52.4862,
+            "longitude": -1.8904,
         }
 
         response = self.client.post(
-        "/reports/create/",
-        data
+            "/reports/create/",
+            data
         )
 
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-        Report.objects.filter(
-            title="Broken street lighting",
-            user=self.user
-        ).exists()
+            Report.objects.filter(
+                title="Broken street lighting",
+                user=self.user
+            ).exists()
         )
 
     def test_community_user_cannot_access_admin_reports(self):

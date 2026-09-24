@@ -1,5 +1,6 @@
 from .models import Category
 
+
 def calculate_risk_score(category):
     return category.risk_weight
 

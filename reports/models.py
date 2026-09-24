@@ -19,10 +19,10 @@ class Category(models.Model):
 
 
 class Report(models.Model):
-    """Stores a public safety issue reported by a user and tracked through review.
-
-    Each report includes the reporter, issue category, location, description,
-    and a lifecycle status from submission through resolution.
+    """Stores a public safety issue reported by a user and 
+    tracked through review. Each report includes the reporter, 
+    issue category, location, description,and a lifecycle 
+    status from submission through resolution.
     """
 
     # Status choices

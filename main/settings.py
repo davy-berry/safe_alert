@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.herokuapp.com','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -157,7 +157,7 @@ LOGOUT_REDIRECT_URL = "/"
 ACCOUNT_LOGIN_METHODS = {"username"}
 ACCOUNT_SIGNUP_FIELDS = ["username*", "email*", "password1*", "password2*"]
 ACCOUNT_FORMS = {"login": "accounts.forms.SafeAlertLoginForm",
-                "signup": "accounts.forms.SafeAlertSignupForm",}
+                 "signup": "accounts.forms.SafeAlertSignupForm", }
 
 STADIA_API_KEY = os.environ.get("STADIA_API_KEY")
 

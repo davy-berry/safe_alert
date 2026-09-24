@@ -105,7 +105,11 @@ def edit_report(request, report_id):
     return render(
         request,
         "reports/edit_report.html",
-        {"form": form, "report": report, "stadia_api_key": settings.STADIA_API_KEY, }
+        {
+            "form": form,
+            "report": report,
+            "stadia_api_key": settings.STADIA_API_KEY,
+        },
     )
 
 
