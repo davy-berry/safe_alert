@@ -170,7 +170,7 @@
         <aside
             class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} alert-dismissible rounded-0 text-center"
             role="alert">
-            <h5>{{ msg }}</h5>
+            <p class="mb-0 fw-semibold">{{ msg }}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </aside>
         {% endfor %}
