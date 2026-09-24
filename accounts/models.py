@@ -1,10 +1,12 @@
+"""User profile model for role-based account access and permissions."""
+
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 
 class UserProfile(models.Model):
+    """Store a user's role and related access permissions."""
+
     COMMUNITY_USER = 'community_user'
     COMMUNITY_ADMIN = 'community_admin'
 
@@ -19,4 +21,5 @@ class UserProfile(models.Model):
         max_length=20, choices=ROLE_CHOICES, default=COMMUNITY_USER)
 
     def __str__(self):
+        """Return a readable display string for the user profile."""
         return f"{self.user.username} - {self.get_role_display()}"
