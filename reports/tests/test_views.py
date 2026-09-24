@@ -88,7 +88,8 @@ class ReportAccessTests(TestCase):
         data = {
             "category": self.category.id,
             "title": "Broken street lighting",
-            "description": "Several street lights are not working in this area.",
+            "description": "Several street lights are not working in "
+            "this area.",
             "location": "Birmingham",
             "latitude": 52.4862,
             "longitude": -1.8904,
