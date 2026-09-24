@@ -3,16 +3,20 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
+
+
 class Category(models.Model):
     """Represents a report category used to classify safety issues."""
-    
+
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
-    risk_weight = models.PositiveIntegerField(default=50)   #represents the risk associated with a category
+    # represents the risk associated with a category
+    risk_weight = models.PositiveIntegerField(default=50)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+
 
 class Report(models.Model):
     """Stores a public safety issue reported by a user and tracked through review.
@@ -39,10 +43,10 @@ class Report(models.Model):
     ]
 
     PRIORITY_CHOICES = [
-    ("low", "Low"),
-    ("medium", "Medium"),
-    ("high", "High"),
-    ("critical", "Critical"),
+        ("low", "Low"),
+        ("medium", "Medium"),
+        ("high", "High"),
+        ("critical", "Critical"),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -50,20 +54,24 @@ class Report(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     location = models.CharField(max_length=200)
-    latitude = models.DecimalField(max_digits=10, decimal_places=6, blank=True, null=True)
-    longitude = models.DecimalField(max_digits=10, decimal_places=6, blank=True, null=True)
+    latitude = models.DecimalField(
+        max_digits=10, decimal_places=6, blank=True, null=True)
+    longitude = models.DecimalField(
+        max_digits=10, decimal_places=6, blank=True, null=True)
     image = CloudinaryField("image", blank=True, null=True)
     risk_score = models.PositiveIntegerField(default=0)
-    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default='low')
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=REPORTED)
+    priority = models.CharField(
+        max_length=20, choices=PRIORITY_CHOICES, default='low')
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default=REPORTED)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         constraints = [
             models.CheckConstraint(
-                condition = models.Q(risk_score__gte=0) &
-                      models.Q(risk_score__lte=100),
+                condition=models.Q(risk_score__gte=0) &
+                models.Q(risk_score__lte=100),
                 name="risk_score_between_0_and_100",
             ),
         ]
@@ -73,8 +81,10 @@ class Report(models.Model):
 
 
 class ReportComment(models.Model):
-    report = models.ForeignKey(Report, on_delete=models.CASCADE, related_name="comments")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="report_comments")
+    report = models.ForeignKey(
+        Report, on_delete=models.CASCADE, related_name="comments")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="report_comments")
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

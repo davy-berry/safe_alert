@@ -1,3 +1,4 @@
+/* jshint esversion: 11 */
 const mapElement = document.getElementById("map");
 
 const stadiaApiKey = mapElement.dataset.stadiaApiKey;

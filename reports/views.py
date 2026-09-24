@@ -10,11 +10,13 @@ from .forms import ReportForm, StatusUpdateForm, ReportCommentForm
 from .models import Category, Report, ReportComment
 from .risk import calculate_risk_score, calculate_priority
 
+
 def home(request):
     return render(
         request,
         "reports/home.html",
     )
+
 
 def about(request):
     return render(
@@ -23,6 +25,8 @@ def about(request):
     )
 
 # Create your views here.
+
+
 @login_required
 def create_report(request):
 
@@ -46,8 +50,9 @@ def create_report(request):
         request,
         "reports/create_report.html",
         {"form": form,
-         "stadia_api_key": settings.STADIA_API_KEY,}
+         "stadia_api_key": settings.STADIA_API_KEY, }
     )
+
 
 @login_required
 def my_reports(request):
@@ -61,6 +66,7 @@ def my_reports(request):
         "reports/my_reports.html",
         {"reports": reports}
     )
+
 
 @login_required
 def edit_report(request, report_id):
@@ -99,8 +105,9 @@ def edit_report(request, report_id):
     return render(
         request,
         "reports/edit_report.html",
-        {"form": form, "report": report, "stadia_api_key": settings.STADIA_API_KEY,}
+        {"form": form, "report": report, "stadia_api_key": settings.STADIA_API_KEY, }
     )
+
 
 @login_required
 def delete_report(request, report_id):
@@ -122,11 +129,13 @@ def delete_report(request, report_id):
         }
     )
 
+
 @login_required
 def admin_reports(request):
 
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
-        messages.warning(request, "You do not have permission to access this page.")
+        messages.warning(
+            request, "You do not have permission to access this page.")
         return redirect("my_reports")
 
     reports = Report.objects.all().order_by("-created_at")
@@ -139,6 +148,7 @@ def admin_reports(request):
             "categories": Category.objects.all().order_by("name"),
         }
     )
+
 
 @login_required
 def report_detail(request, report_id):
@@ -158,6 +168,7 @@ def report_detail(request, report_id):
         }
     )
 
+
 @login_required
 def my_report_detail(request, report_id):
     report = get_object_or_404(
@@ -171,6 +182,7 @@ def my_report_detail(request, report_id):
         "reports/report_detail.html",
         {"report": report}
     )
+
 
 @login_required
 def update_report_status(request, report_id):
@@ -258,10 +270,12 @@ def add_report_comment(request, report_id):
         }
     )
 
+
 @login_required
 def heatmap(request):
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
-        messages.warning(request, "You do not have permission to access this page.")
+        messages.warning(
+            request, "You do not have permission to access this page.")
         return redirect("my_reports")
 
     reports = Report.objects.exclude(
