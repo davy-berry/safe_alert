@@ -16,13 +16,13 @@ const defaultLatitude = 52.4862;
 const defaultLongitude = -1.8904;
 
 
-const latitude = Number.isNaN(existingLatitude)
-    ? defaultLatitude
-    : existingLatitude;
+const latitude = Number.isNaN(existingLatitude) ?
+    defaultLatitude :
+    existingLatitude;
 
-const longitude = Number.isNaN(existingLongitude)
-    ? defaultLongitude
-    : existingLongitude;
+const longitude = Number.isNaN(existingLongitude) ?
+    defaultLongitude :
+    existingLongitude;
 
 
 const map = L.map("map").setView(
@@ -32,12 +32,10 @@ const map = L.map("map").setView(
 
 
 L.tileLayer(
-    `https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${stadiaApiKey}`,
-    {
+    `https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${stadiaApiKey}`, {
         maxZoom: 20,
 
-        attribution:
-            '&copy; <a href="https://stadiamaps.com/attribution/" target="_blank">Stadia Maps</a> ' +
+        attribution: '&copy; <a href="https://stadiamaps.com/attribution/" target="_blank">Stadia Maps</a> ' +
             '&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
             '&copy; <a href="https://www.openstreetmap.org/copyright/" target="_blank">OpenStreetMap</a>'
     }
