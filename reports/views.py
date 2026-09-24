@@ -12,6 +12,7 @@ from .risk import calculate_risk_score, calculate_priority
 
 
 def home(request):
+    """Render the dashboard landing page for the reports app."""
     return render(
         request,
         "reports/home.html",
@@ -19,17 +20,16 @@ def home(request):
 
 
 def about(request):
+    """Render the about page describing the application purpose."""
     return render(
         request,
         "reports/about.html",
     )
 
-# Create your views here.
-
 
 @login_required
 def create_report(request):
-
+    """Create a new report for the authenticated user."""
     if request.method == "POST":
         form = ReportForm(request.POST, request.FILES)
 
@@ -56,7 +56,7 @@ def create_report(request):
 
 @login_required
 def my_reports(request):
-
+    """Display all reports belonging to the current user."""
     reports = Report.objects.filter(
         user=request.user
     ).order_by("-created_at")
@@ -70,7 +70,7 @@ def my_reports(request):
 
 @login_required
 def edit_report(request, report_id):
-
+    """Allow a user to update their own existing report."""
     report = get_object_or_404(
         Report,
         id=report_id,
@@ -115,7 +115,7 @@ def edit_report(request, report_id):
 
 @login_required
 def delete_report(request, report_id):
-
+    """Delete a report owned by the authenticated user."""
     report = get_object_or_404(Report, id=report_id, user=request.user)
 
     if request.method == "POST":
@@ -136,7 +136,7 @@ def delete_report(request, report_id):
 
 @login_required
 def admin_reports(request):
-
+    """Display reports to community admins for review and moderation."""
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
         messages.warning(
             request, "You do not have permission to access this page.")
@@ -156,6 +156,7 @@ def admin_reports(request):
 
 @login_required
 def report_detail(request, report_id):
+    """Show the details of a specific report to an admin user."""
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
         return redirect("my_reports")
 
@@ -175,6 +176,7 @@ def report_detail(request, report_id):
 
 @login_required
 def my_report_detail(request, report_id):
+    """Show a user's own report detail page for viewing."""
     report = get_object_or_404(
         Report,
         id=report_id,
@@ -190,6 +192,7 @@ def my_report_detail(request, report_id):
 
 @login_required
 def update_report_status(request, report_id):
+    """Allow a community admin to change a report's current status."""
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
         return redirect("my_reports")
 
@@ -242,6 +245,7 @@ def update_report_status(request, report_id):
 
 @login_required
 def add_report_comment(request, report_id):
+    """Allow a community admin to add a comment to a report."""
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
         return redirect("my_reports")
 
@@ -277,6 +281,7 @@ def add_report_comment(request, report_id):
 
 @login_required
 def heatmap(request):
+    """Show all reports with coordinates on the admin heatmap."""
     if request.user.profile.role != UserProfile.COMMUNITY_ADMIN:
         messages.warning(
             request, "You do not have permission to access this page.")
