@@ -98,8 +98,8 @@ The login was successful. The user was redirected to the **My Reports** page and
 
 #### Evidence
 
-- `login-form.png` – Login form before submission.
-- `login-sucess.png` – Successful login and redirection to My Reports.
+- ![Login form before submission](documentation\testing\authentication\login-form.png)
+- ![Successful login and redirection to My Reports](documentation\testing\authentication\login-sucess.png)
 
 ---
 
@@ -129,7 +129,7 @@ The system rejected the invalid credentials and displayed an error message stati
 
 #### Evidence
 
-- `login-invalid.png`
+![Invalid credential test](documentation\testing\authentication\login-invalid.png)
 
 ---
 
@@ -159,7 +159,7 @@ The browser displayed the **"Please fill out this field."** validation message w
 
 #### Evidence
 
-- `login-invalid.png`
+![Invalid credential test](documentation\testing\authentication\login-invalid.png)
 
 ---
 
@@ -195,8 +195,20 @@ The new user was successfully created and the user was redirected to the **My Re
 
 #### Evidence
 
-- `registration-form.png`
-- `registration-sucess.png`
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\testing\authentication\registration-form.png" alt="Screenshot 1" width="450">
+      <br>
+      <strong>Screenshot 1 – Registration Form</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\testing\authentication\registration-sucess.png" alt="Screenshot 2" width="450">
+      <br>
+      <strong>Screenshot 2 – Redirection - Registration Success </strong>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -227,7 +239,7 @@ The browser displayed an appropriate validation message indicating that the emai
 
 #### Evidence
 
-- `registration-invalid.png`
+![Registration Defensive Field](documentation\testing\authentication\registration-invalid.png)
 
 ---
 
@@ -256,7 +268,7 @@ The browser displayed **"Please fill out this field."** when a required field wa
 
 #### Evidence
 
-- `registration-invalid.png`
+**See evidence in section 3.2.2**
 
 ---
 
@@ -291,7 +303,7 @@ The system displayed validation messages including:
 
 #### Evidence
 
-- `registration-invalid.png`
+**See evidence in section 3.2.2**
 
 ---
 
@@ -314,6 +326,7 @@ The system displayed validation messages including:
 - The user should no longer have access to authenticated pages.
 - The Login and Register options should be displayed.
 - A confirmation message should indicate that the user has signed out.
+- The user should redirected to home page
 
 #### Actual Result
 
@@ -323,7 +336,7 @@ The user was successfully logged out. The navigation bar returned to the public-
 
 #### Evidence
 
-- `signed_out.png`
+![Registration Defensive Field](documentation\testing\authentication\signed_out.png)
 
 ---
 
@@ -356,10 +369,25 @@ The Login and Registration pages adapted to smaller screen sizes. The navigation
 **Result:** ✅ **PASS**
 
 #### Evidence
-
-- `login-form.png`
-- `registration-form.png`
-- `registration-invalid.png`
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\testing\authentication\mobile-login.png" alt="Mobile Login" width="300">
+      <br>
+      <strong>Mobile Login Form</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\testing\authentication\mobile-login-sucess.png" alt="Mobile Login Success" width="300">
+      <br>
+      <strong>Mobile Login Success</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\testing\authentication\mobile-signed-out.png" alt="Mobile Sign Out" width="300">
+      <br>
+      <strong>Mobile Sign Out</strong>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -410,10 +438,10 @@ The system validates the information entered by the user before allowing the rep
 | CR-07 | Validate location description | Enter `Bi` | Error message indicates that the location must be at least 3 characters long | PASS |
 | CR-08 | Enter valid location | Enter `Birmingham` | The location description is accepted | PASS |
 | CR-09 | Select location on map | Click on the interactive map | A marker is placed at the selected location | PASS |
-| CR-10 | Validate latitude | Enter `100` as latitude | Error message indicates that latitude must be between -90 and 90 | PASS |
-| CR-11 | Enter valid latitude | Enter `52.4862` | The latitude is accepted | PASS |
-| CR-12 | Validate longitude | Enter `200` as longitude | Error message indicates that longitude must be between -180 and 180 | PASS |
-| CR-13 | Enter valid longitude | Enter `-1.89` | The longitude is accepted | PASS |
+| CR-10 | Validate latitude | Enter `100` as latitude <br> By changing value in the Dev Tool| Error message indicates that latitude must be between -90 and 90 | PASS |
+| CR-11 | Enter valid latitude | Enter `52.4862` <br> By changing value in the Dev Tool | The latitude is accepted | PASS |
+| CR-12 | Validate longitude | Enter `200` as longitude <br> By changing in the Dev Tool | Error message indicates that longitude must be between -180 and 180 | PASS |
+| CR-13 | Enter valid longitude | Enter `-1.89` <br> By changing value in the Dev Tool| The longitude is accepted | PASS |
 | CR-14 | Upload valid image | Upload an image smaller than 5 MB | The image is accepted | PASS |
 | CR-15 | Validate image size | Upload an image larger than 5 MB | Error message indicates that the image must not exceed 5 MB | PASS |
 | CR-16 | Submit valid report | Complete all required fields with valid data | The report is successfully created | PASS |
@@ -581,6 +609,7 @@ A report was created while logged in as one community member.
 The application was then accessed using another community member account.
 
 **Expected result:** The report created by the first user is not displayed in the second user's **My Reports** page.
+Please refer to the section [Defensive Programming and Security Testing](#39-defensive-programming-and-security-testing) for futher details.
 
 **Result:** PASS
 
@@ -610,7 +639,59 @@ The form remains usable on mobile devices.
 
 ---
 
-### 3.5.10 Overall Test Result
+### 3.5.10 Evidence For create safety report
+
+<details>
+<summary><strong>📸 PLEASE CLICK TO VIEW TEST EVIDENCE</strong></summary>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\Report\create-form.png" alt="Report Form Page" width="450">
+      <br>
+      <strong>Report Issue Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Report\create-form-valid.png" alt="Form Valid" width="450">
+      <br>
+      <strong>Form with valid field</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="documentation\Report\create-form-invalid.png" alt="Form Invalid" width="450">
+      <br>
+      <strong>Defensive test Invalid Fields</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Report\create-form-success.png" alt="Report created" width="450">
+      <br>
+      <strong>Redirection with Message Validation</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="documentation\Report\create-invalid-file.png" alt="Form Invalid" width="450">
+      <br>
+      <strong>Defensive test on Image field</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Report\create-latitude-invalid.png" alt="Report created" width="450">
+      <br>
+      <img src="documentation\Report\create-longitude-invalid.png" alt="Report created" width="450">
+      <br>
+      <strong>Defensive test on Latitude and Longotude <br> Tested From the Bash Terminal</strong>
+    </td>
+  </tr>
+</table>
+
+</details>
+
+
+---
+
+
+### 3.5.11 Overall Test Result
 
 The **Create Safety Report** functionality successfully passed the tested scenarios.
 
@@ -634,6 +715,9 @@ The following areas were successfully tested:
 - Responsive design
 
 **Overall Result: PASS**
+
+---
+
 
 ## 3.6. Manage My Reports
 
@@ -2193,3 +2277,14 @@ No unresolved critical issues were identified during the final testing process.
 **Overall Testing Result: ✅ PASS**
 
 **SafeAlert is ready for deployment.**
+
+<details>
+<summary>Click to view homepage screenshot</summary>
+The screenshot below demonstrates that an unauthenticated user attempting to access a restricted page is redirected appropriately.
+
+![DP-01 Restricted URL](documentation\testing\validation\main-settings.png)
+
+The following screenshot demonstrates the custom 404 page:
+
+![DP-01 Custom 404](documentation\testing\validation\main-settings.png)
+</details>
