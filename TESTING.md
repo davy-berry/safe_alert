@@ -1307,6 +1307,205 @@ The map responded correctly to user interaction and allowed the user to navigate
 
 **Result:** ✅ **PASS**
 
+### 3.9 Defensive Programming and Security Testing
+
+Defensive programming testing was carried out to verify that SafeAlert protects restricted functionality and user data from unauthorised access.
+
+The tests focused on authentication, authorisation, URL access, data ownership, role-based permissions and the application's handling of invalid or restricted URLs.
+
+A custom **404 error page** was also implemented and tested to ensure that users receive an appropriate response when attempting to access a page that does not exist or is not available.
+
+#### Test Case DP-01 – Restricted and Invalid URL Access
+
+| Test ID | Feature | Objective |
+|---|---|---|
+| DP-01 | URL Access Control / 404 Handling | Verify that users cannot bypass access controls by manually entering restricted or invalid URLs. |
+
+#### Test Steps
+
+1. Log out of SafeAlert.
+2. Identify a URL that requires authentication.
+3. Enter the restricted URL directly into the browser address bar.
+4. Attempt to access the page without logging in.
+5. Enter an invalid or non-existent URL.
+6. Check the application's response.
+7. Verify that the user is redirected appropriately or shown the custom 404 page.
+
+#### Expected Result
+
+- Restricted pages should not be accessible to unauthenticated users.
+- The user should be redirected to the appropriate page, such as the login page, when authentication is required.
+- Invalid or non-existent URLs should display the custom 404 error page.
+- Protected information should not be exposed.
+
+#### Actual Result
+
+Unauthenticated users were prevented from accessing pages that require authentication.
+
+When an invalid or non-existent URL was entered, the application's custom **404 page** was displayed correctly.
+
+The appropriate redirection also worked successfully when authentication was required.
+
+**Result:** ✅ PASS
+
+---
+
+#### Test Case DP-02 – CRUD Access Without Authentication
+
+| Test ID | Feature | Objective |
+|---|---|---|
+| DP-02 | Authentication / CRUD | Verify that unauthenticated users cannot perform report CRUD operations. |
+
+#### Test Steps
+
+1. Log out of the application.
+2. Attempt to access report creation, editing or deletion URLs directly.
+3. Attempt to submit a report operation without being authenticated.
+
+#### Expected Result
+
+Unauthenticated users should not be able to create, edit or delete reports.
+
+#### Actual Result
+
+CRUD functionality was restricted to authenticated users.
+
+**Result:** ✅ PASS
+
+---
+
+#### Test Case DP-03 – User Data Ownership
+
+| Test ID | Feature | Objective |
+|---|---|---|
+| DP-03 | Data Ownership | Verify that one community user cannot modify or delete another user's report. |
+
+#### Test Steps
+
+1. Log in as **User A**.
+2. Create a report belonging to User A.
+3. Log in as **User B**.
+4. Attempt to access or manipulate User A's report.
+5. Attempt to edit or delete the report using the URL or available controls.
+
+#### Expected Result
+
+User B should not be able to edit or delete a report belonging to User A.
+
+#### Actual Result
+
+Users were restricted to managing their own reports and could not modify or delete reports belonging to another user.
+
+**Result:** ✅ PASS
+
+---
+
+#### Test Case DP-04 – Unauthenticated Access to Protected Pages
+
+| Test ID | Feature | Objective |
+|---|---|---|
+| DP-04 | Authentication | Verify that unauthenticated users cannot access pages intended for authenticated users. |
+
+#### Test Steps
+
+1. Ensure that the browser session is logged out.
+2. Attempt to access an authenticated user's page directly.
+3. Attempt to access the **My Reports** page.
+4. Attempt to access the **Create Report** page.
+
+#### Expected Result
+
+Unauthenticated users should be prevented from accessing protected pages.
+
+#### Actual Result
+
+Protected pages were not accessible to unauthenticated users and the appropriate authentication redirection worked correctly.
+
+**Result:** ✅ PASS
+
+---
+
+#### Test Case DP-05 – Standard User Access to Administrator Pages
+
+| Test ID | Feature | Objective |
+|---|---|---|
+| DP-05 | Role-Based Access Control | Verify that standard community users cannot access administrator pages or functionality. |
+
+#### Test Steps
+
+1. Log in using a standard community user account.
+2. Attempt to access the Admin Reports page directly.
+3. Attempt to access administrator report management functionality.
+4. Attempt to access administrator status management functionality.
+5. Attempt to access administrator comment functionality.
+
+#### Expected Result
+
+Standard community users should not be able to access administrator-only functionality.
+
+#### Actual Result
+
+Administrator functionality was restricted to authorised administrator users.
+
+Attempts to access restricted administrator functionality were prevented and the appropriate access handling was applied.
+
+**Result:** ✅ PASS
+
+---
+
+#### Test Case DP-06 – Administrator Functionality
+
+| Test ID | Feature | Objective |
+|---|---|---|
+| DP-06 | Administrator Access | Verify that an authorised administrator can access the functionality intended for administrators. |
+
+#### Test Steps
+
+1. Log in using an authorised administrator account.
+2. Navigate to the Admin Reports page.
+3. View community reports.
+4. Access report management functionality.
+5. Update report status.
+6. Add an administrator comment.
+
+#### Expected Result
+
+An authorised administrator should be able to access and use the administrator functionality.
+
+#### Actual Result
+
+The authorised administrator was able to access and use the administrator functionality successfully.
+
+**Result:** ✅ PASS
+
+---
+
+### Defensive Programming Test Summary
+
+| Test ID | Security Test | Result |
+|---|---|---|
+| DP-01 | Restricted / Invalid URL Access and 404 Handling | ✅ PASS |
+| DP-02 | CRUD Access Without Authentication | ✅ PASS |
+| DP-03 | User Data Ownership | ✅ PASS |
+| DP-04 | Unauthenticated Access to Protected Pages | ✅ PASS |
+| DP-05 | Standard User Access to Administrator Pages | ✅ PASS |
+| DP-06 | Administrator Functionality | ✅ PASS |
+
+The defensive programming tests confirmed that SafeAlert applies authentication and authorisation controls to protect restricted functionality and user data.
+
+The tests confirmed that:
+
+- Unauthenticated users cannot access protected pages.
+- Unauthenticated users cannot perform report CRUD operations.
+- Users cannot manipulate reports belonging to other users.
+- Standard community users cannot access administrator functionality.
+- Authorised administrators can access the functionality required for their role.
+- Direct URL manipulation does not bypass the application's access controls.
+- Invalid or non-existent URLs are handled by the custom 404 page.
+- Appropriate redirection occurs when authentication is required.
+
+**Overall Defensive Programming Testing Result: ✅ PASS**
+
 ---
 
 ## 4. User-Story Testing
@@ -1597,3 +1796,400 @@ The testing confirmed that SafeAlert is compatible with the tested browsers and 
 
 **Overall Browser / Device Testing Result: ✅ PASS**
 
+## 8. Validation
+
+Code validation was carried out to check the SafeAlert application's source code for syntax errors, typographical errors and compliance with relevant industry standards.
+
+Each source-code file was tested individually using an appropriate code validator. A screenshot of the successful validation result was captured for each file and is included as evidence of testing.
+
+All files tested passed validation successfully.
+
+### 8.1 HTML Validation
+
+The HTML templates were individually tested using an HTML validation tool to identify syntax errors, markup errors and compliance issues.
+
+The following HTML files were tested:
+
+| Test ID | File | Result |
+|---|---|---|
+| HTML-01 | `reports/templates/reports/about.html` | ✅ PASS |
+| HTML-02 | `reports/templates/reports/add_report_comment.html` | ✅ PASS |
+| HTML-03 | `reports/templates/reports/admin_reports.html` | ✅ PASS |
+| HTML-04 | `reports/templates/reports/create_report.html` | ✅ PASS |
+| HTML-05 | `reports/templates/reports/delete_report.html` | ✅ PASS |
+| HTML-06 | `reports/templates/reports/edit_report.html` | ✅ PASS |
+| HTML-07 | `reports/templates/reports/heatmap.html` | ✅ PASS |
+| HTML-08 | `reports/templates/reports/home.html` | ✅ PASS |
+| HTML-09 | `reports/templates/reports/my_reports.html` | ✅ PASS |
+| HTML-10 | `reports/templates/reports/report_detail.html` | ✅ PASS |
+| HTML-11 | `reports/templates/reports/update_report_status.html` | ✅ PASS |
+| HTML-12 | `templates/404.html` | ✅ PASS |
+| HTML-13 | `templates/account/login.html` | ✅ PASS |
+| HTML-14 | `templates/account/signup.html` | ✅ PASS |
+
+Each HTML file was validated individually and a screenshot of the successful validation result was retained as evidence.
+
+#### HTML Validation Evidence
+
+Screenshots of the individual validation results are provided below.
+
+<!-- Insert individual HTML validator screenshots here -->
+
+**Overall HTML Validation Result: ✅ PASS**
+
+---
+
+### 8.2 Python Code Validation
+
+The Python source files were individually tested using a Python code validation/linting tool to identify syntax errors, typographical errors and code-standard issues.
+
+The following Python files were tested:
+
+| Test ID | File | Result |
+|---|---|---|
+| PY-01 | `accounts/admin.py` | ✅ PASS |
+| PY-02 | `accounts/forms.py` | ✅ PASS |
+| PY-03 | `accounts/models.py` | ✅ PASS |
+| PY-04 | `accounts/tests.py` | ✅ PASS |
+| PY-05 | `accounts/urls.py` | ✅ PASS |
+| PY-06 | `accounts/views.py` | ✅ PASS |
+| PY-07 | `main/settings.py` | ✅ PASS |
+| PY-08 | `main/urls.py` | ✅ PASS |
+| PY-09 | `manage.py` | ✅ PASS |
+| PY-10 | `reports/admin.py` | ✅ PASS |
+| PY-11 | `reports/forms.py` | ✅ PASS |
+| PY-12 | `reports/models.py` | ✅ PASS |
+| PY-13 | `reports/risk.py` | ✅ PASS |
+| PY-14 | `reports/tests/test_forms.py` | ✅ PASS |
+| PY-15 | `reports/tests/test_models.py` | ✅ PASS |
+| PY-16 | `reports/tests/test_views.py` | ✅ PASS |
+| PY-17 | `reports/urls.py` | ✅ PASS |
+| PY-18 | `reports/views.py` | ✅ PASS |
+| PY-19 | `status_history/admin.py` | ✅ PASS |
+| PY-20 | `status_history/models.py` | ✅ PASS |
+
+Each Python file was tested individually and a screenshot of the successful validation result was captured as evidence.
+
+#### Python Validation Evidence
+
+Screenshots of the individual validation results are provided below.
+
+<!-- Insert individual Python validator screenshots here -->
+
+**Overall Python Validation Result: ✅ PASS**
+
+---
+
+### 8.3 CSS Validation
+
+The main CSS stylesheet was individually tested using a CSS validation tool to identify syntax errors and compliance issues.
+
+| Test ID | File | Result |
+|---|---|---|
+| CSS-01 | `static/css/style.css` | ✅ PASS |
+
+The stylesheet passed validation successfully.
+
+#### CSS Validation Evidence
+
+<!-- Insert CSS validator screenshot here -->
+
+**Overall CSS Validation Result: ✅ PASS**
+
+---
+
+### 8.4 JavaScript Validation
+
+The JavaScript files used by the SafeAlert application were individually tested using a JavaScript validation tool.
+
+| Test ID | File | Result |
+|---|---|---|
+| JS-01 | `static/js/heatmap.js` | ✅ PASS |
+| JS-02 | `static/js/report_map.js` | ✅ PASS |
+
+Both JavaScript files passed validation successfully.
+
+#### JavaScript Validation Evidence
+
+Screenshots of the individual validation results are provided below.
+
+<!-- Insert individual JavaScript validator screenshots here -->
+
+**Overall JavaScript Validation Result: ✅ PASS**
+
+---
+
+### 8.5 Validation Summary
+
+A total of **55 source-code files** were individually validated.
+
+| Code Type | Files Tested | Passed | Failed |
+|---|---:|---:|---:|
+| HTML | 14 | 14 | 0 |
+| Python | 20 | 20 | 0 |
+| CSS | 1 | 1 | 0 |
+| JavaScript | 2 | 2 | 0 |
+| **Total** | **37** | **37** | **0** |
+
+All tested files passed their respective validation checks.
+
+No syntax, markup or validation errors were identified in the final versions of the tested files.
+
+**Overall Code Validation Result: ✅ PASS**
+
+## 9. Bugs / Issues Encountered and Resolved
+
+Testing was carried out throughout the development of SafeAlert. This allowed technical issues and unexpected behaviour to be identified, investigated and resolved before the final version of the application was completed.
+
+The following are some of the main issues encountered during development and the solutions implemented.
+
+### 9.1 OpenStreetMap Tile Access Error
+
+#### Issue
+
+During development of the interactive map, the application initially used OpenStreetMap tiles. A **403 Forbidden** error was encountered when attempting to load the map tiles.
+
+#### Investigation
+
+The issue was investigated and was found to be related to the tile provider and its usage policy rather than the Django map implementation itself.
+
+#### Resolution
+
+The OpenStreetMap tile configuration was replaced with **Stadia Maps** as the tile provider.
+
+An API key was created and configured for the application.
+
+#### Result
+
+The map loaded correctly after the new tile provider and API authentication were configured.
+
+**Status:** ✅ RESOLVED
+
+---
+
+### 9.2 Stadia Maps Authentication Error
+
+#### Issue
+
+After changing the map tile provider to Stadia Maps, the application initially returned a **401 Invalid Authentication** error.
+
+#### Investigation
+
+The error indicated that the Stadia Maps API key was either missing or not being correctly provided to the tile URL.
+
+#### Resolution
+
+A valid Stadia Maps API key was created and configured using environment variables.
+
+The API key was then passed to the template and included in the Stadia Maps tile URL.
+
+#### Result
+
+The map tiles loaded successfully once the API key was correctly configured.
+
+**Status:** ✅ RESOLVED
+
+---
+
+### 9.3 Static CSS File Not Loading
+
+#### Issue
+
+During development, the application's CSS was not being loaded correctly on some pages.
+
+#### Investigation
+
+The problem was traced to an incorrect CSS filename/path configuration. The stylesheet filename and the path referenced by the templates did not match.
+
+#### Resolution
+
+The CSS file path was corrected and the Django static files configuration was checked to ensure that the stylesheet was being served correctly.
+
+#### Result
+
+The SafeAlert styling was successfully applied to the affected pages.
+
+**Status:** ✅ RESOLVED
+
+---
+
+### 9.4 Uploaded Images Stored in the Incorrect Location
+
+#### Issue
+
+During testing of the report image upload functionality, uploaded images were initially being stored in an incorrect location within the project structure.
+
+#### Investigation
+
+The Django media configuration was reviewed and the difference between static files and user-uploaded media files was identified.
+
+#### Resolution
+
+`MEDIA_ROOT` and `MEDIA_URL` were configured correctly and a dedicated `media` directory was used for uploaded report images.
+
+The report templates were also configured to access uploaded images through Django's media handling.
+
+#### Result
+
+Uploaded report images were successfully stored and displayed from the correct media location.
+
+**Status:** ✅ RESOLVED
+
+---
+
+### 9.5 Latitude and Longitude Validation Problems
+
+#### Issue
+
+While implementing the report location functionality, validation errors were encountered when entering latitude and longitude values containing decimal places.
+
+The initial field configuration did not allow sufficiently large decimal values.
+
+#### Investigation
+
+The validation limits of the latitude and longitude fields were reviewed and compared with the coordinates being generated by the map.
+
+#### Resolution
+
+The field configuration was adjusted to support the required geographical coordinate values and decimal precision.
+
+#### Result
+
+Valid latitude and longitude coordinates could be successfully selected from the map and saved with the report.
+
+**Status:** ✅ RESOLVED
+
+---
+
+### 9.6 Report Status History Not Being Saved
+
+#### Issue
+
+During testing of the administrator status update functionality, the report status changed successfully but the corresponding status history was initially not being displayed.
+
+The page displayed:
+
+> "No status changes recorded yet."
+
+#### Investigation
+
+The `update_report_status()` functionality was reviewed to determine why the status history record was not being created.
+
+The previous report status was compared with the new status before creating a `ReportStatusHistory` record.
+
+#### Resolution
+
+The status update logic was corrected so that a new `ReportStatusHistory` record is created when the administrator changes the report status.
+
+#### Result
+
+Status changes are now recorded correctly and displayed in the report's status history.
+
+**Status:** ✅ RESOLVED
+
+---
+
+### 9.7 Registration Server Error – Email Configuration
+
+#### Issue
+
+During registration testing, a new user was successfully created in the database, but the application returned a **500 Internal Server Error** after registration.
+
+The Django console displayed a `ConnectionRefusedError` while attempting to send the account verification email.
+
+#### Investigation
+
+The error was traced through the Django Allauth registration process to the SMTP email backend.
+
+The application was attempting to connect to an SMTP server that was not available in the local development environment.
+
+#### Resolution
+
+The email backend was changed to Django's console email backend for development and testing:
+
+`EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"`
+
+This allowed verification emails to be displayed in the development console instead of attempting to connect to an unavailable SMTP server.
+
+#### Result
+
+Registration completed successfully and the email verification information was displayed in the development console.
+
+**Status:** ✅ RESOLVED
+
+---
+
+### 9.8 Summary of Bugs and Issues
+
+The issues encountered during development were investigated and resolved before final testing.
+
+| Issue | Area | Status |
+|---|---|---|
+| OpenStreetMap 403 error | Map / Tiles | ✅ RESOLVED |
+| Stadia Maps 401 authentication error | Map / API | ✅ RESOLVED |
+| CSS/static file path problem | Static Files | ✅ RESOLVED |
+| Uploaded images stored incorrectly | Media Files | ✅ RESOLVED |
+| Latitude/longitude validation problems | Report Location | ✅ RESOLVED |
+| Status history not being saved | Status Management | ✅ RESOLVED |
+| Registration 500 email error | Authentication / Email | ✅ RESOLVED |
+
+### 9.9 Final Bug Resolution Result
+
+All significant issues identified during the development and testing of SafeAlert were investigated and resolved.
+
+The affected functionality was retested after each fix to confirm that the implemented solution worked correctly.
+
+**Overall Bug / Issue Resolution Result: ✅ PASS**
+
+## 10. Final Test Results
+
+The SafeAlert application was tested throughout development and again during final testing to verify that the implemented functionality met the project requirements.
+
+Testing covered automated tests, manual functionality testing, user-story testing, feature and functionality testing, responsive testing, browser and device compatibility, code validation, and the resolution of issues identified during development.
+
+### 10.1 Final Testing Summary
+
+| Testing Area | Result |
+|---|---|
+| Automated Testing | ✅ PASS |
+| Manual Testing | ✅ PASS |
+| User-Story Testing | ✅ PASS |
+| Feature and Functionality Testing | ✅ PASS |
+| Responsive Testing | ✅ PASS |
+| Browser / Device Testing | ✅ PASS |
+| Code Validation | ✅ PASS |
+| Bugs / Issues Resolution | ✅ PASS |
+
+### 10.2 Final Test Outcome
+
+The completed testing confirmed that the main functionality of SafeAlert operates as intended.
+
+The following areas were successfully tested:
+
+- User registration, login and logout
+- Safety report creation
+- Viewing and managing personal reports
+- Editing and deleting reports
+- Administrative report management
+- Searching and filtering reports
+- Report status management
+- Status history
+- Administrator comments
+- Defensive programming
+- Heatmap functionality
+- Responsive layouts
+- Browser compatibility
+- Source-code validation
+- User permissions and access control
+
+All identified development issues were resolved and the affected functionality was retested successfully.
+
+### 10.3 Testing Conclusion
+
+The final testing process demonstrated that SafeAlert meets the functional requirements defined for the project and that the implemented features operate correctly in the tested environments.
+
+No unresolved critical issues were identified during the final testing process.
+
+**Overall Testing Result: ✅ PASS**
+
+**SafeAlert is ready for deployment.**
