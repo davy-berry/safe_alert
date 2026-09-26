@@ -1458,6 +1458,7 @@ The functionality was tested to ensure that the map loads correctly and that rep
 - The map should allow the user to interact with it.
 
 #### Actual Result
+![Heatmap Page](documentation/images/heatmap.png)
 
 The Heatmap page loaded successfully and displayed the interactive map with the available report locations.
 
