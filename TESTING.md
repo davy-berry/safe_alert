@@ -1489,7 +1489,8 @@ The map responded correctly to user interaction and allowed the user to navigate
 
 **Result:** ✅ **PASS**
 
-### 3.9 Defensive Programming and Security Testing
+
+## 3.9 Defensive Programming and Security Testing
 
 Defensive programming testing was carried out to verify that SafeAlert protects restricted functionality and user data from unauthorised access.
 
@@ -1499,7 +1500,7 @@ A custom **404 error page** was also implemented and tested to ensure that users
 
 ![Custom 404 Page](documentation/images/404-page.png)
 
-#### Test Case DP-01 – Restricted and Invalid URL Access
+### Test Case DP-01 – Restricted and Invalid URL Access
 
 | Test ID | Feature | Objective |
 |---|---|---|
@@ -1534,7 +1535,7 @@ The appropriate redirection also worked successfully when authentication was req
 
 ---
 
-#### Test Case DP-02 – CRUD Access Without Authentication
+### Test Case DP-02 – CRUD Access Without Authentication
 
 | Test ID | Feature | Objective |
 |---|---|---|
@@ -1561,7 +1562,7 @@ CRUD functionality was restricted to authenticated users.
 
 ---
 
-#### Test Case DP-03 – User Data Ownership
+### Test Case DP-03 – User Data Ownership
 
 | Test ID | Feature | Objective |
 |---|---|---|
@@ -1602,7 +1603,7 @@ Users were restricted to managing their own reports and could not modify or dele
 
 ---
 
-#### Test Case DP-04 – Unauthenticated Access to Protected Pages
+### Test Case DP-04 – Unauthenticated Access to Protected Pages
 
 | Test ID | Feature | Objective |
 |---|---|---|
@@ -1629,7 +1630,7 @@ Protected pages were not accessible to unauthenticated users and the appropriate
 
 ---
 
-#### Test Case DP-05 – Standard User Access to Administrator Pages
+### Test Case DP-05 – Standard User Access to Administrator Pages
 
 | Test ID | Feature | Objective |
 |---|---|---|
@@ -1674,7 +1675,7 @@ Attempts to access restricted administrator functionality were prevented and the
 
 ---
 
-#### Test Case DP-06 – Administrator Functionality
+### Test Case DP-06 – Administrator Functionality
 
 | Test ID | Feature | Objective |
 |---|---|---|
@@ -2445,7 +2446,7 @@ Screenshots of the individual validation results are provided below.
 
 ### 8.5 Validation Summary
 
-A total of **55 source-code files** were individually validated.
+A total of **37 source-code files** were individually validated.
 
 | Code Type | Files Tested | Passed | Failed |
 |---|---:|---:|---:|
@@ -2462,7 +2463,32 @@ No syntax, markup or validation errors were identified in the final versions of 
 **Overall Code Validation Result: ✅ PASS**
 
 ## 9. Lighthouse
-The deployed site was tested using the Lighthouse Audit tool in Chrome DevTools, for both mobile and desktop.
+
+### Lighthouse Performance Testing
+
+Lighthouse was used to evaluate the performance and overall quality of the deployed SafeAlert application.
+
+The Lighthouse audit was performed using Google Chrome's built-in Developer Tools. The deployed SafeAlert website was tested using Lighthouse in order to assess:
+
+- **Performance** – measures how quickly the page loads and becomes usable.
+- **Accessibility** – checks whether the website is accessible to users with different needs.
+- **Best Practices** – checks for recommended web development and security practices.
+- **SEO** – checks whether the pages follow basic search engine optimisation practices.
+
+The Lighthouse audit was performed on the deployed version of SafeAlert rather than only on the local development version. This provides a more realistic assessment of the website's performance in its production environment.
+
+#### Lighthouse Test Results
+
+| Test Area | Result | Evidence |
+|---|---|---|
+| Performance | Pass | Lighthouse screenshot |
+| Accessibility | Pass | Lighthouse screenshot |
+| Best Practices | Pass | Lighthouse screenshot |
+| SEO | Pass | Lighthouse screenshot |
+
+The Lighthouse results were reviewed to identify potential performance, accessibility and best-practice improvements. Any significant issues identified during the audit were investigated and addressed where appropriate.
+
+Screenshots of the Lighthouse results are included as evidence of the testing performed.
 
 <table>
   <tr>
@@ -2700,7 +2726,9 @@ Testing covered automated tests, manual functionality testing, user-story testin
 | Responsive Testing | ✅ PASS |
 | Browser / Device Testing | ✅ PASS |
 | Code Validation | ✅ PASS |
+| Lighthouse Performance Testing | ✅ PASS |
 | Bugs / Issues Resolution | ✅ PASS |
+
 
 ### 11.2 Final Test Outcome
 
@@ -2734,15 +2762,4 @@ No unresolved critical issues were identified during the final testing process.
 
 **Overall Testing Result: ✅ PASS**
 
-**SafeAlert is ready for deployment.**
-
-<details>
-<summary>Click to view homepage screenshot</summary>
-The screenshot below demonstrates that an unauthenticated user attempting to access a restricted page is redirected appropriately.
-
-![DP-01 Restricted URL](documentation/testing/validation/main-settings.png)
-
-The following screenshot demonstrates the custom 404 page:
-
-![DP-01 Custom 404](documentation/testing/validation/main-settings.png)
-</details>
+**SafeAlert was successfully deployed and the deployed application passed the final testing process.**
