@@ -9,13 +9,13 @@
     --safealert-border: #D9E7EA;
 }
 
-
+/* Base colours and global page styling for the SafeAlert theme. */
 body {
     background-color: var(--safealert-background);
     color: var(--safealert-text);
 }
 
-/* SafeAlert Navbar */
+/* Navigation layout and branding styles for the SafeAlert site header. */
 
 .navbar {
     background-color: var(--safealert-primary) !important;
@@ -27,7 +27,7 @@ body {
     display: block;
 }
 
-/* Button Safealert */
+/* Shared button styles for SafeAlert actions and CTAs. */
 .btn-safealert {
     background-color: var(--safealert-secondary);
     border-color: var(--safealert-secondary);
@@ -45,8 +45,7 @@ body {
     color: var(--safealert-secondary);
 }
 
-/*  SafeAlert Home Page */
-
+/* Landing page hero and welcome layout for the SafeAlert homepage. */
 .home-hero {
     background: #EAF3F5;
     color: var(--safealert-text);
@@ -80,7 +79,7 @@ body {
     border-radius: 0.5rem;
 }
 
-/* Main Section*/
+/* Main content region for the app pages and content containers. */
 main {
     min-height: 70vh;
 }
@@ -89,8 +88,7 @@ main {
     letter-spacing: 0.5px;
 }
 
-/* How SafeAlert Works */
-
+/* Explanatory feature cards for the user journey and process steps. */
 .process-card {
     border: none;
     border-radius: 1rem;
@@ -126,8 +124,7 @@ main {
     color: var(--safealert-muted);
 }
 
-/* Report Categories */
-
+/* Category cards used to display report types and issue groups. */
 .category-card {
     background-color: var(--safealert-card);
     border: 1px solid #e3eaee;
@@ -166,8 +163,7 @@ main {
     color: var(--safealert-muted);
 }
 
-/* Final Call To Action */
-
+/* Final homepage call-to-action block encouraging user engagement. */
 .home-cta {
     background-color: var(--safealert-primary);
     color: white;
@@ -183,10 +179,7 @@ main {
     color: rgba(255, 255, 255, 0.85);
 }
 
-/* My Reports Pages */
-
-/*  My Reports Header */
-
+/* User report list layouts and page header styling for my reports. */
 .my-reports-header {
     display: flex;
     justify-content: space-between;
@@ -236,8 +229,7 @@ main {
     color: var(--safealert-primary);
 }
 
-/* Report Page Header */
-
+/* Detail-page headers for a single report view and context summary. */
 .report-page-header {
     padding: 0.5rem 0;
 }
@@ -254,8 +246,7 @@ main {
     max-width: 700px;
 }
 
-/* Report status and priority badges */
-
+/* Status and priority labels used across report summaries and detail views. */
 .report-badge {
     display: inline-block;
     padding: 0.3rem 0.6rem;
@@ -315,8 +306,7 @@ main {
 }
 
 
-/* SafeAlert Report Form */
-
+/* Form field styling for report creation and editing pages. */
 .report-form-card {
     border: 1px solid var(--safealert-border);
     border-radius: 1rem;
@@ -352,8 +342,7 @@ main {
 }
 
 
-/* Empty My Reports state */
-
+/* Empty-state styles when a user has no reports yet. */
 .my-reports-empty {
     padding: 4rem 1rem;
 }
@@ -382,8 +371,7 @@ main {
     margin: 0 auto 1.5rem;
 }
 
-/* Form sections */
-
+/* Grouped form sections used to organise long report entry forms. */
 .form-section {
     padding: 1.5rem;
     border: 1px solid #E1EAED;
@@ -408,8 +396,7 @@ main {
     margin-bottom: 1.25rem;
 }
 
-/* Heatmap */
-
+/* Map and heatmap styling for reporting hotspots and geographic data. */
 #map {
     height: 450px;
     width: 100%;
@@ -449,8 +436,7 @@ main {
     );
 }
 
-/* Allauth forms */
-
+/* Authentication form styling for allauth login and signup pages. */
 .account-form input[type="text"],
 .account-form input[type="email"],
 .account-form input[type="password"] {
@@ -466,7 +452,7 @@ main {
     box-shadow: 0 0 0 0.2rem rgba(15, 139, 141, 0.15);
 }
 
-/* Admin reports DataTable */
+/* Data table styling for the admin report review dashboard. */
 #reportsTable {
     width: 100% !important;
 }
@@ -476,15 +462,14 @@ main {
     overflow-x: hidden;
 }
 
-/* Report card images */
+/* Image styling for report cards and detail previews. */
 .report-card-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
-/* Media Query */
-
+/* Responsive adjustments for tablet and mobile screen sizes. */
 @media (max-width: 768px) {
     .home-hero h1 {
         font-size: 2.5rem;
