@@ -55,7 +55,7 @@ SafeAlert includes automated tests using Django's built-in testing
 The automated tests were executed using bash command: python manage.py test
 
 The test suite completed successfully with the following result:
-![SafeAlert Tests Result](documentation\testing\auto-test\tests_results.png)
+![SafeAlert Tests Result](documentation/testing/auto-test/tests_results.png)
 
 
 ## 3. Manual Testing
