@@ -782,6 +782,7 @@ The My Reports page loaded successfully and displayed the user's submitted repor
 #### Evidence
 
 The My Reports page displays the submitted reports in individual cards with **View Report**, **Edit**, and **Delete** options.
+![My Report page](documentation\Report\report-page.png)
 
 ---
 
@@ -826,7 +827,7 @@ The report details page displayed the complete report information, including the
 #### Evidence
 
 The report details page displays the report information in separate sections including **Report Information**, **Description**, **Report Image**, **Report Summary**, **Coordinates**, and **Status History**.
-
+![My Report page](documentation\Report\report-detail.png)
 ---
 
 ### 3.6.4 Edit Existing Report
@@ -864,6 +865,20 @@ was displayed.
 #### Evidence
 
 The edited report was displayed on the My Reports page with the updated information.
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\Report\report-edit.png" alt="Mobile Login" width="450">
+      <br>
+      <strong>Edit report Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Report\report-edit-success.png" alt="Mobile Login Success" width="450">
+      <br>
+      <strong>Redirection with successfull message display</strong>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -891,6 +906,7 @@ Validation messages should be displayed for invalid fields.
 #### Actual Result
 
 The report form applies validation to the report fields and prevents invalid information from being submitted.
+
 
 **Result:** ✅ **PASS**
 
@@ -993,6 +1009,7 @@ A delete confirmation page was displayed showing the report title and descriptio
 #### Evidence
 
 The Delete Report page clearly warns the user that the deletion cannot be undone.
+![Delete Report Page](documentation\Report\report-delete.png)
 
 ---
 
@@ -1034,6 +1051,7 @@ The deleted report no longer appeared in the My Reports list.
 #### Evidence
 
 The My Reports page displayed the success message after deletion and the deleted report was removed from the report list.
+![Redirection to report Page with confirmation Message ](documentation\Report\report-delete-success.png)
 
 ---
 
@@ -1062,6 +1080,7 @@ The user should return to the My Reports page and the report should still be ava
 The Cancel option returned the user without deleting the report.
 
 **Result:** ✅ **PASS**
+![Cancel Button](documentation\Report\report-delete-cancel.png)
 
 ---
 
@@ -1095,6 +1114,7 @@ together with a message explaining that submitted reports would appear there.
 A **Submit Your First Report** button was also displayed.
 
 **Result:** ✅ **PASS**
+![No Report Page Display](documentation\Report\report-no-report.png)
 
 ---
 
@@ -1153,6 +1173,20 @@ Navigation should adapt to smaller screens and form elements should remain acces
 #### Actual Result
 
 The report management pages were displayed correctly on desktop and mobile-sized screens, with the navigation adapting to the smaller viewport.
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\Report\report-tablet.png" alt="Report tablet view" width="450">
+      <br>
+      <strong>The Page is Responsive on Tablet View</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\images\responsive-mobile.png" alt="Report Mobile View" width="450">
+      <br>
+      <strong>The page is Responsive on Mobile view</strong>
+    </td>
+  </tr>
+</table>
 
 **Result:** ✅ **PASS**
 
@@ -1213,12 +1247,13 @@ A search field is also available to search for specific reports.
 
 The example below shows the reports filtered by **Street Lighting**, **Medium Priority** and **Reported Status**.
 
-![Admin Reports Search and Filter Functionality](admin-search-filter.png)
+![Admin Reports Search and Filter Functionality](documentation\Admin\admin-search-filter.png)
 
 **Expected result:**  
 The report list should update to display only reports matching the selected filter criteria.
 
 **Test result:** PASS
+
 
 ---
 
@@ -1234,11 +1269,24 @@ Available actions include:
 
 The screenshot below shows the **Update Report Status** page, where the administrator can select a new status for the report.
 
-![Update Report Status](admin-change-status.png)
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\Admin\admin-status-button.png" alt="Status Button" width="450">
+      <br>
+      <strong>Status Update Button</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Admin\admin-change-status.png" alt="Status Update Page" width="450">
+      <br>
+      <strong>Status Update Page</strong>
+    </td>
+  </tr>
+</table>
 
 After submitting the change, the system displays a confirmation message indicating that the status was successfully updated.
 
-![Report Status Updated Successfully](admin-change-status-success.png)
+![Report Status Updated Successfully](documentation\Admin\admin-change-status-success.png)
 
 **Test result:** PASS
 
@@ -1257,13 +1305,24 @@ Examples include:
 
 This allows administrators to quickly identify reports that may require urgent attention.
 
-![Priority and Risk Information](admin-risk-display.png)
+![Priority and Risk Information](documentation\Admin\admin-risk-display.png)
 
 The report details page also provides a more detailed view of the priority and risk score.
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\Admin\admin-detail-priority.png" alt="Report Priority" width="450">
+      <br>
+      <strong>Report Priority</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Admin\admin-detail-risk.png" alt="Report Risk Score" width="450">
+      <br>
+      <strong>Report Risk Score</strong>
+    </td>
+  </tr>
+</table>
 
-![Report Priority](admin-detail-priority.png)
-
-![Report Risk Score](admin-detail-risk.png)
 
 **Test result:** PASS
 
@@ -1289,11 +1348,12 @@ The report details page displays information including:
 - Comments
 - Status history
 
-![Admin Report Details](admin-page.png)
+![Admin Report Details](documentation\Admin\admin-page.png)
+
 
 The details page also provides options to **Update Status** and **Add Comment**.
 
-![Report Details and Comments](admin-detail-comment.png)
+![Report Details and Comments](documentation\Admin\admin-detail.png)
 
 **Test result:** PASS
 
@@ -1309,15 +1369,40 @@ For example, after adding a comment, the system displayed:
 
 > "Comment added successfully."
 
-![Comment Added Successfully](admin-add-comment-success.png)
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\Admin\admin-comment-button.png" alt="comment bbutton" width="450">
+      <br>
+      <strong>Add Comment Button</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Admin\admin-detail-comment.png" alt="Comment display" width="450">
+      <br>
+      <strong>Add comment page display</strong>
+    </td>
+  </tr>
+</table>
 
 The Add Comment form was also successfully displayed and accepted user input.
 
-![Add Comment](admin-add-comment.png)
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\Admin\admin-add-comment-success.png" alt="Comment Success" width="450">
+      <br>
+      <strong>Redirection to Admin Report with Success Message</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Admin\admin-detail-comment.png" alt="Comment display" width="450">
+      <br>
+      <strong>Comment Successfully Display</strong>
+    </td>
+  </tr>
+</table>
 
 **Test result:** PASS
 
-**Note:** No validation/error screenshot was available because no error occurred during this test.
 
 ---
 
@@ -1327,9 +1412,21 @@ Mobile and responsive screenshot was provided for the Admin Reports page in the 
 
 Responsive behaviour has been tested separately at different viewport sizes, for example:
 
-- Desktop: 1920 × 1080
-- Tablet: 768 × 1024
-- Mobile: 375 × 667
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\Admin\admin-mobile.png" alt="Admin Mobile View" width="450">
+      <br>
+      <strong>- Mobile: 375 × 667</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\Admin\admin-tablet.png" alt="Admin Tablet View" width="450">
+      <br>
+      <strong>- Tablet: 768 × 1024</strong>
+    </td>
+  </tr>
+</table>
+
 
 **Test result:** Pass
 
@@ -1399,6 +1496,8 @@ The tests focused on authentication, authorisation, URL access, data ownership, 
 
 A custom **404 error page** was also implemented and tested to ensure that users receive an appropriate response when attempting to access a page that does not exist or is not available.
 
+![Custom 404 Page](documentation\images\404-page.png)
+
 #### Test Case DP-01 – Restricted and Invalid URL Access
 
 | Test ID | Feature | Objective |
@@ -1449,10 +1548,13 @@ The appropriate redirection also worked successfully when authentication was req
 #### Expected Result
 
 Unauthenticated users should not be able to create, edit or delete reports.
+Redirection to Login Page with alert display message
 
 #### Actual Result
 
 CRUD functionality was restricted to authenticated users.
+
+![Redirection with alert message](documentation\alert\login-restriction.png)
 
 **Result:** ✅ PASS
 
@@ -1475,6 +1577,21 @@ CRUD functionality was restricted to authenticated users.
 #### Expected Result
 
 User B should not be able to edit or delete a report belonging to User A.
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\alert\changing-id.png" alt="Changind Id" width="450">
+      <br>
+      <strong>User A try to access Report of User B</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\alert\404-page.png" alt="Screenshot 2" width="450">
+      <br>
+      <strong>Redirection to Custom 404 Page</strong>
+    </td>
+  </tr>
+</table>
 
 #### Actual Result
 
@@ -1505,6 +1622,8 @@ Unauthenticated users should be prevented from accessing protected pages.
 
 Protected pages were not accessible to unauthenticated users and the appropriate authentication redirection worked correctly.
 
+![Redirection with alert message](documentation\alert\login-restriction.png)
+
 **Result:** ✅ PASS
 
 ---
@@ -1533,6 +1652,23 @@ Administrator functionality was restricted to authorised administrator users.
 
 Attempts to access restricted administrator functionality were prevented and the appropriate access handling was applied.
 
+#### Evidence
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\alert\no-access-restriction.png" alt="admin page protection" width="450">
+      <br>
+      <strong>Page protected - Alert Message Display</strong>
+    </td>
+    </td>
+    <td align="center">
+      <img src="documentation\alert\login-django-restriction.png" alt="admin access protection" width="450">
+      <br>
+      <strong>Access to admin dashboard restricted</strong>
+    </td>
+  </tr>
+</table>
+
 **Result:** ✅ PASS
 
 ---
@@ -1551,10 +1687,14 @@ Attempts to access restricted administrator functionality were prevented and the
 4. Access report management functionality.
 5. Update report status.
 6. Add an administrator comment.
+7. Access to Admin Django dashboard
 
 #### Expected Result
 
-An authorised administrator should be able to access and use the administrator functionality.
+An authorised administrator should be able to access and use the administrator functionality.<br>
+
+**ADMINISTRATOR CAN ACCESS TO DJANGO DASHBOARD BY CLICKING HIS USERNAME IN NAVBAR**
+![Admin Django Access](documentation\testing\admin\admin-django-access.png)
 
 #### Actual Result
 
@@ -1747,6 +1887,9 @@ The following areas were successfully tested:
 
 **Overall Feature and Functionality Testing Result: ✅ PASS**
 
+#### Evidence
+Please refer to the section [3. Manual Testing](#3-manual-testing) for all evidences files
+
 
 ## 6. Responsive Testing
 
@@ -1779,7 +1922,64 @@ The navigation automatically adapted to the smaller screen using a collapsible m
 
 The Admin Reports page was also tested on the mobile viewport. The page remained usable, with the filters, search functionality and navigation controls adapting to the available screen width.
 
-![SafeAlert Admin Reports - Mobile Responsive View](responsive-mobile.png)
+<details>
+<summary><strong>📸 Please click here to View Mobile Responsive Evidence</strong></summary>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\responsive\home-mobile.png" alt="Home Mobile" width="300">
+      <br>
+      <strong>Mobile View Home Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\home-mobile-menu.png" alt="Mobile Menu" width="300">
+      <br>
+      <strong>Mobile View Menu Collapse</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\home-mobile-footer.png" alt="Home Footer" width="300">
+      <br>
+      <strong>Mobile View Botton Page</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\responsive\report-mobile-create.png" alt="Mobile report" width="300">
+      <br>
+      <strong>Mobile View Report Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\report-mobile-create-footer.png" alt="Mobile Menu" width="300">
+      <br>
+      <strong>Mobile View Report bottom Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\report-mobile-page.png" alt="Home Footer" width="300">
+      <br>
+      <strong>Mobile View My Report Page</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation/responsive/admin-mobile.png" alt="Mobile Admin" width="300">
+      <br>
+      <strong>Mobile View Admin Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\admin-mobile-actions.png" alt="Mobile Admin Actions" width="300">
+      <br>
+      <strong>Mobile View Admin Page Actions Buttons</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\admin-mobile-footer.png" alt="Mobile Admin Footer" width="300">
+      <br>
+      <strong>Mobile View Admin Page Footer</strong>
+    </td>
+  </tr>
+</table>
+
+</details>
 
 **Result:** ✅ PASS
 
@@ -1788,6 +1988,65 @@ The Admin Reports page was also tested on the mobile viewport. The page remained
 The application was tested using a tablet-sized viewport of approximately **768 × 1024 pixels** to verify that the interface adapts between desktop and mobile layouts.
 
 The main navigation, forms, report information and interactive components remained accessible at the tablet screen size.
+
+<details>
+<summary><strong>📸 Please click here to View Tablet Responsive Evidence</strong></summary>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\responsive\home-tablet.png" alt="Home Tablet" width="300">
+      <br>
+      <strong>Tablet View Home Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\home-tablet-footer.png" alt="Home Footer" width="300">
+      <br>
+      <strong>Tablet View Home Page Bottom</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\register-tablet.png" alt="Tablet Register" width="300">
+      <br>
+      <strong>Tablet View Register Page</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\responsive\report-tablet-view.png" alt="Tablet View report" width="300">
+      <br>
+      <strong>Tablet View Report Details Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\report-tablet.png" alt="Tablet My report" width="300">
+      <br>
+      <strong>Tablet View My Report  Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\about-tablet.png" alt="Tablet About Page" width="300">
+      <br>
+      <strong>Tablet View About Page</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\responsive\admin-tablet.png" alt="Tablet Admin" width="300">
+      <br>
+      <strong>Tablet View Admin Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\admin-tablet-view.png" alt="Tablet Details" width="300">
+      <br>
+      <strong>Tablet View Details Report Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\responsive\admin-tablet-heatmap.png" alt="Mobile Admin Footer" width="300">
+      <br>
+      <strong>Tablet View Heatmap Page</strong>
+    </td>
+  </tr>
+</table>
+
+</details>
 
 **Result:** ✅ PASS
 
@@ -1842,6 +2101,7 @@ Google Chrome's responsive device mode was used to test SafeAlert on a mobile-si
 The responsive navigation, report pages, filters, search controls and other interface elements were checked.
 
 The application adapted correctly to the smaller screen size.
+Please refer to [README.md file](https://github.com/davy-berry/safe_alert/blob/main/README.md)
 
 **Result:** ✅ PASS
 
@@ -1852,6 +2112,20 @@ SafeAlert was tested using Microsoft Edge to check browser compatibility.
 The main application functionality, navigation, forms and report management features were checked.
 
 No significant compatibility issues were identified.
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\browser\edge-1.png" alt="Screenshot 1" width="450">
+      <br>
+      <strong>Screenshot 1 – Edge</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\browser\edge-2.png" alt="Screenshot 2" width="450">
+      <br>
+      <strong>Screenshot 2 – Edge</strong>
+    </td>
+  </tr>
+</table>
 
 **Result:** ✅ PASS
 
@@ -1862,6 +2136,20 @@ SafeAlert was tested using Mozilla Firefox to verify compatibility with an addit
 The main application functionality, navigation, forms and report management features were checked.
 
 No significant compatibility issues were identified.
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\browser\firefox-1.png" alt="Screenshot 1" width="450">
+      <br>
+      <strong>Screenshot 1 – Firefox</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\browser\firefox-2.png" alt="Screenshot 2" width="450">
+      <br>
+      <strong>Screenshot 2 – Firefox</strong>
+    </td>
+  </tr>
+</table>
 
 **Result:** ✅ PASS
 
@@ -1917,7 +2205,64 @@ Each HTML file was validated individually and a screenshot of the successful val
 
 Screenshots of the individual validation results are provided below.
 
-<!-- Insert individual HTML validator screenshots here -->
+<details>
+<summary><strong>📸 Please click here to View HTML Validation files</strong></summary>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\validation\html-home.png" alt="Validation Home" width="300">
+      <br>
+      <strong>Validation Home page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\html-report.png" alt="Validation Report" width="300">
+      <br>
+      <strong>Validation Report page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\html-about.png" alt="Validation About" width="300">
+      <br>
+      <strong>Validation About page</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\validation\html-admin.png" alt="Validation Admin" width="300">
+      <br>
+      <strong>Validation Admin page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\html-create.png" alt="validation create" width="300">
+      <br>
+      <strong>Validation Create Report page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\html-login.png" alt="Login Page" width="300">
+      <br>
+      <strong>Validation Login Page</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\validation\html-signup.png" alt="Validation signup" width="300">
+      <br>
+      <strong>Validation Signup Page</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\html-views-report.png" alt="Validation View" width="300">
+      <br>
+      <strong>Validation View Report</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\html-404.png" alt="Validation 404" width="300">
+      <br>
+      <strong>Validation html-404</strong>
+    </td>
+  </tr>
+</table>
+
+</details>
 
 **Overall HTML Validation Result: ✅ PASS**
 
@@ -1958,8 +2303,99 @@ Each Python file was tested individually and a screenshot of the successful vali
 
 Screenshots of the individual validation results are provided below.
 
-<!-- Insert individual Python validator screenshots here -->
+<details>
+<summary><strong>📸 Please click here to View PYTHON VALIDATION</strong></summary>
 
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\validation\account-admin.png" alt="Validation Home" width="300">
+      <br>
+      <strong>Validation accounts/admin.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\account-forms.png" alt="Validation Report" width="300">
+      <br>
+      <strong>Validation accounts/forms.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\account-models.png" alt="Validation About" width="300">
+      <br>
+      <strong>Validation accounts/models.py</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\validation\main-manage.png" alt="Validation Admin" width="300">
+      <br>
+      <strong>Validation main/manage.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\main-settings.png" alt="validation create" width="300">
+      <br>
+      <strong>Validation main/settings.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\main-urls.png" alt="Login Page" width="300">
+      <br>
+      <strong>Validation main/urls.py</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\validation\report-admin.png" alt="Validation signup" width="300">
+      <br>
+      <strong>Validation reports/admin.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\report-forms.png" alt="Validation View" width="300">
+      <br>
+      <strong>Validation reports/forms.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\report-models.png" alt="Validation 404" width="300">
+      <br>
+      <strong>Validation reports/models.py</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\validation\report-risk.png" alt="Validation signup" width="300">
+      <br>
+      <strong>Validation reports/risk.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\report-urls.png" alt="Validation View" width="300">
+      <br>
+      <strong>Validation reports/urls.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\report-views.png" alt="Validation 404" width="300">
+      <br>
+      <strong>Validation reports/views.py</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation\validation\test-forms.png" alt="Validation signup" width="300">
+      <br>
+      <strong>Validation test_formss.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\test-models.png" alt="Validation View" width="300">
+      <br>
+      <strong>Validation test_models.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\validation\test-views.png" alt="Validation test_views" width="300">
+      <br>
+      <strong>Validation test_views.py</strong>
+    </td>
+  </tr>
+</table>
+
+</details>
+<br>
 **Overall Python Validation Result: ✅ PASS**
 
 ---
@@ -1976,7 +2412,7 @@ The stylesheet passed validation successfully.
 
 #### CSS Validation Evidence
 
-<!-- Insert CSS validator screenshot here -->
+![CSS Validation](documentation\validation\safealert-css.png)
 
 **Overall CSS Validation Result: ✅ PASS**
 
@@ -1997,7 +2433,10 @@ Both JavaScript files passed validation successfully.
 
 Screenshots of the individual validation results are provided below.
 
-<!-- Insert individual JavaScript validator screenshots here -->
+![JavaScript Validation heatmap.js](documentation\validation\js-heatmap.png)
+
+
+![JavaScript Validation report_map.js](documentation\validation\js-map.png)
 
 **Overall JavaScript Validation Result: ✅ PASS**
 
@@ -2021,13 +2460,31 @@ No syntax, markup or validation errors were identified in the final versions of 
 
 **Overall Code Validation Result: ✅ PASS**
 
-## 9. Bugs / Issues Encountered and Resolved
+## 9. Lighthouse
+The deployed site was tested using the Lighthouse Audit tool in Chrome DevTools, for both mobile and desktop.
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="documentation\lighthouse\lighthouse.png" alt="Screenshot 1" width="450">
+      <br>
+      <strong>Desktop Lighhouse</strong>
+    </td>
+    <td align="center">
+      <img src="documentation\lighthouse\lighthouse-mobile.png" alt="Screenshot 2" width="450">
+      <br>
+      <strong>Mobile Lighthouse</strong>
+    </td>
+  </tr>
+</table>
+
+## 10. Bugs / Issues Encountered and Resolved
 
 Testing was carried out throughout the development of SafeAlert. This allowed technical issues and unexpected behaviour to be identified, investigated and resolved before the final version of the application was completed.
 
 The following are some of the main issues encountered during development and the solutions implemented.
 
-### 9.1 OpenStreetMap Tile Access Error
+### 10.1 OpenStreetMap Tile Access Error
 
 #### Issue
 
@@ -2051,7 +2508,7 @@ The map loaded correctly after the new tile provider and API authentication were
 
 ---
 
-### 9.2 Stadia Maps Authentication Error
+### 10.2 Stadia Maps Authentication Error
 
 #### Issue
 
@@ -2075,7 +2532,7 @@ The map tiles loaded successfully once the API key was correctly configured.
 
 ---
 
-### 9.3 Static CSS File Not Loading
+### 10.3 Static CSS File Not Loading
 
 #### Issue
 
@@ -2097,7 +2554,7 @@ The SafeAlert styling was successfully applied to the affected pages.
 
 ---
 
-### 9.4 Uploaded Images Stored in the Incorrect Location
+### 10.4 Uploaded Images Stored in the Incorrect Location
 
 #### Issue
 
@@ -2121,7 +2578,7 @@ Uploaded report images were successfully stored and displayed from the correct m
 
 ---
 
-### 9.5 Latitude and Longitude Validation Problems
+### 10.5 Latitude and Longitude Validation Problems
 
 #### Issue
 
@@ -2145,7 +2602,7 @@ Valid latitude and longitude coordinates could be successfully selected from the
 
 ---
 
-### 9.6 Report Status History Not Being Saved
+### 10.6 Report Status History Not Being Saved
 
 #### Issue
 
@@ -2173,7 +2630,7 @@ Status changes are now recorded correctly and displayed in the report's status h
 
 ---
 
-### 9.7 Registration Server Error – Email Configuration
+### 10.7 Registration Server Error – Email Configuration
 
 #### Issue
 
@@ -2203,7 +2660,7 @@ Registration completed successfully and the email verification information was d
 
 ---
 
-### 9.8 Summary of Bugs and Issues
+### 10.8 Summary of Bugs and Issues
 
 The issues encountered during development were investigated and resolved before final testing.
 
@@ -2217,7 +2674,7 @@ The issues encountered during development were investigated and resolved before 
 | Status history not being saved | Status Management | ✅ RESOLVED |
 | Registration 500 email error | Authentication / Email | ✅ RESOLVED |
 
-### 9.9 Final Bug Resolution Result
+### 10.9 Final Bug Resolution Result
 
 All significant issues identified during the development and testing of SafeAlert were investigated and resolved.
 
@@ -2225,13 +2682,13 @@ The affected functionality was retested after each fix to confirm that the imple
 
 **Overall Bug / Issue Resolution Result: ✅ PASS**
 
-## 10. Final Test Results
+## 11. Final Test Results
 
 The SafeAlert application was tested throughout development and again during final testing to verify that the implemented functionality met the project requirements.
 
 Testing covered automated tests, manual functionality testing, user-story testing, feature and functionality testing, responsive testing, browser and device compatibility, code validation, and the resolution of issues identified during development.
 
-### 10.1 Final Testing Summary
+### 11.1 Final Testing Summary
 
 | Testing Area | Result |
 |---|---|
@@ -2244,7 +2701,7 @@ Testing covered automated tests, manual functionality testing, user-story testin
 | Code Validation | ✅ PASS |
 | Bugs / Issues Resolution | ✅ PASS |
 
-### 10.2 Final Test Outcome
+### 11.2 Final Test Outcome
 
 The completed testing confirmed that the main functionality of SafeAlert operates as intended.
 
@@ -2268,7 +2725,7 @@ The following areas were successfully tested:
 
 All identified development issues were resolved and the affected functionality was retested successfully.
 
-### 10.3 Testing Conclusion
+### 11.3 Testing Conclusion
 
 The final testing process demonstrated that SafeAlert meets the functional requirements defined for the project and that the implemented features operate correctly in the tested environments.
 
