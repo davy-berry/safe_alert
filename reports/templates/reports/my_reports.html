@@ -36,7 +36,7 @@ My Reports | SafeAlert
             {% if report.image %}
             <img src="{{ report.image.url }}" alt="{{ report.title }}" class="card-img-top report-card-image">
             {% else %}
-            <img src="{% static 'images/incident-report.jpg' %}" alt="Incident report"
+            <img src="{% static 'images/default-image.png' %}" alt="Default report image"
                 class="card-img-top report-card-image img-fluid rounded">
             {% endif %}
 
