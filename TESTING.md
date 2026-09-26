@@ -98,8 +98,8 @@ The login was successful. The user was redirected to the **My Reports** page and
 
 #### Evidence
 
-- ![Login form before submission](documentation\testing\authentication\login-form.png)
-- ![Successful login and redirection to My Reports](documentation\testing\authentication\login-sucess.png)
+- ![Login form before submission](documentation/testing/authentication/login-form.png)
+- ![Successful login and redirection to My Reports](documentation/testing/authentication/login-sucess.png)
 
 ---
 
@@ -129,7 +129,7 @@ The system rejected the invalid credentials and displayed an error message stati
 
 #### Evidence
 
-![Invalid credential test](documentation\testing\authentication\login-invalid.png)
+![Invalid credential test](documentation/testing/authentication/login-invalid.png)
 
 ---
 
@@ -159,7 +159,7 @@ The browser displayed the **"Please fill out this field."** validation message w
 
 #### Evidence
 
-![Invalid credential test](documentation\testing\authentication\login-invalid.png)
+![Invalid credential test](documentation/testing/authentication/login-invalid.png)
 
 ---
 
@@ -198,12 +198,12 @@ The new user was successfully created and the user was redirected to the **My Re
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\testing\authentication\registration-form.png" alt="Screenshot 1" width="450">
+      <img src="documentation/testing/authentication/registration-form.png" alt="Screenshot 1" width="450">
       <br>
       <strong>Screenshot 1 – Registration Form</strong>
     </td>
     <td align="center">
-      <img src="documentation\testing\authentication\registration-sucess.png" alt="Screenshot 2" width="450">
+      <img src="documentation/testing/authentication/registration-sucess.png" alt="Screenshot 2" width="450">
       <br>
       <strong>Screenshot 2 – Redirection - Registration Success </strong>
     </td>
@@ -239,7 +239,7 @@ The browser displayed an appropriate validation message indicating that the emai
 
 #### Evidence
 
-![Registration Defensive Field](documentation\testing\authentication\registration-invalid.png)
+![Registration Defensive Field](documentation/testing/authentication/registration-invalid.png)
 
 ---
 
@@ -336,7 +336,7 @@ The user was successfully logged out. The navigation bar returned to the public-
 
 #### Evidence
 
-![Registration Defensive Field](documentation\testing\authentication\signed_out.png)
+![Registration Defensive Field](documentation/testing/authentication/signed_out.png)
 
 ---
 
@@ -372,17 +372,17 @@ The Login and Registration pages adapted to smaller screen sizes. The navigation
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\testing\authentication\mobile-login.png" alt="Mobile Login" width="300">
+      <img src="documentation/testing/authentication/mobile-login.png" alt="Mobile Login" width="300">
       <br>
       <strong>Mobile Login Form</strong>
     </td>
     <td align="center">
-      <img src="documentation\testing\authentication\mobile-login-sucess.png" alt="Mobile Login Success" width="300">
+      <img src="documentation/testing/authentication/mobile-login-sucess.png" alt="Mobile Login Success" width="300">
       <br>
       <strong>Mobile Login Success</strong>
     </td>
     <td align="center">
-      <img src="documentation\testing\authentication\mobile-signed-out.png" alt="Mobile Sign Out" width="300">
+      <img src="documentation/testing/authentication/mobile-signed-out.png" alt="Mobile Sign Out" width="300">
       <br>
       <strong>Mobile Sign Out</strong>
     </td>
@@ -647,38 +647,38 @@ The form remains usable on mobile devices.
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\Report\create-form.png" alt="Report Form Page" width="450">
+      <img src="documentation/Report/create-form.png" alt="Report Form Page" width="450">
       <br>
       <strong>Report Issue Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\Report\create-form-valid.png" alt="Form Valid" width="450">
+      <img src="documentation/Report/create-form-valid.png" alt="Form Valid" width="450">
       <br>
       <strong>Form with valid field</strong>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="documentation\Report\create-form-invalid.png" alt="Form Invalid" width="450">
+      <img src="documentation/Report/create-form-invalid.png" alt="Form Invalid" width="450">
       <br>
       <strong>Defensive test Invalid Fields</strong>
     </td>
     <td align="center">
-      <img src="documentation\Report\create-form-success.png" alt="Report created" width="450">
+      <img src="documentation/Report/create-form-success.png" alt="Report created" width="450">
       <br>
       <strong>Redirection with Message Validation</strong>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="documentation\Report\create-invalid-file.png" alt="Form Invalid" width="450">
+      <img src="documentation/Report/create-invalid-file.png" alt="Form Invalid" width="450">
       <br>
       <strong>Defensive test on Image field</strong>
     </td>
     <td align="center">
-      <img src="documentation\Report\create-latitude-invalid.png" alt="Report created" width="450">
+      <img src="documentation/Report/create-latitude-invalid.png" alt="Report created" width="450">
       <br>
-      <img src="documentation\Report\create-longitude-invalid.png" alt="Report created" width="450">
+      <img src="documentation/Report/create-longitude-invalid.png" alt="Report created" width="450">
       <br>
       <strong>Defensive test on Latitude and Longotude <br> Tested From the Bash Terminal</strong>
     </td>
@@ -782,7 +782,7 @@ The My Reports page loaded successfully and displayed the user's submitted repor
 #### Evidence
 
 The My Reports page displays the submitted reports in individual cards with **View Report**, **Edit**, and **Delete** options.
-![My Report page](documentation\Report\report-page.png)
+![My Report page](documentation/Report/report-page.png)
 
 ---
 
@@ -827,7 +827,7 @@ The report details page displayed the complete report information, including the
 #### Evidence
 
 The report details page displays the report information in separate sections including **Report Information**, **Description**, **Report Image**, **Report Summary**, **Coordinates**, and **Status History**.
-![My Report page](documentation\Report\report-detail.png)
+![My Report page](documentation/Report/report-detail.png)
 ---
 
 ### 3.6.4 Edit Existing Report
@@ -868,12 +868,12 @@ The edited report was displayed on the My Reports page with the updated informat
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\Report\report-edit.png" alt="Mobile Login" width="450">
+      <img src="documentation/Report/report-edit.png" alt="Mobile Login" width="450">
       <br>
       <strong>Edit report Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\Report\report-edit-success.png" alt="Mobile Login Success" width="450">
+      <img src="documentation/Report/report-edit-success.png" alt="Mobile Login Success" width="450">
       <br>
       <strong>Redirection with successfull message display</strong>
     </td>
@@ -1009,7 +1009,7 @@ A delete confirmation page was displayed showing the report title and descriptio
 #### Evidence
 
 The Delete Report page clearly warns the user that the deletion cannot be undone.
-![Delete Report Page](documentation\Report\report-delete.png)
+![Delete Report Page](documentation/Report/report-delete.png)
 
 ---
 
@@ -1051,7 +1051,7 @@ The deleted report no longer appeared in the My Reports list.
 #### Evidence
 
 The My Reports page displayed the success message after deletion and the deleted report was removed from the report list.
-![Redirection to report Page with confirmation Message ](documentation\Report\report-delete-success.png)
+![Redirection to report Page with confirmation Message ](documentation/Report/report-delete-success.png)
 
 ---
 
@@ -1080,7 +1080,7 @@ The user should return to the My Reports page and the report should still be ava
 The Cancel option returned the user without deleting the report.
 
 **Result:** ✅ **PASS**
-![Cancel Button](documentation\Report\report-delete-cancel.png)
+![Cancel Button](documentation/Report/report-delete-cancel.png)
 
 ---
 
@@ -1114,7 +1114,7 @@ together with a message explaining that submitted reports would appear there.
 A **Submit Your First Report** button was also displayed.
 
 **Result:** ✅ **PASS**
-![No Report Page Display](documentation\Report\report-no-report.png)
+![No Report Page Display](documentation/Report/report-no-report.png)
 
 ---
 
@@ -1176,12 +1176,12 @@ The report management pages were displayed correctly on desktop and mobile-sized
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\Report\report-tablet.png" alt="Report tablet view" width="450">
+      <img src="documentation/Report/report-tablet.png" alt="Report tablet view" width="450">
       <br>
       <strong>The Page is Responsive on Tablet View</strong>
     </td>
     <td align="center">
-      <img src="documentation\images\responsive-mobile.png" alt="Report Mobile View" width="450">
+      <img src="documentation/images/responsive-mobile.png" alt="Report Mobile View" width="450">
       <br>
       <strong>The page is Responsive on Mobile view</strong>
     </td>
@@ -1247,7 +1247,7 @@ A search field is also available to search for specific reports.
 
 The example below shows the reports filtered by **Street Lighting**, **Medium Priority** and **Reported Status**.
 
-![Admin Reports Search and Filter Functionality](documentation\Admin\admin-search-filter.png)
+![Admin Reports Search and Filter Functionality](documentation/Admin/admin-search-filter.png)
 
 **Expected result:**  
 The report list should update to display only reports matching the selected filter criteria.
@@ -1272,12 +1272,12 @@ The screenshot below shows the **Update Report Status** page, where the administ
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\Admin\admin-status-button.png" alt="Status Button" width="450">
+      <img src="documentation/Admin/admin-status-button.png" alt="Status Button" width="450">
       <br>
       <strong>Status Update Button</strong>
     </td>
     <td align="center">
-      <img src="documentation\Admin\admin-change-status.png" alt="Status Update Page" width="450">
+      <img src="documentation/Admin/admin-change-status.png" alt="Status Update Page" width="450">
       <br>
       <strong>Status Update Page</strong>
     </td>
@@ -1286,7 +1286,7 @@ The screenshot below shows the **Update Report Status** page, where the administ
 
 After submitting the change, the system displays a confirmation message indicating that the status was successfully updated.
 
-![Report Status Updated Successfully](documentation\Admin\admin-change-status-success.png)
+![Report Status Updated Successfully](documentation/Admin/admin-change-status-success.png)
 
 **Test result:** PASS
 
@@ -1305,18 +1305,18 @@ Examples include:
 
 This allows administrators to quickly identify reports that may require urgent attention.
 
-![Priority and Risk Information](documentation\Admin\admin-risk-display.png)
+![Priority and Risk Information](documentation/Admin/admin-risk-display.png)
 
 The report details page also provides a more detailed view of the priority and risk score.
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\Admin\admin-detail-priority.png" alt="Report Priority" width="450">
+      <img src="documentation/Admin/admin-detail-priority.png" alt="Report Priority" width="450">
       <br>
       <strong>Report Priority</strong>
     </td>
     <td align="center">
-      <img src="documentation\Admin\admin-detail-risk.png" alt="Report Risk Score" width="450">
+      <img src="documentation/Admin/admin-detail-risk.png" alt="Report Risk Score" width="450">
       <br>
       <strong>Report Risk Score</strong>
     </td>
@@ -1348,12 +1348,12 @@ The report details page displays information including:
 - Comments
 - Status history
 
-![Admin Report Details](documentation\Admin\admin-page.png)
+![Admin Report Details](documentation/Admin/admin-page.png)
 
 
 The details page also provides options to **Update Status** and **Add Comment**.
 
-![Report Details and Comments](documentation\Admin\admin-detail.png)
+![Report Details and Comments](documentation/Admin/admin-detail.png)
 
 **Test result:** PASS
 
@@ -1372,12 +1372,12 @@ For example, after adding a comment, the system displayed:
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\Admin\admin-comment-button.png" alt="comment bbutton" width="450">
+      <img src="documentation/Admin/admin-comment-button.png" alt="comment bbutton" width="450">
       <br>
       <strong>Add Comment Button</strong>
     </td>
     <td align="center">
-      <img src="documentation\Admin\admin-detail-comment.png" alt="Comment display" width="450">
+      <img src="documentation/Admin/admin-detail-comment.png" alt="Comment display" width="450">
       <br>
       <strong>Add comment page display</strong>
     </td>
@@ -1389,12 +1389,12 @@ The Add Comment form was also successfully displayed and accepted user input.
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\Admin\admin-add-comment-success.png" alt="Comment Success" width="450">
+      <img src="documentation/Admin/admin-add-comment-success.png" alt="Comment Success" width="450">
       <br>
       <strong>Redirection to Admin Report with Success Message</strong>
     </td>
     <td align="center">
-      <img src="documentation\Admin\admin-detail-comment.png" alt="Comment display" width="450">
+      <img src="documentation/Admin/admin-detail-comment.png" alt="Comment display" width="450">
       <br>
       <strong>Comment Successfully Display</strong>
     </td>
@@ -1415,12 +1415,12 @@ Responsive behaviour has been tested separately at different viewport sizes, for
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\Admin\admin-mobile.png" alt="Admin Mobile View" width="450">
+      <img src="documentation/Admin/admin-mobile.png" alt="Admin Mobile View" width="450">
       <br>
       <strong>- Mobile: 375 × 667</strong>
     </td>
     <td align="center">
-      <img src="documentation\Admin\admin-tablet.png" alt="Admin Tablet View" width="450">
+      <img src="documentation/Admin/admin-tablet.png" alt="Admin Tablet View" width="450">
       <br>
       <strong>- Tablet: 768 × 1024</strong>
     </td>
@@ -1496,7 +1496,7 @@ The tests focused on authentication, authorisation, URL access, data ownership, 
 
 A custom **404 error page** was also implemented and tested to ensure that users receive an appropriate response when attempting to access a page that does not exist or is not available.
 
-![Custom 404 Page](documentation\images\404-page.png)
+![Custom 404 Page](documentation/images/404-page.png)
 
 #### Test Case DP-01 – Restricted and Invalid URL Access
 
@@ -1554,7 +1554,7 @@ Redirection to Login Page with alert display message
 
 CRUD functionality was restricted to authenticated users.
 
-![Redirection with alert message](documentation\alert\login-restriction.png)
+![Redirection with alert message](documentation/alert/login-restriction.png)
 
 **Result:** ✅ PASS
 
@@ -1581,12 +1581,12 @@ User B should not be able to edit or delete a report belonging to User A.
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\alert\changing-id.png" alt="Changind Id" width="450">
+      <img src="documentation/alert/changing-id.png" alt="Changind Id" width="450">
       <br>
       <strong>User A try to access Report of User B</strong>
     </td>
     <td align="center">
-      <img src="documentation\alert\404-page.png" alt="Screenshot 2" width="450">
+      <img src="documentation/alert/404-page.png" alt="Screenshot 2" width="450">
       <br>
       <strong>Redirection to Custom 404 Page</strong>
     </td>
@@ -1622,7 +1622,7 @@ Unauthenticated users should be prevented from accessing protected pages.
 
 Protected pages were not accessible to unauthenticated users and the appropriate authentication redirection worked correctly.
 
-![Redirection with alert message](documentation\alert\login-restriction.png)
+![Redirection with alert message](documentation/alert/login-restriction.png)
 
 **Result:** ✅ PASS
 
@@ -1656,13 +1656,13 @@ Attempts to access restricted administrator functionality were prevented and the
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\alert\no-access-restriction.png" alt="admin page protection" width="450">
+      <img src="documentation/alert/no-access-restriction.png" alt="admin page protection" width="450">
       <br>
       <strong>Page protected - Alert Message Display</strong>
     </td>
     </td>
     <td align="center">
-      <img src="documentation\alert\login-django-restriction.png" alt="admin access protection" width="450">
+      <img src="documentation/alert/login-django-restriction.png" alt="admin access protection" width="450">
       <br>
       <strong>Access to admin dashboard restricted</strong>
     </td>
@@ -1694,7 +1694,7 @@ Attempts to access restricted administrator functionality were prevented and the
 An authorised administrator should be able to access and use the administrator functionality.<br>
 
 **ADMINISTRATOR CAN ACCESS TO DJANGO DASHBOARD BY CLICKING HIS USERNAME IN NAVBAR**
-![Admin Django Access](documentation\testing\admin\admin-django-access.png)
+![Admin Django Access](documentation/testing/admin/admin-django-access.png)
 
 #### Actual Result
 
@@ -1928,34 +1928,34 @@ The Admin Reports page was also tested on the mobile viewport. The page remained
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\responsive\home-mobile.png" alt="Home Mobile" width="300">
+      <img src="documentation/responsive/home-mobile.png" alt="Home Mobile" width="300">
       <br>
       <strong>Mobile View Home Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\home-mobile-menu.png" alt="Mobile Menu" width="300">
+      <img src="documentation/responsive/home-mobile-menu.png" alt="Mobile Menu" width="300">
       <br>
       <strong>Mobile View Menu Collapse</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\home-mobile-footer.png" alt="Home Footer" width="300">
+      <img src="documentation/responsive/home-mobile-footer.png" alt="Home Footer" width="300">
       <br>
       <strong>Mobile View Botton Page</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\responsive\report-mobile-create.png" alt="Mobile report" width="300">
+      <img src="documentation/responsive/report-mobile-create.png" alt="Mobile report" width="300">
       <br>
       <strong>Mobile View Report Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\report-mobile-create-footer.png" alt="Mobile Menu" width="300">
+      <img src="documentation/responsive/report-mobile-create-footer.png" alt="Mobile Menu" width="300">
       <br>
       <strong>Mobile View Report bottom Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\report-mobile-page.png" alt="Home Footer" width="300">
+      <img src="documentation/responsive/report-mobile-page.png" alt="Home Footer" width="300">
       <br>
       <strong>Mobile View My Report Page</strong>
     </td>
@@ -1967,12 +1967,12 @@ The Admin Reports page was also tested on the mobile viewport. The page remained
       <strong>Mobile View Admin Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\admin-mobile-actions.png" alt="Mobile Admin Actions" width="300">
+      <img src="documentation/responsive/admin-mobile-actions.png" alt="Mobile Admin Actions" width="300">
       <br>
       <strong>Mobile View Admin Page Actions Buttons</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\admin-mobile-footer.png" alt="Mobile Admin Footer" width="300">
+      <img src="documentation/responsive/admin-mobile-footer.png" alt="Mobile Admin Footer" width="300">
       <br>
       <strong>Mobile View Admin Page Footer</strong>
     </td>
@@ -1995,51 +1995,51 @@ The main navigation, forms, report information and interactive components remain
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\responsive\home-tablet.png" alt="Home Tablet" width="300">
+      <img src="documentation/responsive/home-tablet.png" alt="Home Tablet" width="300">
       <br>
       <strong>Tablet View Home Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\home-tablet-footer.png" alt="Home Footer" width="300">
+      <img src="documentation/responsive/home-tablet-footer.png" alt="Home Footer" width="300">
       <br>
       <strong>Tablet View Home Page Bottom</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\register-tablet.png" alt="Tablet Register" width="300">
+      <img src="documentation/responsive/register-tablet.png" alt="Tablet Register" width="300">
       <br>
       <strong>Tablet View Register Page</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\responsive\report-tablet-view.png" alt="Tablet View report" width="300">
+      <img src="documentation/responsive/report-tablet-view.png" alt="Tablet View report" width="300">
       <br>
       <strong>Tablet View Report Details Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\report-tablet.png" alt="Tablet My report" width="300">
+      <img src="documentation/responsive/report-tablet.png" alt="Tablet My report" width="300">
       <br>
       <strong>Tablet View My Report  Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\about-tablet.png" alt="Tablet About Page" width="300">
+      <img src="documentation/responsive/about-tablet.png" alt="Tablet About Page" width="300">
       <br>
       <strong>Tablet View About Page</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\responsive\admin-tablet.png" alt="Tablet Admin" width="300">
+      <img src="documentation/responsive/admin-tablet.png" alt="Tablet Admin" width="300">
       <br>
       <strong>Tablet View Admin Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\admin-tablet-view.png" alt="Tablet Details" width="300">
+      <img src="documentation/responsive/admin-tablet-view.png" alt="Tablet Details" width="300">
       <br>
       <strong>Tablet View Details Report Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\responsive\admin-tablet-heatmap.png" alt="Mobile Admin Footer" width="300">
+      <img src="documentation/responsive/admin-tablet-heatmap.png" alt="Mobile Admin Footer" width="300">
       <br>
       <strong>Tablet View Heatmap Page</strong>
     </td>
@@ -2115,12 +2115,12 @@ No significant compatibility issues were identified.
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\browser\edge-1.png" alt="Screenshot 1" width="450">
+      <img src="documentation/browser/edge-1.png" alt="Screenshot 1" width="450">
       <br>
       <strong>Screenshot 1 – Edge</strong>
     </td>
     <td align="center">
-      <img src="documentation\browser\edge-2.png" alt="Screenshot 2" width="450">
+      <img src="documentation/browser/edge-2.png" alt="Screenshot 2" width="450">
       <br>
       <strong>Screenshot 2 – Edge</strong>
     </td>
@@ -2139,12 +2139,12 @@ No significant compatibility issues were identified.
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\browser\firefox-1.png" alt="Screenshot 1" width="450">
+      <img src="documentation/browser/firefox-1.png" alt="Screenshot 1" width="450">
       <br>
       <strong>Screenshot 1 – Firefox</strong>
     </td>
     <td align="center">
-      <img src="documentation\browser\firefox-2.png" alt="Screenshot 2" width="450">
+      <img src="documentation/browser/firefox-2.png" alt="Screenshot 2" width="450">
       <br>
       <strong>Screenshot 2 – Firefox</strong>
     </td>
@@ -2211,51 +2211,51 @@ Screenshots of the individual validation results are provided below.
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\validation\html-home.png" alt="Validation Home" width="300">
+      <img src="documentation/validation/html-home.png" alt="Validation Home" width="300">
       <br>
       <strong>Validation Home page</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\html-report.png" alt="Validation Report" width="300">
+      <img src="documentation/validation/html-report.png" alt="Validation Report" width="300">
       <br>
       <strong>Validation Report page</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\html-about.png" alt="Validation About" width="300">
+      <img src="documentation/validation/html-about.png" alt="Validation About" width="300">
       <br>
       <strong>Validation About page</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\validation\html-admin.png" alt="Validation Admin" width="300">
+      <img src="documentation/validation/html-admin.png" alt="Validation Admin" width="300">
       <br>
       <strong>Validation Admin page</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\html-create.png" alt="validation create" width="300">
+      <img src="documentation/validation/html-create.png" alt="validation create" width="300">
       <br>
       <strong>Validation Create Report page</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\html-login.png" alt="Login Page" width="300">
+      <img src="documentation/validation/html-login.png" alt="Login Page" width="300">
       <br>
       <strong>Validation Login Page</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\validation\html-signup.png" alt="Validation signup" width="300">
+      <img src="documentation/validation/html-signup.png" alt="Validation signup" width="300">
       <br>
       <strong>Validation Signup Page</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\html-views-report.png" alt="Validation View" width="300">
+      <img src="documentation/validation/html-views-report.png" alt="Validation View" width="300">
       <br>
       <strong>Validation View Report</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\html-404.png" alt="Validation 404" width="300">
+      <img src="documentation/validation/html-404.png" alt="Validation 404" width="300">
       <br>
       <strong>Validation html-404</strong>
     </td>
@@ -2309,85 +2309,85 @@ Screenshots of the individual validation results are provided below.
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\validation\account-admin.png" alt="Validation Home" width="300">
+      <img src="documentation/validation/account-admin.png" alt="Validation Home" width="300">
       <br>
       <strong>Validation accounts/admin.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\account-forms.png" alt="Validation Report" width="300">
+      <img src="documentation/validation/account-forms.png" alt="Validation Report" width="300">
       <br>
       <strong>Validation accounts/forms.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\account-models.png" alt="Validation About" width="300">
+      <img src="documentation/validation/account-models.png" alt="Validation About" width="300">
       <br>
       <strong>Validation accounts/models.py</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\validation\main-manage.png" alt="Validation Admin" width="300">
+      <img src="documentation/validation/main-manage.png" alt="Validation Admin" width="300">
       <br>
       <strong>Validation main/manage.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\main-settings.png" alt="validation create" width="300">
+      <img src="documentation/validation/main-settings.png" alt="validation create" width="300">
       <br>
       <strong>Validation main/settings.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\main-urls.png" alt="Login Page" width="300">
+      <img src="documentation/validation/main-urls.png" alt="Login Page" width="300">
       <br>
       <strong>Validation main/urls.py</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\validation\report-admin.png" alt="Validation signup" width="300">
+      <img src="documentation/validation/report-admin.png" alt="Validation signup" width="300">
       <br>
       <strong>Validation reports/admin.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\report-forms.png" alt="Validation View" width="300">
+      <img src="documentation/validation/report-forms.png" alt="Validation View" width="300">
       <br>
       <strong>Validation reports/forms.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\report-models.png" alt="Validation 404" width="300">
+      <img src="documentation/validation/report-models.png" alt="Validation 404" width="300">
       <br>
       <strong>Validation reports/models.py</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\validation\report-risk.png" alt="Validation signup" width="300">
+      <img src="documentation/validation/report-risk.png" alt="Validation signup" width="300">
       <br>
       <strong>Validation reports/risk.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\report-urls.png" alt="Validation View" width="300">
+      <img src="documentation/validation/report-urls.png" alt="Validation View" width="300">
       <br>
       <strong>Validation reports/urls.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\report-views.png" alt="Validation 404" width="300">
+      <img src="documentation/validation/report-views.png" alt="Validation 404" width="300">
       <br>
       <strong>Validation reports/views.py</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
-      <img src="documentation\validation\test-forms.png" alt="Validation signup" width="300">
+      <img src="documentation/validation/test-forms.png" alt="Validation signup" width="300">
       <br>
       <strong>Validation test_formss.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\test-models.png" alt="Validation View" width="300">
+      <img src="documentation/validation/test-models.png" alt="Validation View" width="300">
       <br>
       <strong>Validation test_models.py</strong>
     </td>
     <td align="center">
-      <img src="documentation\validation\test-views.png" alt="Validation test_views" width="300">
+      <img src="documentation/validation/test-views.png" alt="Validation test_views" width="300">
       <br>
       <strong>Validation test_views.py</strong>
     </td>
@@ -2412,7 +2412,7 @@ The stylesheet passed validation successfully.
 
 #### CSS Validation Evidence
 
-![CSS Validation](documentation\validation\safealert-css.png)
+![CSS Validation](documentation/validation/safealert-css.png)
 
 **Overall CSS Validation Result: ✅ PASS**
 
@@ -2433,10 +2433,10 @@ Both JavaScript files passed validation successfully.
 
 Screenshots of the individual validation results are provided below.
 
-![JavaScript Validation heatmap.js](documentation\validation\js-heatmap.png)
+![JavaScript Validation heatmap.js](documentation/validation/js-heatmap.png)
 
 
-![JavaScript Validation report_map.js](documentation\validation\js-map.png)
+![JavaScript Validation report_map.js](documentation/validation/js-map.png)
 
 **Overall JavaScript Validation Result: ✅ PASS**
 
@@ -2466,12 +2466,12 @@ The deployed site was tested using the Lighthouse Audit tool in Chrome DevTools,
 <table>
   <tr>
     <td align="center">
-      <img src="documentation\lighthouse\lighthouse.png" alt="Screenshot 1" width="450">
+      <img src="documentation/lighthouse/lighthouse.png" alt="Screenshot 1" width="450">
       <br>
       <strong>Desktop Lighhouse</strong>
     </td>
     <td align="center">
-      <img src="documentation\lighthouse\lighthouse-mobile.png" alt="Screenshot 2" width="450">
+      <img src="documentation/lighthouse/lighthouse-mobile.png" alt="Screenshot 2" width="450">
       <br>
       <strong>Mobile Lighthouse</strong>
     </td>
@@ -2739,9 +2739,9 @@ No unresolved critical issues were identified during the final testing process.
 <summary>Click to view homepage screenshot</summary>
 The screenshot below demonstrates that an unauthenticated user attempting to access a restricted page is redirected appropriately.
 
-![DP-01 Restricted URL](documentation\testing\validation\main-settings.png)
+![DP-01 Restricted URL](documentation/testing/validation/main-settings.png)
 
 The following screenshot demonstrates the custom 404 page:
 
-![DP-01 Custom 404](documentation\testing\validation\main-settings.png)
+![DP-01 Custom 404](documentation/testing/validation/main-settings.png)
 </details>
