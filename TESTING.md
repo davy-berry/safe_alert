@@ -2220,7 +2220,7 @@ Screenshots of the individual validation results are provided below.
     <td align="center">
       <img src="documentation/validation/html-report.png" alt="Validation Report" width="300">
       <br>
-      <strong>Validation Report page</strong>
+      <strong>Validation my_report.html</strong>
     </td>
     <td align="center">
       <img src="documentation/validation/html-about.png" alt="Validation About" width="300">
@@ -2232,29 +2232,29 @@ Screenshots of the individual validation results are provided below.
     <td align="center">
       <img src="documentation/validation/html-admin.png" alt="Validation Admin" width="300">
       <br>
-      <strong>Validation Admin page</strong>
+      <strong>Validation admin_reports.html</strong>
     </td>
     <td align="center">
       <img src="documentation/validation/html-create.png" alt="validation create" width="300">
       <br>
-      <strong>Validation Create Report page</strong>
+      <strong>Validation create_report.html</strong>
     </td>
     <td align="center">
       <img src="documentation/validation/html-login.png" alt="Login Page" width="300">
       <br>
-      <strong>Validation Login Page</strong>
+      <strong>Validation Login.html</strong>
     </td>
   </tr>
  <tr>
     <td align="center">
       <img src="documentation/validation/html-signup.png" alt="Validation signup" width="300">
       <br>
-      <strong>Validation Signup Page</strong>
+      <strong>Validation Signup.html</strong>
     </td>
     <td align="center">
       <img src="documentation/validation/html-views-report.png" alt="Validation View" width="300">
       <br>
-      <strong>Validation View Report</strong>
+      <strong>Validation report_detail.html</strong>
     </td>
     <td align="center">
       <img src="documentation/validation/html-404.png" alt="Validation 404" width="300">
@@ -2262,10 +2262,27 @@ Screenshots of the individual validation results are provided below.
       <strong>Validation html-404</strong>
     </td>
   </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation/validation/html-update-status.png" alt="Update Status" width="300">
+      <br>
+      <strong>Validation update-status.html</strong>
+    </td>
+    <td align="center">
+      <img src="documentation/validation/html-add-comment.png" alt="Validation add-comment" width="300">
+      <br>
+      <strong>Validation add-comment.html</strong>
+    </td>
+    <td align="center">
+      <img src="documentation/validation/html-heatmap.png" alt="Validation heatmap" width="300">
+      <br>
+      <strong>Validation heatmap.html</strong>
+    </td>
+  </tr>
 </table>
 
 </details>
-
+<br>
 **Overall HTML Validation Result: ✅ PASS**
 
 ---
@@ -2281,23 +2298,22 @@ The following Python files were tested:
 | PY-01 | `accounts/admin.py` | ✅ PASS |
 | PY-02 | `accounts/forms.py` | ✅ PASS |
 | PY-03 | `accounts/models.py` | ✅ PASS |
-| PY-04 | `accounts/tests.py` | ✅ PASS |
-| PY-05 | `accounts/urls.py` | ✅ PASS |
-| PY-06 | `accounts/views.py` | ✅ PASS |
-| PY-07 | `main/settings.py` | ✅ PASS |
-| PY-08 | `main/urls.py` | ✅ PASS |
-| PY-09 | `manage.py` | ✅ PASS |
-| PY-10 | `reports/admin.py` | ✅ PASS |
-| PY-11 | `reports/forms.py` | ✅ PASS |
-| PY-12 | `reports/models.py` | ✅ PASS |
-| PY-13 | `reports/risk.py` | ✅ PASS |
-| PY-14 | `reports/tests/test_forms.py` | ✅ PASS |
-| PY-15 | `reports/tests/test_models.py` | ✅ PASS |
-| PY-16 | `reports/tests/test_views.py` | ✅ PASS |
-| PY-17 | `reports/urls.py` | ✅ PASS |
-| PY-18 | `reports/views.py` | ✅ PASS |
-| PY-19 | `status_history/admin.py` | ✅ PASS |
-| PY-20 | `status_history/models.py` | ✅ PASS |
+| PY-04 | `accounts/apps.py` | ✅ PASS |
+| PY-06 | `main/settings.py` | ✅ PASS |
+| PY-07 | `main/urls.py` | ✅ PASS |
+| PY-08 | `manage.py` | ✅ PASS |
+| PY-09 | `reports/admin.py` | ✅ PASS |
+| PY-09 | `reports/apps.py` | ✅ PASS |
+| PY-10 | `reports/forms.py` | ✅ PASS |
+| PY-11 | `reports/models.py` | ✅ PASS |
+| PY-12 | `reports/risk.py` | ✅ PASS |
+| PY-13 | `reports/tests/test_forms.py` | ✅ PASS |
+| PY-14 | `reports/tests/test_models.py` | ✅ PASS |
+| PY-15 | `reports/tests/test_views.py` | ✅ PASS |
+| PY-16 | `reports/urls.py` | ✅ PASS |
+| PY-17 | `reports/views.py` | ✅ PASS |
+| PY-18 | `status_history/admin.py` | ✅ PASS |
+| PY-19 | `status_history/models.py` | ✅ PASS |
 
 Each Python file was tested individually and a screenshot of the successful validation result was captured as evidence.
 
@@ -2381,7 +2397,7 @@ Screenshots of the individual validation results are provided below.
     <td align="center">
       <img src="documentation/validation/test-forms.png" alt="Validation signup" width="300">
       <br>
-      <strong>Validation test_formss.py</strong>
+      <strong>Validation test_forms.py</strong>
     </td>
     <td align="center">
       <img src="documentation/validation/test-models.png" alt="Validation View" width="300">
@@ -2392,6 +2408,36 @@ Screenshots of the individual validation results are provided below.
       <img src="documentation/validation/test-views.png" alt="Validation test_views" width="300">
       <br>
       <strong>Validation test_views.py</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation/validation/status-models.png" alt="Validation Status" width="300">
+      <br>
+      <strong>Validation status_history/models.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation/validation/status-apps.png" alt="Validation Status Apps" width="300">
+      <br>
+      <strong>Validation status_history/apps.py</strong>
+    </td>
+    <td align="center">
+      <img src="documentation/validation/account-apps.png" alt="Validation accounts apps" width="300">
+      <br>
+      <strong>Validation accounts/apps.py</strong>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      <img src="documentation/validation/report-apps.png" alt="Validation Status" width="300">
+      <br>
+      <strong>Validation reports/apps.py</strong>
+    </td>
+    <td align="center">
+      <br>
+    </td>
+    <td align="center">
+      <br>
     </td>
   </tr>
 </table>
