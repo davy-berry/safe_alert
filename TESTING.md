@@ -2299,10 +2299,10 @@ The following Python files were tested:
 | PY-02 | `accounts/forms.py` | ✅ PASS |
 | PY-03 | `accounts/models.py` | ✅ PASS |
 | PY-04 | `accounts/apps.py` | ✅ PASS |
-| PY-06 | `main/settings.py` | ✅ PASS |
-| PY-07 | `main/urls.py` | ✅ PASS |
-| PY-08 | `manage.py` | ✅ PASS |
-| PY-09 | `reports/admin.py` | ✅ PASS |
+| PY-05 | `main/settings.py` | ✅ PASS |
+| PY-06 | `main/urls.py` | ✅ PASS |
+| PY-07 | `manage.py` | ✅ PASS |
+| PY-08 | `reports/admin.py` | ✅ PASS |
 | PY-09 | `reports/apps.py` | ✅ PASS |
 | PY-10 | `reports/forms.py` | ✅ PASS |
 | PY-11 | `reports/models.py` | ✅ PASS |
